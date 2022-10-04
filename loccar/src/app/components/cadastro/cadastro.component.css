@@ -1,0 +1,47 @@
+main{
+  display: flex;
+  justify-content: center;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px
+}
+.titulo{
+  margin-top: 40px;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 40px;
+}
+.cadastroCard{
+  width: 790px;
+  height: 610px;
+  border: 1px solid #9F9999;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.botaoCadastrar{
+  background-color: #DB1812;
+  width: 250px;
+  height: 70px;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 24px;
+}
+.input{
+  width: 670px;
+  height: 70px;
+}
+.links{
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+.links a{
+  text-decoration: none;
+}
