@@ -41,9 +41,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatButtonModule,MatToolbarModule
+    MatButtonModule,
+    MatToolbarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

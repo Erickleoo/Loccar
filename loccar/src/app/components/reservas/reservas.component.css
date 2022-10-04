@@ -168,3 +168,7 @@
 .background-color-gray {
   background: #E5E5E5;
 }
+
+::ng-deep .mat-form-field-appearance-fill {
+  background: #DCE0E2 !important;
+}
