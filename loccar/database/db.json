@@ -3,6 +3,8 @@
     {
       "id": 1,
       "nome": "Paulo",
+      "senha": "123",
+      "confirmaSenha": "123",
       "email": "paulo@loccar.com",
       "foto": "avatar.png",
       "admin": true
@@ -10,6 +12,8 @@
     {
       "id": 2,
       "nome": "Priscila",
+      "senha": "123",
+      "confirmaSenha": "123",
       "email": "priscila@email.com",
       "foto": "avatar.png",
       "admin": false
