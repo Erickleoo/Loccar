@@ -1,1 +1,29 @@
-<p>header works!</p>
+<mat-toolbar class="header">
+  <div>
+    <ng-container
+      *ngIf="
+        router.routerState.snapshot.url !== '/home' &&
+        router.routerState.snapshot.url !== '/cadastro' &&
+        router.routerState.snapshot.url !== '/login'
+      "
+    >
+      <div class="stroke">
+        <a mat-button routerLink="../home">Home</a>
+        <a mat-button routerLink="../carros">Carros</a>
+        <a mat-button routerLink="../reservas">Reservas</a>
+        <img src="../../../assets/img-teste/logo.png" />
+        <a mat-button routerLink="../locadora">Locadoras</a>
+        <a mat-button routerLink="../perfil">Perfil</a>
+        <a mat-button routerLink="../sair">Sair</a>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngIf="
+        router.routerState.snapshot.url == '/cadastro' ||
+        router.routerState.snapshot.url == '/login'
+      "
+    >
+      <img src="../../../assets/logo.png" />
+    </ng-container>
+  </div>
+</mat-toolbar>
