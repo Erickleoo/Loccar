@@ -21,3 +21,5 @@ body {
   padding-left: 150px;
   padding-right: 150px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
