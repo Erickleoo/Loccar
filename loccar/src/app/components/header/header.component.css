@@ -8,6 +8,7 @@
   background-color: #e5e5e5;
   padding-top: 2%;
 }
+
 img {
   width: 200px;
   height: 172px;
@@ -19,6 +20,7 @@ img {
   text-align: center;
   margin-left: 3%;
 }
+
 .stroke a {
   margin: 80px;
   text-decoration: none;
@@ -27,6 +29,7 @@ img {
   font-family: 24px;
   position: relative;
 }
+
 .stroke img {
   padding-top: 100px;
 }
@@ -45,6 +48,7 @@ img {
   background: #aaa;
   height: 1px;
 }
+
 .stroke a:hover:after {
   width: 100%;
 }
