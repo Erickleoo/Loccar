@@ -7,6 +7,11 @@ body {
   background: #E5E5E5;
 }
 
+ul li {
+  list-style: none;
+
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;

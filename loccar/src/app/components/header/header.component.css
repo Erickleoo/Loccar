@@ -17,12 +17,12 @@ img {
 
 .stroke {
   display: flex;
-  text-align: center;
-  margin-left: 3%;
+  justify-content: space-between;
+  gap: 100px;
+  align-items: center;
 }
 
 .stroke a {
-  margin: 80px;
   text-decoration: none;
   color: #040404;
   font-family: "Quicksand";
