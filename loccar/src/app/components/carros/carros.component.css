@@ -1,0 +1,170 @@
+.width {
+  width: 100%;
+}
+
+.height {
+  height: 590px;
+}
+
+.border-style {
+  border-radius: 4px;
+  border: 1px solid #9f9999;
+}
+
+.margin-top-card {
+  margin-top: 100px;
+}
+
+.margin-top-title {
+  margin-top: 36px;
+}
+
+.text-style {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Quicksand";
+  font-weight: 700;
+}
+
+.form-style {
+  margin: 46px 60px 70px 69px;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 58px;
+}
+
+.inputs-flex {
+  display: flex;
+  gap: 15px;
+}
+
+.input-width-100 {
+  width: 100%;
+}
+
+.input-width-30 {
+  width: 33%;
+}
+
+.input-width-60 {
+  width: 60%;
+  height: 70px;
+}
+
+.selected-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.button-style {
+  width: 250px;
+  height: 54px;
+  background: #db1812;
+  color: #fff;
+  font-family: "Quicksand";
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.card-flex-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.second-section-margin {
+  margin-top: 115px;
+}
+
+.title-reservas-style {
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #040404;
+}
+
+.line {
+  width: 60%;
+  height: 0px;
+  border: 1px solid #000000;
+}
+
+.cards-margin-top {
+  margin-top: 44px;
+}
+
+.card-flex {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-card {
+  width: 350px;
+  height: 198.22px;
+}
+
+.cards-info-flex {
+  display: flex;
+  gap: 74px;
+}
+
+.border-card-style {
+  border-radius: 10px;
+  border: 1px solid #c6c4c4;
+}
+
+.title-subtitle-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.margin-top {
+  margin-top: 21px;
+}
+
+.margin-bottom {
+  margin-bottom: 19px;
+}
+
+.card-title-style {
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.card-subtitle-style {
+  font-family: "Quicksand";
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.button-container {
+  align-self: flex-end;
+}
+
+.button-card-style {
+  font-family: "Quicksand";
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #db1812;
+  width: 250px;
+  height: 70px;
+  border: 2px solid #db1812;
+  border-radius: 5px;
+}
+
+.margin-buttom {
+  margin-bottom: 40px;
+  margin-right: 18px;
+}
+.select-locadora {
+  width: 583px;
+  padding-right: 80px;
+}
