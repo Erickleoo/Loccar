@@ -4,6 +4,12 @@
 html,
 body {
   height: 100%;
+  background: #E5E5E5;
+}
+
+ul li {
+  list-style: none;
+
 }
 
 body {
@@ -15,5 +21,3 @@ body {
   padding-left: 150px;
   padding-right: 150px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
