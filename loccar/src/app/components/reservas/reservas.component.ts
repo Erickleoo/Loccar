@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-reservas',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservas.component.css']
 })
 export class ReservasComponent implements OnInit {
+  form: FormGroup;
 
   constructor() { }
 
