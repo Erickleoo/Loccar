@@ -1,10 +1,10 @@
+<app-header></app-header>
+
 <main>
   <section class="container">
     <mat-card class="width height border-style margin-top-card">
       <div>
-        <mat-card-title class="text-style margin-top-title"
-          >Carros</mat-card-title
-        >
+        <mat-card-title class="text-style margin-top-title">Carros</mat-card-title>
       </div>
 
       <form class="form-style form-flex">
@@ -20,17 +20,14 @@
           <mat-select [formControl]="toppings" multiple>
             <mat-select-trigger>
               {{toppings.value?.[0] || ''}}
-              <span
-                *ngIf="(toppings.value?.length || 0) > 1"
-                class="example-additional-selection"
-              >
+              <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
                 (+{{ (toppings.value?.length || 0) - 1 }}
                 {{ toppings.value?.length === 2 ? "other" : "others" }})
               </span>
             </mat-select-trigger>
             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
               topping
-            }}</mat-option>
+              }}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -50,19 +47,12 @@
             <mat-select [formControl]="toppings" multiple>
               <mat-select-trigger>
                 {{toppings.value?.[0] || ''}}
-                <span
-                  *ngIf="(toppings.value?.length || 0) > 1"
-                  class="example-additional-selection"
-                >
+                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
                   (+{{ (toppings.value?.length || 0) - 1 }}
                   {{ toppings.value?.length === 2 ? "other" : "others" }})
                 </span>
               </mat-select-trigger>
-              <mat-option
-                *ngFor="let topping of toppingList"
-                [value]="topping"
-                >{{ topping }}</mat-option
-              >
+              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
             </mat-select>
           </mat-form-field>
           <button mat-button class="button-style">Cadastrar</button>
