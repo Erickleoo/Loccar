@@ -1,1 +1,93 @@
 <app-header></app-header>
+<main>
+    <section class="container">
+        <mat-card class="background-color-gray width height border-style margin-top-card">
+    
+            <div>
+                <mat-card-title class="text-style margin-top-title">Locadora</mat-card-title>
+            </div>
+    
+          <form class="form-style form-flex">
+            <div>
+                <mat-form-field class="input-width-100" appearance="fill">
+                    <mat-label>Locadora</mat-label>
+                    <input type="text" matInput placeholder="Ex: Locadora Matriz">
+                </mat-form-field>
+            </div>
+    
+            <div class="inputs-flex">
+                <mat-form-field class="input-width-100" appearance="fill">
+                    <mat-label>Endereço</mat-label>
+                    <input type="text" matInput placeholder="Ex: Rua/Travessa/Avenida">
+                </mat-form-field>
+            </div>
+    
+            <div class="selected-flex">
+                <mat-form-field appearance="fill" class="input-width-40">
+                    <mat-label>Telefone</mat-label>
+                    <span matPrefix>&nbsp;</span>
+                    <input type="tel" matInput placeholder="(xx) xxxx-xxxx">
+              </mat-form-field>
+    
+              <button mat-button class="button-style">Cadastrar</button>
+            </div>
+          </form>
+        </mat-card>
+    </section>
+
+    <section class="container card-flex-gap">
+        <mat-card class="width border-card-style card-flex">
+            <div class="title-card">
+                <mat-card-title class="card-title-style">Locadora Matriz</mat-card-title>
+            </div>
+
+            <div class="title-subtitle-flex margin-top margin-bottom">
+                <div>
+                    <mat-card-subtitle class="card-subtitle-style">Rua Marques, 320</mat-card-subtitle>
+                    <mat-card-subtitle class="card-subtitle-style">(11) 8888-8888</mat-card-subtitle>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button mat-button class="button-style margin-button">Editar</button>
+                <button mat-button class="button-card-style margin-button">Excluir</button>
+            </div>
+        </mat-card>
+
+        <mat-card class="width border-card-style card-flex">
+            <div class="title-card">
+                <mat-card-title class="card-title-style">Locadora Filial 1</mat-card-title>
+            </div>
+
+            <div class="title-subtitle-flex margin-top margin-bottom">
+                <div>
+                    <mat-card-subtitle class="card-subtitle-style">Rua Catedral, 30</mat-card-subtitle>
+                    <mat-card-subtitle class="card-subtitle-style">(11) 8888-8888</mat-card-subtitle>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button mat-button class="button-style margin-button">Editar</button>
+                <button mat-button class="button-card-style margin-button">Excluir</button>
+            </div>
+        </mat-card>
+
+        <mat-card class="width border-card-style card-flex">
+            <div class="title-card">
+                <mat-card-title class="card-title-style">Locadora Filial 2</mat-card-title>
+            </div>
+
+            <div class="title-subtitle-flex margin-top margin-bottom">
+                <div>
+                    <mat-card-subtitle class="card-subtitle-style">Rua Marechal, 20</mat-card-subtitle>
+                    <mat-card-subtitle class="card-subtitle-style">(11) 8888-8888</mat-card-subtitle>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button mat-button class="button-style margin-button">Editar</button>
+                <button mat-button class="button-card-style margin-button">Excluir</button>
+            </div>
+        </mat-card>
+    </section>
+</main>
