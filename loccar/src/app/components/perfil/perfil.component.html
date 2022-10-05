@@ -1,1 +1,49 @@
 <app-header></app-header>
+<main>
+  <mat-card class="perfilCard">
+    <mat-card-title>
+      <h1 class="titulo">Perfil</h1>
+    </mat-card-title>
+      <form action="">
+        <div class="divInput">
+          <mat-form-field appearance="fill" class="input">
+            <mat-label>Nome</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="input">
+            <mat-label>Telefone</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="input">
+            <mat-label>Email</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="divButton">
+          <button mat-raised-button color="warn" class="botaoAtualizar">Atualizar</button>
+        </div>
+      </form>
+  </mat-card>
+  <div class="tituloCard">
+    <h2>
+      USUÁRIOS CADASTRADOS
+    </h2>
+    <hr>
+  </div>
+  <section class="sectionCard">
+    <mat-card class="card">
+      <div class="cardDiv1">
+        <span class="cardNome">
+          <h2>Maria de Fátima Muniz</h2>
+        </span>
+        <div>
+          <span>(11)99999-9090</span>
+        </div>
+      </div>
+      <div class="cardDiv2">
+        <span>maria@gmail.com</span>
+        <button mat-button class="cardButton">Excluir usuário</button>
+      </div>
+    </mat-card>
+  </section>
+</main>
