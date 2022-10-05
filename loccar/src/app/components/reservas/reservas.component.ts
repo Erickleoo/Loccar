@@ -53,7 +53,7 @@ export class ReservasComponent implements OnInit {
     const dataReserva = this.form.controls["dataReserva"].value;
     const horarioReserva = this.form.controls["horarioReserva"].value;
     const dataDevolucao = this.form.controls["dataDevolucao"].value;
-    const reservas: Reservas = { id: id, data: dataReserva, horario: horarioReserva, dataentrega: dataDevolucao, usuarioId: usuarioId, carroNome: nomeCarro };
+    const reservas: Reservas = { id: id, data: dataReserva, horario: horarioReserva, dataentrega: dataDevolucao, usuarioId: usuarioId, carroID: nomeCarro };
 
     this.reservasService.salvarReservas(reservas).subscribe({
       next: () => {

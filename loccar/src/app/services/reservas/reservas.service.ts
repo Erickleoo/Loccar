@@ -27,6 +27,7 @@ export class ReservasService {
   }
 
   deletarReservas(id: number): Observable<Reservas> {
+    console.log(`${this.url}/${id}`)
     return this.httpClient.delete<Reservas>(`${this.url}/${id}`);
   }
 

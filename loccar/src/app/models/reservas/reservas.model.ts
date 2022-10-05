@@ -4,5 +4,5 @@ export interface Reservas {
   horario: string;
   dataentrega: string;
   usuarioId: number;
-  carroNome: string;
+  carroID: number;
 }
