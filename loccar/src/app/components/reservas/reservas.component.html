@@ -7,41 +7,49 @@
         <mat-card-title class="text-style margin-top-title">Reservas</mat-card-title>
       </div>
 
-      <form class="form-style form-flex">
+      <form [formGroup]="form" (ngSubmit)="cadastrarReservas()" class="form-style form-flex">
+        <div>
+          <input type="text" formControlName="usuarioID" class="display-none">
+        </div>
         <div>
           <mat-form-field class="input-width-100" appearance="fill">
             <mat-label>Carro</mat-label>
-            <input type="text" matInput placeholder="Ex. Onix 2.0">
+            <input type="text" formControlName="nomeCarro" matInput placeholder="Ex. Onix 2.0">
+            <mat-error>{{error}}</mat-error>
           </mat-form-field>
         </div>
 
         <div class="inputs-flex">
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Data Reserva</mat-label>
-            <input type="date" matInput>
+            <input type="date" formControlName="dataReserva" matInput>
+            <mat-error>{{error}}</mat-error>
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Horário da reserva:</mat-label>
-            <input type="date" matInput>
+            <input type="time" formControlName="horarioReserva" matInput>
+            <mat-error>{{error}}</mat-error>
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Data de devolução:</mat-label>
-            <input type="date" matInput>
+            <input type="date" formControlName="dataDevolucao" matInput>
+            <mat-error>{{error}}</mat-error>
           </mat-form-field>
         </div>
 
         <div class="selected-flex">
           <mat-form-field appearance="fill" class="input-width-60">
             <mat-label>Locadora</mat-label>
-            <mat-select>
+            <mat-select formControlName="filial">
               <mat-option>None</mat-option>
               <mat-option value="option1">Option 1</mat-option>
               <mat-option value="option2">Option 2</mat-option>
               <mat-option value="option3">Option 3</mat-option>
             </mat-select>
+            <mat-error>{{error}}</mat-error>
           </mat-form-field>
 
-          <button mat-button class="button-style">Atualizar</button>
+          <button mat-button type="submit" [disabled]="!form.valid" class="button-style">Atualizar</button>
         </div>
       </form>
     </mat-card>
@@ -54,51 +62,29 @@
     </div>
 
     <div class="cards-margin-top card-flex-gap">
-      <mat-card class="width border-card-style card-flex ">
+      <mat-card *ngFor="let reserva of reservas" class="width border-card-style card-flex">
         <mat-card-title-group>
           <div class="cards-info-flex">
             <div class="img-container">
-              <img class="img-card" mat-card-sm-image src="assets/img-teste/car3.png" height="198.22px" width="350px">
+              <img class="img-card" mat-card-sm-image src="assets/img-teste/car1.png" height="198.22px" width="350px">
             </div>
             <div class="title-subtitle-flex margin-top margin-bottom">
               <div class="title-card">
-                <mat-card-title class="card-title-style">Fiat Uno</mat-card-title>
+                <mat-card-title class="card-title-style">{{reserva.carroNome}}</mat-card-title>
               </div>
 
               <div>
-                <mat-card-subtitle class="card-subtitle-style">Data retirada: 22/05/2022</mat-card-subtitle>
-                <mat-card-subtitle class="card-subtitle-style">Horário retirada: 16:30</mat-card-subtitle>
-                <mat-card-subtitle class="card-subtitle-style">Data de devolução: 30/05/2022</mat-card-subtitle>
+                <mat-card-subtitle class="card-subtitle-style">Data retirada: {{reserva.data}}</mat-card-subtitle>
+                <mat-card-subtitle class="card-subtitle-style">Horário retirada: {{reserva.horario}}</mat-card-subtitle>
+                <mat-card-subtitle class="card-subtitle-style">Data de devolução: {{reserva.dataentrega}}
+                </mat-card-subtitle>
               </div>
             </div>
           </div>
         </mat-card-title-group>
         <div class="button-container">
-          <button mat-button class="button-card-style margin-buttom">Excluir Reservas</button>
-        </div>
-      </mat-card>
-
-      <mat-card class="width border-card-style card-flex ">
-        <mat-card-title-group>
-          <div class="cards-info-flex">
-            <div class="img-container">
-              <img class="img-card" mat-card-sm-image src="assets/img-teste/car3.png" height="198.22px" width="350px">
-            </div>
-            <div class="title-subtitle-flex margin-top margin-bottom">
-              <div class="title-card">
-                <mat-card-title class="card-title-style">Fiat Uno</mat-card-title>
-              </div>
-
-              <div>
-                <mat-card-subtitle class="card-subtitle-style">Data retirada: 22/05/2022</mat-card-subtitle>
-                <mat-card-subtitle class="card-subtitle-style">Horário retirada: 16:30</mat-card-subtitle>
-                <mat-card-subtitle class="card-subtitle-style">Data de devolução: 30/05/2022</mat-card-subtitle>
-              </div>
-            </div>
-          </div>
-        </mat-card-title-group>
-        <div class="button-container">
-          <button mat-button class="button-card-style margin-buttom">Excluir Reserva</button>
+          <button (click)="deletarReserva(reserva.id)" mat-button class="button-card-style margin-buttom">Excluir
+            Reservas</button>
         </div>
       </mat-card>
     </div>

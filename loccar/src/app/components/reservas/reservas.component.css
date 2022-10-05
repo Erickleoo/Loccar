@@ -168,3 +168,7 @@
 ::ng-deep .mat-form-field-appearance-fill {
   background: #DCE0E2 !important;
 }
+
+.display-none {
+  display: none;
+}

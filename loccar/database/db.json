@@ -62,15 +62,7 @@
       "horario": "15:00",
       "dataentrega": "2022-05-25",
       "usuarioId": 1,
-      "carroId": 1
-    },
-    {
-      "id": 2,
-      "data": "2022-05-21",
-      "horario": "15:00",
-      "dataentrega": "2022-05-25",
-      "usuarioId": 2,
-      "carroId": 1
+      "carroNome": "Fox"
     }
   ],
   "tipoCarro": [
