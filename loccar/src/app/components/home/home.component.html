@@ -1,49 +1,51 @@
-<main>
-  <div class="banner">
-    <div>
-    <div><img src="../../assets/img-teste/banner1.jpg" alt="img banner1"></div>
-    <div><img src="../../assets/img-teste/logo.png" alt="logo"></div>
+<body>
+  <main class= "conteudo conteiner">
+    <div class="banner">
+      <div>
+        <div class="banner-flex">
+          <img src="../../assets/img-teste/banner1.jpg" alt="img banner1">
+          <img class="logo-absolute" src="../../assets/img-teste/logo.png" alt="logo">
+          <div class="button-absolute">
+            <button routerLink="../login" class="button-position botao">Login</button>
+            <button routerLink="../cadastro" class="button-position botao">Cadastrar</button>
+          </div>
+        </div>
+      </div>
+      <h1 class="titulo">Carros Ofertados</h1>
     </div>
-    <div>
-      <button mat-flat-button color="warn">Login</button>
-      <button mat-flat-button color="warn">Cadastrar</button>
+
+
+    <div class="card">
+
+      <mat-card class="card1">
+        <img mat-card-image src="../../assets/img-teste/car1.png" alt="car1">
+        <mat-card-content>
+          <h2 class="cardTitulo">Econômico</h2>
+          <p class="cardParagrafo">Veículos baratos <br>
+          para atender todos <br>
+          os orçamentos!</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card1">
+        <img mat-card-image src="../../assets/img-teste/car2.jpg" alt="car2">
+        <mat-card-content>
+          <h2 class="cardTitulo">Especial</h2>
+          <p class="cardParagrafo"> Carros para todas e <br>
+          qualquer <br>
+          necessidade!</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card1">
+        <img mat-card-image src="../../assets/img-teste/car3.png" alt="car3">
+        <mat-card-content>
+          <h2 class="cardTitulo">Luxo</h2>
+          <p class="cardParagrafo">Para aqueles que <br>
+          preferem alugar com <br>
+          estilo!</p>
+        </mat-card-content>
+      </mat-card>
     </div>
-  </div>
-
-  <div>
-    <h1>Carros Ofertados</h1>
-
-    <mat-card class="card1">
-      <img mat-card-image src="../../assets/img-teste/car1.png" alt="car1">
-      <mat-card-content>
-        <h2>Econômico</h2>
-        <p>Veículos baratos <br>
-        para atender todos <br>
-        os orçamentos!</p>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card1">
-      <img mat-card-image src="../../assets/img-teste/car2.jpg" alt="car2">
-      <mat-card-content>
-        <h2>Especial</h2>
-        <p>Carros para todas e <br>
-        qualquer <br>
-        necessidade!</p>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card1">
-      <img mat-card-image src="../../assets/img-teste/car3.png" alt="car3">
-      <mat-card-content>
-        <h2>Luxo</h2>
-        <p>Para aqueles que <br>
-        preferem alugar com <br>
-        estilo!</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-</main>
-
-<footer></footer>
+  </main>
+</body>
