@@ -20,6 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
-
+    HttpClientModule,
+    MatSnackBarModule,
+    MatDialogModule
 
 
   ],
