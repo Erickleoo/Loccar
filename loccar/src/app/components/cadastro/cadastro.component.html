@@ -4,28 +4,44 @@
     <mat-card-title>
       <h1 class="titulo">Cadastrar</h1>
     </mat-card-title>
-    <form action="">
+    <form [formGroup]="form" (ngSubmit)="cadastrarUsuario()">
+
       <mat-form-field appearance="fill" class="input">
         <mat-label>Nome Completo</mat-label>
-        <input matInput>
+        <input formControlName="nome" name="nome" matInput required>
+        <mat-error>{{error}}</mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill" class="input">
         <mat-label>Telefone</mat-label>
-        <input matInput>
+        <input formControlName="telefone" name="telefone" matInput required>
+        <mat-error>{{error}}</mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill" class="input">
         <mat-label>E-mail</mat-label>
-        <input matInput>
+        <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email" required>
+        <mat-error *ngIf="form.get('email')?.hasError('required') || form.get('email')?.hasError('email')">
+          {{validaEmail()}}
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill" class="input">
         <mat-label>Senha</mat-label>
-        <input matInput>
+        <input type="password" formControlName="senha" name="senha" matInput (keyup)="validaSenhas()" required>
+        <mat-error>{{error}}</mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill" class="input">
         <mat-label>Confirmar Senha</mat-label>
-        <input matInput>
+        <input type="password" formControlName="confirmacaoSenha" name="confirmacaoSenha" matInput
+          (keyup)="validaSenhas()" required>
+        <mat-error *ngIf="form.get('confirmacaoSenha')?.hasError('camposDivergentes')">{{validaSenhas()}}>{{error}}
+        </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="warn" class="botaoCadastrar">Cadastrar</button>
+
+      <button type="submit" mat-raised-button color="warn" class="botaoCadastrar"
+        [disabled]="!form.valid">Cadastrar</button>
     </form>
     <div class="links">
       <a mat-button routerLink="../login">Já sou Cadastrado</a>
