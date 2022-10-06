@@ -1,0 +1,54 @@
+#containerFooter{
+  background-color:#CAD0D3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  height: 328px;
+  width: 100%;
+  margin-top: 87px;
+  font-family: 'roboto';
+  font-weight: 400;
+  font-size: 24px;
+}
+
+#links{
+  margin-bottom: 200px;
+  display: flex;
+  gap: 50px;
+  margin-right: -400px;
+  font-size: 24px color black ;
+}
+
+.linhaRodape {
+  border: 1px solid black;
+  height: 290px;
+  margin-top: 10px;
+}
+
+.imagemRodape{
+  width: 60px;
+  height: 60px;
+  padding-top: 518x;
+  margin-left: 46px;
+}
+
+#contato{
+  text-align: right;
+  margin-top: 168px;
+  margin-right: 46px;
+  font-family: 'roboto';
+  font-weight: 400;
+  font-size: 20px;
+}
+
+#logos{
+  margin-left: 142px;
+}
+
+.p3{
+  margin-top: 79px;
+  margin-left: 29px;
+}
+
+
