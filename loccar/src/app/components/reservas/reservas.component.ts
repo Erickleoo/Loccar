@@ -1,9 +1,13 @@
+import { Carros } from './../../models/carros/carros.model';
+import { Locadoras } from './../../models/locadoras/locadoras.model';
 import { Reservas } from './../../models/reservas/reservas.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservasService } from 'src/app/services/reservas/reservas.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
+import { CarrosService } from 'src/app/services/carros/carros.service';
 
 @Component({
   selector: 'app-reservas',
@@ -14,11 +18,15 @@ export class ReservasComponent implements OnInit {
   form: FormGroup;
   error = "Este campo é obrigatório.";
   reservas: Reservas[];
+  locadoras: Locadoras[];
+  carros: Carros[];
   id: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
     private reservasService: ReservasService,
+    private locadorasService: LocadorasService,
+    private carrosService: CarrosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) { }
@@ -44,6 +52,27 @@ export class ReservasComponent implements OnInit {
       }
     });
 
+    this.locadorasService.lerLocadoras().subscribe({
+      next: (locadoras: Locadoras[]) => {
+        this.locadoras = locadoras;
+        console.log(locadoras);
+      },
+      error: () => {
+        console.error("Erro ao ler as locadoras!");
+        this.alertaSnackBar("falha");
+      }
+    });
+
+    this.carrosService.lerCarros().subscribe({
+      next: (carros: Carros[]) => {
+        this.carros = carros;
+        console.log(carros);
+      },
+      error: () => {
+        console.error("Erro ao ler os carros!");
+        this.alertaSnackBar("falha");
+      }
+    });
   }
 
   cadastrarReservas() {
