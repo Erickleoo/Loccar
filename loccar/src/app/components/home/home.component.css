@@ -78,9 +78,13 @@ h2 {
   position: absolute;
 }
 
-.button-absolute {
+#button-absolute {
+  display: flex;
   position: absolute;
   align-self: flex-end;
+  padding-right: 301px;
+  padding-bottom: 45px;
+  gap: 45px;
 }
 
 .button-position {
