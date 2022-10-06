@@ -1,3 +1,5 @@
+import { UsuariosService } from './../../services/usuarios/usuarios.service';
+import { Usuarios } from './../../models/usuarios/usuarios.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,7 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public router: Router) {}
+  usuarios: Usuarios[];
 
-  ngOnInit(): void {}
+  constructor(
+    public router: Router,
+    private usuariosService: UsuariosService
+  ) { }
+
+  ngOnInit(): void {
+    this.usuariosService.lerUsuarios().subscribe({
+      next: (usuarios: Usuarios[]) => {
+        this.usuarios = usuarios;
+        console.log(usuarios)
+      },
+      error: () => {
+        console.error("Erro ao carregar usuários!");
+      }
+    })
+  }
 }

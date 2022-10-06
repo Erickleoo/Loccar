@@ -1,0 +1,33 @@
+import { Usuarios } from './../../models/usuarios/usuarios.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuariosService {
+  private listaUsuarios: any[];
+  private usuarios: Usuarios
+  private url = 'https://servidor-carros.herokuapp.com/usuarios'
+
+  constructor(private httpCliente: HttpClient) {
+    this.listaUsuarios = [];
+  }
+
+  get usuariosCadastrados() {
+    return this.listaUsuarios
+  }
+
+  lerUsuarios(): Observable<Usuarios[]> {
+    return this.httpCliente.get<Usuarios[]>(this.url);
+  }
+
+  salvarUsuarioLogin(usuario: Usuarios) {
+    this.usuarios = usuario;
+  }
+
+  obterUsuarioLogin(): Usuarios {
+    return this.usuarios
+  }
+}

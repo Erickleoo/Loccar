@@ -23,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CarrosComponent,
     ReservasComponent,
     LocadoraComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     BrowserModule,

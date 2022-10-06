@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ReservasService {
   private listaReservas: any[];
-  private url = 'http://localhost:3000/reservas';
+  private url = 'https://servidor-carros.herokuapp.com/reservas';
 
   constructor(private httpClient: HttpClient) {
     this.listaReservas = [];

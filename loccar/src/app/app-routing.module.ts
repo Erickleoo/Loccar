@@ -5,6 +5,7 @@ import { CarrosComponent } from './components/carros/carros.component';
 import { HomeComponent } from './components/home/home.component';
 import { LocadoraComponent } from './components/locadora/locadora.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'carros', component: CarrosComponent },
   { path: 'reservas', component: ReservasComponent },
   { path: 'locadora', component: LocadoraComponent },
+  { path: 'perfil-usuario', component: PerfilUsuarioComponent }
 ];
 
 @NgModule({

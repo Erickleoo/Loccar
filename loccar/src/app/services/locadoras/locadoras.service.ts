@@ -8,7 +8,7 @@ import { Locadoras } from 'src/app/models/locadoras/locadoras.model';
 })
 export class LocadorasService {
   private listaLocadoras: any[];
-  private url = 'http://localhost:3000/locadoras'
+  private url = 'https://servidor-carros.herokuapp.com/locadoras'
 
   constructor(private httpClient: HttpClient) {
     this.listaLocadoras = [];
