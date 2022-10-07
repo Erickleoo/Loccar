@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 
-.banner-flex{
+.banner-flex {
   width: 1140px;
   height: 688px;
 
@@ -30,7 +30,7 @@ h2 {
   color: black;
 }
 
-.titulo{
+.titulo {
   display: flex;
   justify-content: center;
   padding-top: 59px;
@@ -57,7 +57,7 @@ h2 {
   margin-top: 19px;
   font-size: 24px bold;
   line-height: 30px;
-  color:black;
+  color: black;
 }
 
 .cardParagrafo {
@@ -71,7 +71,7 @@ h2 {
 
 .banner-flex {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .logo-absolute {
@@ -91,7 +91,7 @@ h2 {
   text-align: center;
 }
 
-.botao{
+.botao {
   align-items: center;
   width: 250px;
   height: 70px;
@@ -99,7 +99,7 @@ h2 {
   font-weight: 700px;
   line-height: 30px;
   color: white;
-  background:#DB1812;
+  background: #DB1812;
   border-radius: 5px;
   border: 1px solid #DB1812;
   cursor: pointer;

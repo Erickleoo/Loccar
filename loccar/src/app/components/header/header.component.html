@@ -1,13 +1,10 @@
 <header class="container">
   <mat-toolbar class="header">
     <div>
-      <ng-container *ngIf="
-        router.routerState.snapshot.url !== '/home' &&
-        router.routerState.snapshot.url !== '/cadastro' &&
-        router.routerState.snapshot.url !== '/login'
-      ">
+      <ng-container *ngIf=" router.routerState.snapshot.url !=='/home' && router.routerState.snapshot.url
+        !=='/cadastro' && router.routerState.snapshot.url !=='/login' ">
         <div>
-          <ul class="stroke">
+          <ul class=" stroke">
             <li><a mat-button routerLink="../home">Home</a></li>
             <li><a mat-button routerLink="../carros">Carros</a></li>
             <li><a mat-button routerLink="../reservas">Reservas</a></li>
@@ -26,4 +23,5 @@
       </ng-container>
     </div>
   </mat-toolbar>
+
 </header>

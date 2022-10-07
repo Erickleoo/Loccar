@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<section class="container">
+  <mat-card class="background-color-gray width height border-style margin-top-card">
+
+    <div>
+      <mat-card-title class="text-style margin-top-title">Perfil</mat-card-title>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="atualizarPerfil()" class="form-style form-flex">
+
+      <div>
+        <mat-form-field class="input-width-100" appearance="fill">
+          <mat-label>Nome:</mat-label>
+          <input type="text" formControlName="nome" matInput placeholder="Ex: João Carlos Silva">
+          <mat-error>{{error}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="input-width-100">
+          <mat-label>Telefone:</mat-label>
+          <span matPrefix>&nbsp;</span>
+          <input type="tel" formControlName="telefone" matInput placeholder="Ex: (xx) xxxx-xxxx">
+          <mat-error>{{error}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="input-width-100">
+          <mat-label>Email:</mat-label>
+          <span matPrefix>&nbsp;</span>
+          <input type="email" formControlName="email" matInput placeholder="Ex: email@email.com">
+          <mat-error>{{error}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="buttons-container">
+        <button mat-button class="button-style">Atualizar</button>
+        <button mat-button class="button-card-style">Excluir
+          Reservas</button>
+      </div>
+    </form>
+
+  </mat-card>
+</section>
+
+<app-footer></app-footer>

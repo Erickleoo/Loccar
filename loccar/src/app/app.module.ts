@@ -23,6 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CarrosComponent,
     ReservasComponent,
     LocadoraComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +54,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatDialogModule
-
-
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
