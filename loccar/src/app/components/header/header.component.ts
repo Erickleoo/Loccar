@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     this.usuariosService.lerUsuarios().subscribe({
       next: (usuarios: Usuarios[]) => {
         this.usuarios = usuarios;
-        console.log(usuarios)
       },
       error: () => {
         console.error("Erro ao carregar usuários!");
