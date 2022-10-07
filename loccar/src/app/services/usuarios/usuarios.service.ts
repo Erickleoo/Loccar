@@ -23,11 +23,23 @@ export class UsuariosService {
     return this.httpCliente.get<Usuarios[]>(this.url);
   }
 
+  salvarUsuario(usuario: Usuarios): Observable<Usuarios> {
+    return this.httpCliente.post<Usuarios>(this.url, usuario)
+  }
+
+  updateUsuario(usuario: Usuarios, id: any): Observable<Usuarios> {
+    return this.httpCliente.put<Usuarios>(`${this.url}/${id.id}`, usuario);
+  }
+
+  deletarUsuario(id: any){
+    return this.httpCliente.delete(`${this.url}/${id}`)
+  }
+
   salvarUsuarioLogin(usuario: Usuarios) {
     this.usuarios = usuario;
   }
 
   obterUsuarioLogin(): Usuarios {
-    return this.usuarios
+    return this.usuarios;
   }
 }

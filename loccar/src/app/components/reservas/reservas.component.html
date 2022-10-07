@@ -13,7 +13,7 @@
             <mat-label>Carro</mat-label>
             <mat-select formControlName="nomeCarro">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let carro of carros" value="{{carro.nome}}">{{carro.nome}}</mat-option>
+              <mat-option *ngFor="let carro of carros" value="{{carro.id}}">{{carro.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>

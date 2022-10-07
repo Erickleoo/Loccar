@@ -21,6 +21,7 @@ export class ReservasComponent implements OnInit {
   locadoras: Locadoras[];
   carros: Carros[];
   id: number = 0;
+  adm: boolean = true
 
   constructor(
     private formBuilder: FormBuilder,

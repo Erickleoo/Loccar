@@ -1,20 +1,23 @@
-main{
+main {
   display: flex;
   justify-content: center;
 }
-form{
+
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px
 }
-.titulo{
+
+.titulo {
   margin-top: 40px;
   font-family: 'Quicksand';
   font-weight: 700;
   font-size: 40px;
 }
-.cadastroCard{
+
+.cadastroCard {
   width: 790px;
   height: 610px;
   border: 1px solid #9F9999;
@@ -24,7 +27,8 @@ form{
   align-items: center;
   justify-content: space-between;
 }
-.botaoCadastrar{
+
+.botaoCadastrar {
   background-color: #DB1812;
   width: 250px;
   height: 70px;
@@ -32,16 +36,24 @@ form{
   font-weight: 700;
   font-size: 24px;
 }
-.input{
+
+.input {
   width: 670px;
   height: 70px;
 }
-.links{
+
+.links {
   width: 250px;
   display: flex;
   justify-content: center;
   font-size: 15px;
 }
-.links a{
+
+.links a {
   text-decoration: none;
+}
+
+:host ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #CAD0D3;
 }

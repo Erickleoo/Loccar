@@ -87,6 +87,11 @@ h2 {
   gap: 45px;
 }
 
+.button-home {
+  display: flex;
+  gap: 45px;
+}
+
 .button-position {
   text-align: center;
 }
