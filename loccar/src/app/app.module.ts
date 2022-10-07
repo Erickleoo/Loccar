@@ -25,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReservasComponent,
     LocadoraComponent,
     PerfilUsuarioComponent,
+    DialogEditarCarroComponent,
+    DialogEditarCarroComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
