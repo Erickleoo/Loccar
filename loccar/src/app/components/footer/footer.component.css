@@ -1,5 +1,5 @@
-#containerFooter{
-  background-color:#CAD0D3;
+#containerFooter {
+  background-color: #CAD0D3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +12,17 @@
   font-size: 24px;
 }
 
-#links{
+#links {
   margin-bottom: 200px;
   display: flex;
   gap: 50px;
   margin-right: -400px;
-  font-size: 24px color black ;
+  font-size: 24px;
+  color: #060606;
+}
+
+.links {
+  color: #060606;
 }
 
 .linhaRodape {
@@ -26,14 +31,14 @@
   margin-top: 10px;
 }
 
-.imagemRodape{
+.imagemRodape {
   width: 60px;
   height: 60px;
   padding-top: 518x;
   margin-left: 46px;
 }
 
-#contato{
+#contato {
   text-align: right;
   margin-top: 168px;
   margin-right: 46px;
@@ -42,13 +47,11 @@
   font-size: 20px;
 }
 
-#logos{
+#logos {
   margin-left: 142px;
 }
 
-.p3{
+.p3 {
   margin-top: 79px;
   margin-left: 29px;
 }
-
-

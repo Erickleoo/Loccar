@@ -32,6 +32,6 @@ export class UsuariosService {
   }
 
   obterUsuarioLogin(): Usuarios {
-    return this.usuarios
+    return this.usuarios;
   }
 }
