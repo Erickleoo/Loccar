@@ -14,7 +14,7 @@ export class LocadoraComponent implements OnInit {
   formLocadora: FormGroup;
   error = "Este campo é obrigatório";
   id: number = 0;
-  locadoras: Locadoras[];
+  locadoras: Locadoras[]
 
   constructor(
     private formBuilder: FormBuilder,
