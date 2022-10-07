@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -53,9 +54,8 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatDialogModule
-
-
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
