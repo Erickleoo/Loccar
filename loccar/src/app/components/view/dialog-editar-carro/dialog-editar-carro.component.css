@@ -104,7 +104,7 @@
 .section-card{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0%;
   width: 352px;
   height: 600px;
@@ -117,7 +117,6 @@
   flex-direction: column;
   align-items: center;
   gap:10px;
-  padding-top: -10px;
 }
 .btn-cadastrar{
   width: 250px;
@@ -152,9 +151,3 @@
   align-items: center;
   margin-top: -35px;
 }
-
-.container-horizontal{
-  display: flex;
-  gap: 70px;
-}
-

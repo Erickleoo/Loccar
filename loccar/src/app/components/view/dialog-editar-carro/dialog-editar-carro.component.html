@@ -1,0 +1,48 @@
+<main>
+  <section class="container">
+    <mat-card class="width height border-style margin-top-card">
+      <div>
+        <mat-card-title class="text-style margin-top-title">Carros</mat-card-title>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="cadastrarCarros()"class="form-style form-flex">
+        <div>
+          <mat-form-field class="input-width-100" appearance="fill">
+            <mat-label>Nome do Carro</mat-label>
+            <input type="text" formControlName="nomeCarro" matInput />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="listaTipo"required>
+              <mat-option *ngFor="let tipo of tiposCarros" [value]="tipo">{{
+                tipo.nome
+              }}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <div class="inputs-flex">
+          <mat-form-field class="input-width-30" appearance="fill">
+            <mat-label>Portas:</mat-label>
+            <input type="number" formControlName="portas" required matInput />
+          </mat-form-field>
+          <mat-form-field class="input-width-30" appearance="fill">
+            <mat-label>Nº de Pessoas:</mat-label>
+            <input type="number" type="number" formControlName="numeroPessoas" required  matInput />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill" class="select-locadora">
+            <mat-label>Locadora</mat-label>
+              <mat-select formControlName="selectLocadora" required>
+                <mat-option *ngFor="let locadora of locadoras" [value]="locadora">{{
+                  locadora.nome
+                }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <button mat-button class="button-style">Cadastrar</button>
+        </div>
+      </form>
+    </mat-card>
+  </section>
