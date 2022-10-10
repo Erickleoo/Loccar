@@ -22,16 +22,16 @@ export class CarrosComponent implements OnInit {
   error = "Este campo é obrigatório.";
   carros: Carros[];
   locadoras: Locadoras[];
-  tiposCarros:TipoCarros[];
+  tiposCarros: TipoCarros[];
   id: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
     private carrosService: CarrosService,
-    private locadorasService:LocadorasService,
+    private locadorasService: LocadorasService,
     private loadingService: LoadingService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -96,7 +96,7 @@ export class CarrosComponent implements OnInit {
     const portas = this.form.controls["portas"].value;
     const numeroPessoas = this.form.controls["numeroPessoas"].value;
     const selectLocadora = this.form.controls["selectLocadora"].value.id;
-    const carros: Carros = { id: id, nome:nomeCarro, portas: portas, npessoas:numeroPessoas, locadoraId:selectLocadora, tipoCarroId: listaTipo};
+    const carros: Carros = { id: id, nome: nomeCarro, portas: portas, npessoas: numeroPessoas, locadoraId: selectLocadora, tipoCarroId: listaTipo };
 
     this.carrosService.salvarCarros(carros).subscribe({
       next: () => {
@@ -124,7 +124,7 @@ export class CarrosComponent implements OnInit {
   // }
 
 
-  deletarCarro(id:number): void {
+  deletarCarro(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
       width: '550px',
@@ -149,12 +149,12 @@ export class CarrosComponent implements OnInit {
   }
 
 
-   //função para enviar os dados para o dialog que abre no botão editar
-   openDialog(
+  //função para enviar os dados para o dialog que abre no botão editar
+  openDialog(
     id: number,
     enterAnimationDuration: string,
     exitAnimationDuration: string
-  ):void {
+  ): void {
 
     this.carrosService.pegarCarrosPeloID(id).subscribe({
       next: (carros: Carros) => {
@@ -192,7 +192,7 @@ export class CarrosComponent implements OnInit {
         this.alertaSnackBar('erroEditar');
       },
     });
- }
+  }
 
   alertaSnackBar(tipoAlerta: string) {
     switch (tipoAlerta) {
@@ -208,12 +208,12 @@ export class CarrosComponent implements OnInit {
           panelClass: ['snackbar-sucess']
         });
         break;
-        case "deletado":
-          this.snackBar.open("Carro deletado com sucesso.", undefined, {
-            duration: 2000,
-            panelClass: ['snackbar-sucess']
-          });
-          break;
+      case "deletado":
+        this.snackBar.open("Carro deletado com sucesso.", undefined, {
+          duration: 2000,
+          panelClass: ['snackbar-sucess']
+        });
+        break;
       case "falha":
         this.snackBar.open("Serviço indisponível no momento, tente novamente mais tarde.", undefined, {
           duration: 2000,
