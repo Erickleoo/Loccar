@@ -1,6 +1,9 @@
 <header class="container">
   <mat-toolbar class="header">
     <div>
+      <h1>{{nomeUsuario}}</h1>
+      <!-- <ng-container *ngIf="'{{nomeUsuario==}}==='paulo@email.com'"></ng-container> -->
+
       <ng-container *ngIf=" router.routerState.snapshot.url !=='/home' && router.routerState.snapshot.url
         !=='/cadastro' && router.routerState.snapshot.url !=='/login' ">
         <div>

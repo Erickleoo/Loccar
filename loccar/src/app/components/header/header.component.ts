@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   usuarios: Usuarios[];
+  nomeUsuario:String
 
   constructor(
     public router: Router,
@@ -25,5 +26,6 @@ export class HeaderComponent implements OnInit {
         console.error("Erro ao carregar usuários!");
       }
     })
+this.nomeUsuario= this.usuariosService.obterUsuarioLogin().email
   }
 }
