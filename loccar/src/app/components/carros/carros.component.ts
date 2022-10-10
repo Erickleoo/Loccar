@@ -124,7 +124,7 @@ export class CarrosComponent implements OnInit {
   // }
 
 
-  deletarCarro(id: number): void {
+  deletarCarro(id:number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
       width: '550px',
