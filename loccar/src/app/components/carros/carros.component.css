@@ -75,7 +75,7 @@
   align-self: flex-end;
 }
 
-.button-card-style {
+/* .button-card-style {
   font-family: "Quicksand";
   font-weight: bold;
   font-size: 1.5rem;
@@ -84,7 +84,7 @@
   height: 70px;
   border: 2px solid #db1812;
   border-radius: 5px;
-}
+} */
 
 .margin-buttom {
   margin-bottom: 40px;
@@ -117,7 +117,7 @@
   flex-direction: column;
   align-items: center;
   gap:10px;
-  padding-top: -10px;
+  margin-bottom: 20px!important;
 }
 .btn-cadastrar{
   width: 250px;
@@ -158,3 +158,19 @@
   gap: 70px;
 }
 
+.margin-15{
+  margin-left: 15%;
+}
+.toUppercase{
+  text-transform: uppercase;
+}
+.paragrafo-card{
+  margin: 0% 20% 0% 20%;
+  font-family: 'Quicksand';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+color: #040404;
+padding-top:2% ;
+}
