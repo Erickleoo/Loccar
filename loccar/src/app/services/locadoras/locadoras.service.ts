@@ -22,16 +22,16 @@ export class LocadorasService {
     return this.httpClient.get<Locadoras[]>(this.url);
   }
 
-  cadastrarLocadora(objetoLocadora: Locadoras): Observable<Locadoras>{
+  cadastrarLocadora(objetoLocadora: Locadoras): Observable<Locadoras> {
     return this.httpClient.post<Locadoras>(this.url, objetoLocadora);
   }
 
-  editarLocadora(objetoLocadora: Locadoras){
+  editarLocadora(objetoLocadora: Locadoras) {
     return this.httpClient.put<Locadoras>(`${this.url}/${objetoLocadora.id}`, objetoLocadora);
   }
 
-  excluirLocadora(id: number){
-    console.log(`${this.url}/${id}`);    
+  excluirLocadora(id: number) {
+    console.log(`${this.url}/${id}`);
     return this.httpClient.delete<Locadoras>(`${this.url}/${id}`)
   }
 }

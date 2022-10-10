@@ -1,3 +1,4 @@
+import { LoadingService } from './../../services/loading/loading.service';
 import { Carros } from './../../models/carros/carros.model';
 import { Locadoras } from './../../models/locadoras/locadoras.model';
 import { Reservas } from './../../models/reservas/reservas.model';
@@ -8,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
 import { CarrosService } from 'src/app/services/carros/carros.service';
+import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
 
 @Component({
   selector: 'app-reservas',
@@ -29,16 +31,17 @@ export class ReservasComponent implements OnInit {
     private locadorasService: LocadorasService,
     private carrosService: CarrosService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      usuarioID: new FormControl(''),
-      nomeCarro: new FormControl('', [Validators.required]),
-      dataReserva: new FormControl('', [Validators.required]),
-      horarioReserva: new FormControl('', [Validators.required]),
-      dataDevolucao: new FormControl('', [Validators.required]),
+      usuarioId: new FormControl(''),
+      data: new FormControl('', [Validators.required]),
+      horario: new FormControl('', [Validators.required]),
+      dataEntrega: new FormControl('', [Validators.required]),
+      carroId: new FormControl('', [Validators.required]),
       filial: new FormControl('', [Validators.required]),
     });
 
@@ -62,7 +65,7 @@ export class ReservasComponent implements OnInit {
         console.error("Erro ao ler as locadoras!");
         this.alertaSnackBar("falha");
       }
-    });
+    })
 
     this.carrosService.lerCarros().subscribe({
       next: (carros: Carros[]) => {
@@ -78,12 +81,12 @@ export class ReservasComponent implements OnInit {
 
   cadastrarReservas() {
     const id = (this.reservas[(this.reservas.length) - 1].id) + 1;
-    const usuarioId = this.form.controls["usuarioID"].value;
-    const nomeCarro = this.form.controls["nomeCarro"].value;
-    const dataReserva = this.form.controls["dataReserva"].value;
-    const horarioReserva = this.form.controls["horarioReserva"].value;
-    const dataDevolucao = this.form.controls["dataDevolucao"].value;
-    const reservas: Reservas = { id: id, data: dataReserva, horario: horarioReserva, dataentrega: dataDevolucao, usuarioId: usuarioId, carroID: nomeCarro };
+    const data = this.form.controls["data"].value;
+    const horario = this.form.controls["horario"].value;
+    const dataEntrega = this.form.controls["dataEntrega"].value;
+    const usuarioId = this.form.controls["usuarioId"].value;
+    const carroId = this.form.controls["carroId"].value;
+    const reservas: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
 
     this.reservasService.salvarReservas(reservas).subscribe({
       next: () => {
@@ -97,17 +100,28 @@ export class ReservasComponent implements OnInit {
     });
   }
 
-  deletarReserva(reserva_id: number) {
-    this.reservasService.deletarReservas(reserva_id).subscribe({
-      next: () => {
-        this.ngOnInit();
-        this.alertaSnackBar("deletado");
-      },
-      error: () => {
-        console.error("Erro ao deletar a reserva");
-        this.alertaSnackBar("falha");
-      }
+  deletarReserva(id: number): void {
+    let text;
+    const dialogRef = this.dialog.open(DialogExcluirComponent, {
+      width: '550px',
+      data: text
     });
+
+    dialogRef.afterClosed().subscribe(boolean => {
+      if (boolean) {
+        this.loadingService.showLoading();
+        this.reservasService.deletarReservas(id).subscribe({
+          next: () => {
+            this.ngOnInit();
+            this.alertaSnackBar("deletado");
+          },
+          error: () => {
+            console.error("Erro ao excluir reserva!");
+            this.alertaSnackBar("falha")
+          }
+        })
+      }
+    })
   }
 
   alertaSnackBar(tipoAlerta: string) {
