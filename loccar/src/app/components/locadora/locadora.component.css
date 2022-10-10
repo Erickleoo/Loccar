@@ -69,6 +69,9 @@
     border-radius: 5px;
 }
 
-::ng-deep .mat-form-field-appearance-fill {
-    background: #DCE0E2 !important;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px;
+    padding: 0.75em 0.75em 0 0.75em;
+    height: 50px;
+    background-color: #DCE0E2;
 }
