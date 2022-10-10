@@ -4,5 +4,5 @@ export interface Carros {
   portas: number;
   npessoas: number;
   locadoraId: number;
-  tipoId: number;
+  tipoCarroId: number;
 }

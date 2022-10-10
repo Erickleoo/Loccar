@@ -23,8 +23,8 @@ export class CarrosService {
   lerCarros(): Observable<Carros[]> {
     return this.httpClient.get<Carros[]>(this.url);
   }
-lerTipos():Observable<TipoCarros[]>{
-  return this.httpClient.get<TipoCarros[]>(this.urlTipo)
+  lerTipos():Observable<TipoCarros[]>{
+    return this.httpClient.get<TipoCarros[]>(this.urlTipo)
 }
   salvarCarros(carros: Carros): Observable<Carros> {
     return this.httpClient.post<Carros>(this.url, carros);
@@ -38,7 +38,9 @@ lerTipos():Observable<TipoCarros[]>{
   pegarCarrosPeloID(id: number) : Observable<Carros>{
     return this.httpClient.get<Carros>(`${this.url}/${id}`);
   }
-
+  tipoById(id:any):Observable<TipoCarros>{
+    return this.httpClient.get<TipoCarros>(`${this.urlTipo}/${id}`);
+  }
   atualizarCarros(carros: Carros): Observable<Carros> {
     let endpoint = carros.id;
     return this.httpClient.put<Carros>(`${this.url}/${endpoint}`, carros);
