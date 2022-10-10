@@ -26,6 +26,6 @@ export class HeaderComponent implements OnInit {
         console.error("Erro ao carregar usuários!");
       }
     })
-this.nomeUsuario= this.usuariosService.obterUsuarioLogin().email
+    this.nomeUsuario= this.usuariosService.obterUsuarioLogin().email
   }
 }
