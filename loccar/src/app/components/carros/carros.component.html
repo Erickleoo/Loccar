@@ -70,12 +70,21 @@
             <mat-card-subtitle class="paragrafo-card">Faça a sua reserva e garanta a locação do automóvel.
             </mat-card-subtitle>
           </div>
+          <ng-container *ngIf="nomeUsuario===false">
+            <button mat-button class="btn-cadastrar">Detalhes</button>
+          </ng-container>
+          <ng-container *ngIf="nomeUsuario===true">
           <mat-card-actions class="container-button">
             <button mat-button class="btn-cadastrar" (click)="openDialog(carro.id, '0ms', '0ms')">Editar</button>
             <button mat-button class="btn-excluir" (click)="deletarCarro(carro.id)">Excluir</button>
           </mat-card-actions>
+        </ng-container>
+
         </mat-card>
       </ng-container>
     </section>
   </div>
+</main>
+
+<app-footer></app-footer>
 </main>
