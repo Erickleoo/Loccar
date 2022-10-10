@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Locadoras } from 'src/app/models/locadoras/locadoras.model';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
+import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
 
 @Component({
   selector: 'app-locadora',
@@ -15,6 +16,7 @@ export class LocadoraComponent implements OnInit {
   error = "Este campo é obrigatório";
   id: number = 0;
   locadoras: Locadoras[]
+  adm: boolean = true
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,15 +52,25 @@ export class LocadoraComponent implements OnInit {
     window.scroll(0,0)
   }
 
-  excluirLocadora(id: number){
-    this.locadorasService.excluirLocadora(id).subscribe({
-      next: () => {
-        this.ngOnInit()
-        this.alertaSnackBar("excluida");
-      },
-      error: () => {
-        console.log("Erro ao tentar excluir.");
-        this.alertaSnackBar("falha");
+  excluirLocadora(id: number): void {
+    let text;
+    const dialogRef = this.dialog.open(DialogExcluirComponent, {
+      width: '550px',
+      data: text
+    });
+
+    dialogRef.afterClosed().subscribe(boolean =>{
+      if (boolean) {
+        this.locadorasService.excluirLocadora(id).subscribe({
+          next: () => {
+            this.ngOnInit()
+            this.alertaSnackBar("excluída");
+          },
+          error: () => {
+            console.log("Erro ao tentar excluir.");
+            this.alertaSnackBar("falha");
+          }
+        })
       }
     })
   }
@@ -119,7 +131,7 @@ export class LocadoraComponent implements OnInit {
             panelClass: ['snackbar-sucess']
           });
           break;
-        case "excluida":
+        case "excluída":
           this.snackBar.open("Locadora deletada com sucesso.", undefined,{
             duration: 2000,
             panelClass: ['snackbar-sucess']
