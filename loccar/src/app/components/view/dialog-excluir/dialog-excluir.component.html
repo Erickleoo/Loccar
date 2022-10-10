@@ -1,0 +1,22 @@
+<section>
+  <div class="are-you-sure">
+    <h1 class="are-you-sure-title">Você tem certeza?</h1>
+    <mat-icon class="are-you-sure-icon" aria-hidden="false" aria-label="icon close dialog" fontIcon="close"
+      (click)="onNoClick()"></mat-icon>
+  </div>
+  <div class="are-you-sure-margin">
+    <hr>
+  </div>
+  <div class="are-you-sure-text are-you-sure-margin">
+    <p>Você tem certeza que deseja deletar esse item? Você <strong>NÃO PODERÁ</strong> visualizar esse arquivo novamente
+      se prosseguir.</p>
+  </div>
+  <div class="are-you-sure-margin">
+    <hr>
+  </div>
+  <div class="are-you-sure-text-buttons are-you-sure-margin ">
+    <button class="are-you-sure-button-cancel" mat-button (click)="onNoClick()">Cancelar</button>
+    <button class="are-you-sure-button-confirm" mat-button (click)="confirmcaoExcluir()">Sim, deletar</button>
+  </div>
+
+</section>

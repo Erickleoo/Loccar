@@ -1,0 +1,40 @@
+.are-you-sure {
+  display: flex;
+  justify-content: space-between;
+}
+
+.are-you-sure-title {
+  font-size: 1.5rem;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  color: #CAD0D3;
+}
+
+.are-you-sure-icon {
+  cursor: pointer;
+}
+
+.are-you-sure-margin {
+  margin-top: 20px;
+}
+
+.are-you-sure-text {
+  font-size: 0.975rem;
+  font-family: 'Quicksand';
+}
+
+.are-you-sure-text-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.are-you-sure-button-cancel {
+  background-color: #55AE3A;
+  color: #FFF;
+}
+
+.are-you-sure-button-confirm {
+  background-color: #DB1812;
+  color: #FFF;
+}

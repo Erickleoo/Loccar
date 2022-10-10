@@ -50,11 +50,11 @@ export class CadastroComponent implements OnInit {
     const id = (this.usuarios[(this.usuarios.length) - 1].id) + 1;
     const nome = this.form.controls["nome"].value;
     const email = this.form.controls["email"].value;
-    const tel = this.form.controls["tel"].value;
+    const telefone = this.form.controls["tel"].value;
     const senha = this.form.controls["senha"].value;
     const foto = "foto"
 
-    const usuario: Usuarios = { id: id, nome: nome, tel: tel, email: email, foto: foto, senha: senha };
+    const usuario: Usuarios = { id: id, nome: nome, telefone: telefone, email: email, foto: foto, senha: senha };
 
     this.usuarioService.salvarUsuario(usuario).subscribe({
       next: () => {

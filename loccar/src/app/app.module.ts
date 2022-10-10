@@ -25,7 +25,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+<<<<<<< HEAD
 import { ModalCarrosComponent } from './components/views/modal-carros/modal-carros.component';
+=======
+import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
+import { DialogExcluirComponent } from './components/view/dialog-excluir/dialog-excluir.component';
+import { MatIconModule } from '@angular/material/icon';
+
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -40,7 +47,13 @@ import { ModalCarrosComponent } from './components/views/modal-carros/modal-carr
     ReservasComponent,
     LocadoraComponent,
     PerfilUsuarioComponent,
+<<<<<<< HEAD
     ModalCarrosComponent,
+=======
+    DialogEditarCarroComponent,
+    DialogEditarCarroComponent,
+    DialogExcluirComponent,
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -58,6 +71,10 @@ import { ModalCarrosComponent } from './components/views/modal-carros/modal-carr
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+<<<<<<< HEAD
+=======
+    MatIconModule
+>>>>>>> master
   ],
   providers: [],
   bootstrap: [AppComponent],

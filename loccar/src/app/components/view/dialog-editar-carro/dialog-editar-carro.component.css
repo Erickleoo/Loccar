@@ -1,3 +1,7 @@
+.container-margin {
+  margin: 0% 5% 0% 5%;
+}
+
 .height {
   height: 650px;
 }
@@ -75,7 +79,7 @@
   align-self: flex-end;
 }
 
-/* .button-card-style {
+.button-card-style {
   font-family: "Quicksand";
   font-weight: bold;
   font-size: 1.5rem;
@@ -84,7 +88,7 @@
   height: 70px;
   border: 2px solid #db1812;
   border-radius: 5px;
-} */
+}
 
 .margin-buttom {
   margin-bottom: 40px;
@@ -95,33 +99,37 @@
   width: 583px;
   padding-right: 80px;
 }
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 10px;
   padding: 0.75em 0.75em 0 0.75em;
-  height: 70px;
+  height: 50px;
   background-color: #DCE0E2;
 }
-.section-card{
+
+.section-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0%;
   width: 352px;
   height: 600px;
 }
-.padding{
+
+.padding {
   padding-top: 2%;
 }
-.container-button{
+
+.container-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:10px;
-  margin-bottom: 20px!important;
+  gap: 10px;
 }
-.btn-cadastrar{
-  width: 250px;
-  height: 75px;
+
+.btn-salvar-alteracao {
+  width: 220px;
+  height: 40px;
   background-color: #DB1812;
   color: #FFFFFF;
   font-family: "Quicksand";
@@ -129,9 +137,10 @@
   font-size: 24px;
   line-height: 30px;
 }
-.btn-excluir{
-  width: 250px;
-  height: 75px;
+
+.btn-fechar {
+  width: 150px;
+  height: 40px;
   background-color: #FFFFFF;
   color: #DB1812;
   border: #DB1812 solid 1px;
@@ -141,36 +150,25 @@
   line-height: 30px;
 
 }
-.hr{
+
+.hr {
   width: 100px;
   text-align: right;
   margin-left: 150px;
 }
-.container-text{
+
+.container-text {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   margin-top: -35px;
 }
 
-.container-horizontal{
-  display: flex;
-  gap: 70px;
+.input-width-50 {
+  width: 50%;
 }
 
-.margin-15{
-  margin-left: 15%;
-}
-.toUppercase{
-  text-transform: uppercase;
-}
-.paragrafo-card{
-  margin: 0% 20% 0% 20%;
-  font-family: 'Quicksand';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 25px;
-color: #040404;
-padding-top:2% ;
+.dialog-button-flex {
+  display: flex;
+  justify-content: space-between;
 }

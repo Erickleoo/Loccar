@@ -2,41 +2,61 @@
 <main>
     <section class="container">
         <mat-card class="background-color-gray width height border-style margin-top-card">
-    
             <div>
                 <mat-card-title class="text-style margin-top-title">Locadora</mat-card-title>
             </div>
     
-          <form class="form-style form-flex">
-            <div>
-                <mat-form-field class="input-width-100" appearance="fill">
-                    <mat-label>Locadora</mat-label>
-                    <input type="text" matInput placeholder="Ex: Locadora Matriz">
-                </mat-form-field>
-            </div>
-    
-            <div class="inputs-flex">
-                <mat-form-field class="input-width-100" appearance="fill">
-                    <mat-label>Endereço</mat-label>
-                    <input type="text" matInput placeholder="Ex: Rua/Travessa/Avenida">
-                </mat-form-field>
-            </div>
-    
-            <div class="selected-flex">
-                <mat-form-field appearance="fill" class="input-width-40">
-                    <mat-label>Telefone</mat-label>
-                    <span matPrefix>&nbsp;</span>
-                    <input type="tel" matInput placeholder="(xx) xxxx-xxxx">
-              </mat-form-field>
-    
-              <button mat-button class="button-style">Cadastrar</button>
-            </div>
-          </form>
+            <form class="form-style form-flex" [formGroup]="formLocadora" (submit)="cadastrarLocadora()">
+                <div>
+                    <mat-form-field class="input-width-100" appearance="fill">
+                        <mat-label>Locadora</mat-label>
+                        <input type="text" matInput placeholder="Ex: Locadora Matriz" formControlName="locadora" name="locadora" required>
+                        <mat-error>{{error}}</mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div class="inputs-flex">
+                    <mat-form-field class="input-width-100" appearance="fill">
+                        <mat-label>Endereço</mat-label>
+                        <input type="text" matInput placeholder="Ex: Rua/Travessa/Avenida" formControlName="endereço" name="endereço" required>
+                        <mat-error>{{error}}</mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <div class="selected-flex">
+                    <mat-form-field appearance="fill" class="input-width-40">
+                        <mat-label>Telefone</mat-label>
+                        <span matPrefix>&nbsp;</span>
+                        <input type="tel" matInput placeholder="(xx) xxxx-xxxx" formControlName="telefone" name="telefone" required>
+                        <mat-error>{{error}}</mat-error>
+                    </mat-form-field>
+        
+                    <button mat-button class="button-style" type="submit" [disabled]="!formLocadora.valid">Cadastrar</button>
+                </div>
+            </form>
         </mat-card>
     </section>
+    
 
-    <section class="container card-flex-gap">
+    <section class="container card-flex-gap" *ngFor="let element of locadoras">
         <mat-card class="width border-card-style card-flex">
+            <div class="title-card">
+                <mat-card-title class="card-title-style">{{element.nome}}</mat-card-title>
+            </div>
+
+            <div class="title-subtitle-flex margin-top margin-bottom">
+                <div>
+                    <mat-card-subtitle class="card-subtitle-style">{{element.endereco}}</mat-card-subtitle>
+                    <mat-card-subtitle class="card-subtitle-style">{{element.telefone}}</mat-card-subtitle>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button mat-button class="button-style margin-button" (click)="editarLocadora(element)">Editar</button>
+                <button mat-button class="button-card-style margin-button" (click)="excluirLocadora(element.id)">Excluir</button>
+            </div>
+        </mat-card>
+        <!-- <mat-card class="width border-card-style card-flex">
             <div class="title-card">
                 <mat-card-title class="card-title-style">Locadora Matriz</mat-card-title>
             </div>
@@ -88,6 +108,7 @@
                 <button mat-button class="button-style margin-button">Editar</button>
                 <button mat-button class="button-card-style margin-button">Excluir</button>
             </div>
-        </mat-card>
+        </mat-card> -->
     </section>
 </main>
+<app-footer></app-footer>

@@ -31,8 +31,8 @@ export class ReservasService {
     return this.httpClient.delete<Reservas>(`${this.url}/${id}`);
   }
 
-  pegarReservasPeloID(id: number) {
-    return this.httpClient.get(`${this.url}/${id}`);
+  pegarReservasPeloID(id: number):Observable<Reservas> {
+    return this.httpClient.get<Reservas>(`${this.url}/${id}`);
   }
 
   atualizarReservas(reservas: Reservas): Observable<Reservas> {

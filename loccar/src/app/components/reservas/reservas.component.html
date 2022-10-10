@@ -11,9 +11,9 @@
         <div>
           <mat-form-field appearance="fill" class="input-width-100">
             <mat-label>Carro</mat-label>
-            <mat-select formControlName="nomeCarro">
+            <mat-select formControlName="carroId">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let carro of carros" value="{{carro.id}}">{{carro.nome}}</mat-option>
+              <mat-option *ngFor="let carro of carros" [value]="carro">{{carro.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
@@ -22,17 +22,17 @@
         <div class="inputs-flex">
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Data Reserva</mat-label>
-            <input type="date" formControlName="dataReserva" matInput>
+            <input type="date" formControlName="data" matInput>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Horário da reserva:</mat-label>
-            <input type="time" formControlName="horarioReserva" matInput>
+            <input type="time" formControlName="horario" matInput>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Data de devolução:</mat-label>
-            <input type="date" formControlName="dataDevolucao" matInput>
+            <input type="date" formControlName="dataEntrega" matInput>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
         </div>
@@ -42,7 +42,7 @@
             <mat-label>Locadora</mat-label>
             <mat-select formControlName="filial">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let locadora of locadoras" value="{{locadora.id}}">{{locadora.nome}}</mat-option>
+              <mat-option *ngFor="let locadora of locadoras" value="{{locadora.nome}}">{{locadora.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
@@ -68,7 +68,7 @@
             </div>
             <div class="title-subtitle-flex margin-top margin-bottom">
               <div class="title-card">
-                <mat-card-title class="card-title-style">{{reserva.carroID}}</mat-card-title>
+                <mat-card-title class="card-title-style">{{reserva.carroId}}</mat-card-title>
               </div>
 
               <div>
@@ -86,8 +86,8 @@
         </div>
       </mat-card>
     </div>
-
-
   </section>
-
 </main>
+
+
+<app-footer></app-footer>
