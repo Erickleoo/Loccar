@@ -47,6 +47,7 @@ export class LocadoraComponent implements OnInit {
     const EditLocadora = this.formLocadora.controls['locadora'].setValue(locadora.nome);
     const EditEndereço = this.formLocadora.controls['endereço'].setValue(locadora.endereco);
     const EditTel = this.formLocadora.controls['telefone'].setValue(locadora.telefone);
+    window.scroll(0,0)
   }
 
   excluirLocadora(id: number){
@@ -95,8 +96,6 @@ export class LocadoraComponent implements OnInit {
         next: () => {
           this.ngOnInit();
           this.alertaSnackBar("cadastrada");
-          console.log("oi");
-          
         },
         error: () => {
           console.log("Erro ao importar a locadora.");
