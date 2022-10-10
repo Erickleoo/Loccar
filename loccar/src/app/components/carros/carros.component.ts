@@ -1,3 +1,4 @@
+import { UsuariosService } from './../../services/usuarios/usuarios.service';
 import { Carros } from './../../models/carros/carros.model';
 import { LocadorasService } from './../../services/locadoras/locadoras.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,12 +25,15 @@ export class CarrosComponent implements OnInit {
   locadoras: Locadoras[];
   tiposCarros: TipoCarros[];
   id: number = 0;
+  nomeUsuario:Boolean
+
 
   constructor(
     private formBuilder: FormBuilder,
     private carrosService: CarrosService,
     private locadorasService: LocadorasService,
     private loadingService: LoadingService,
+    private usuario:UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog) { }
 
@@ -83,9 +87,16 @@ export class CarrosComponent implements OnInit {
         console.error("Erro ao ler as carros!");
         this.alertaSnackBar("falha");
       }
+
     });
 
+    this.nomeUsuario=this.checkStatus();
 
+  }
+  checkStatus(){
+    if(this.usuario.obterUsuarioLogin().email==='paulo@email.com'){
+      return true
+    }else return false
   }
 
   cadastrarCarros() {

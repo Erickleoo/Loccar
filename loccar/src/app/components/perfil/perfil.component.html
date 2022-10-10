@@ -21,10 +21,15 @@
         </mat-form-field>
       </div>
       <div class="divButton">
+        <ng-container *ngIf="nomeUsuario===false">
+          <button mat-raised-button color="warn" class="botaoAtualizar">excluir</button>
+          </ng-container>
         <button mat-raised-button color="warn" class="botaoAtualizar">Atualizar</button>
       </div>
     </form>
   </mat-card>
+  <ng-container *ngIf="nomeUsuario===true">
+
   <div class="tituloCard">
     <h2>
       USUÁRIOS CADASTRADOS
@@ -49,6 +54,7 @@
       </div>
     </mat-card>
   </section>
+  </ng-container>
 </main>
 
 <app-footer></app-footer>

@@ -13,7 +13,7 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
   usuarios: Usuarios[];
-
+  nomeUsuario:Boolean
   constructor(
     private formBuilder: FormBuilder,
     private Usuarios: UsuariosService,
@@ -37,6 +37,8 @@ export class PerfilComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     })
+    this.nomeUsuario=this.checkStatus();
+
   }
 
   removerUsuario(id: any){
@@ -62,4 +64,10 @@ export class PerfilComponent implements OnInit {
         break;
     }
   }
+   checkStatus(){
+    if(this.Usuarios.obterUsuarioLogin().email==='paulo@email.com'){
+      return true
+    }else return false
+  }
+
 }
