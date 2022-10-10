@@ -48,7 +48,7 @@ export class ReservasComponent implements OnInit {
     this.reservasService.lerReservas().subscribe({
       next: (reservas: Reservas[]) => {
         this.reservas = reservas;
-        console.log(reservas)
+        // console.log(reservas)
       },
       error: () => {
         console.error("Erro ao ler as reservas!");
@@ -59,7 +59,7 @@ export class ReservasComponent implements OnInit {
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadoras: Locadoras[]) => {
         this.locadoras = locadoras;
-        console.log(locadoras);
+        // console.log(locadoras);
       },
       error: () => {
         console.error("Erro ao ler as locadoras!");
@@ -70,7 +70,7 @@ export class ReservasComponent implements OnInit {
     this.carrosService.lerCarros().subscribe({
       next: (carros: Carros[]) => {
         this.carros = carros;
-        console.log(carros);
+        // console.log(carros);
       },
       error: () => {
         console.error("Erro ao ler os carros!");
@@ -84,9 +84,11 @@ export class ReservasComponent implements OnInit {
     const data = this.form.controls["data"].value;
     const horario = this.form.controls["horario"].value;
     const dataEntrega = this.form.controls["dataEntrega"].value;
-    const usuarioId = this.form.controls["usuarioId"].value;
-    const carroId = this.form.controls["carroId"].value;
+    const usuarioId = 1;
+    // this.form.controls["usuarioId"].value;
+    const carroId = this.form.controls["carroId"].value.id;
     const reservas: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
+// console.log(reservas);
 
     this.reservasService.salvarReservas(reservas).subscribe({
       next: () => {

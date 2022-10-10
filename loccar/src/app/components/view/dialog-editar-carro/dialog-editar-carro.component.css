@@ -1,3 +1,6 @@
+.container-margin{
+  margin: 0% 5% 0% 5%;
+}
 .height {
   height: 650px;
 }
@@ -98,7 +101,7 @@
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 10px;
   padding: 0.75em 0.75em 0 0.75em;
-  height: 70px;
+  height: 50px;
   background-color: #DCE0E2;
 }
 .section-card{
@@ -118,9 +121,9 @@
   align-items: center;
   gap:10px;
 }
-.btn-cadastrar{
-  width: 250px;
-  height: 75px;
+.btn-salvar-alteracao{
+  width: 220px;
+  height: 40px;
   background-color: #DB1812;
   color: #FFFFFF;
   font-family: "Quicksand";
@@ -128,9 +131,9 @@
   font-size: 24px;
   line-height: 30px;
 }
-.btn-excluir{
-  width: 250px;
-  height: 75px;
+.btn-fechar{
+  width: 150px;
+  height: 40px;
   background-color: #FFFFFF;
   color: #DB1812;
   border: #DB1812 solid 1px;
