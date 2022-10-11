@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
     if (this.usuariosService.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
     } else return false
-    this.nomeUsuario = this.checkStatus();
   }
 }
 

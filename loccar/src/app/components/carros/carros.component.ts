@@ -11,6 +11,7 @@ import { TipoCarros } from 'src/app/models/tipoCarros/tipo-carros.model';
 import { DialogEditarCarroComponent } from '../view/dialog-editar-carro/dialog-editar-carro.component';
 import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
 import { LoadingService } from 'src/app/services/loading/loading.service';
+import { ModalCarrosComponent } from '../view/modal-carros/modal-carros.component';
 
 @Component({
   selector: 'app-carros',
@@ -101,7 +102,6 @@ export class CarrosComponent implements OnInit {
 
   cadastrarCarros() {
     const id = (this.carros[(this.carros.length) - 1].id) + 1;
-
     const nomeCarro = this.form.controls["nomeCarro"].value;
     const listaTipo = this.form.controls["listaTipo"].value.id;
     const portas = this.form.controls["portas"].value;
@@ -120,20 +120,6 @@ export class CarrosComponent implements OnInit {
       }
     });
   }
-
-  // deletarCarros(carro_id: number) {
-  //   this.carrosService.deletarCarros(carro_id).subscribe({
-  //     next: () => {
-  //       this.ngOnInit();
-  //       this.alertaSnackBar("deletado");
-  //     },
-  //     error: () => {
-  //       console.error("Erro ao deletar o carro");
-  //       this.alertaSnackBar("falha");
-  //     }
-  //   });
-  // }
-
 
   deletarCarro(id: number): void {
     let text;
@@ -159,6 +145,18 @@ export class CarrosComponent implements OnInit {
     })
   }
 
+openDialogDetalhes(element:Carros): void {
+  let enterAnimationDuration='500ms';
+  let exitAnimationDuration='500ms';
+
+  const dialogRef = this.dialog.open(ModalCarrosComponent, {
+    width: '30%',
+    enterAnimationDuration,
+    exitAnimationDuration,
+    data:element
+})
+  dialogRef.afterClosed()
+}
 
   //função para enviar os dados para o dialog que abre no botão editar
   openDialog(
