@@ -21,39 +21,39 @@
         </mat-form-field>
       </div>
       <div class="divButton">
-        <ng-container *ngIf="nomeUsuario===false">
-          <button mat-raised-button color="warn" class="botaoAtualizar">excluir</button>
-          </ng-container>
         <button mat-raised-button color="warn" class="botaoAtualizar">Atualizar</button>
+        <ng-container *ngIf="nomeUsuario===false">
+          <button mat-raised-button class="button-card-style">Excluir Cadastro</button>
+        </ng-container>
       </div>
     </form>
   </mat-card>
   <ng-container *ngIf="nomeUsuario===true">
 
-  <div class="tituloCard">
-    <h2>
-      USUÁRIOS CADASTRADOS
-    </h2>
-    <hr>
-  </div>
-  <section class="sectionCard">
-    <mat-card *ngFor="let i of usuarios" class="card">
-      <div class="cardDiv1">
-        <span class="cardNome">
-          <h2>{{i.nome}}</h2>
-        </span>
-        <div>
-          <span>{{i.telefone}}</span>
+    <div class="tituloCard">
+      <h2>
+        USUÁRIOS CADASTRADOS
+      </h2>
+      <hr>
+    </div>
+    <section class="sectionCard">
+      <mat-card *ngFor="let i of usuarios" class="card">
+        <div class="cardDiv1">
+          <span class="cardNome">
+            <h2>{{i.nome}}</h2>
+          </span>
+          <div>
+            <span>{{i.telefone}}</span>
+          </div>
         </div>
-      </div>
-      <div class="cardDiv2">
-        <span>{{i.email}}</span>
-        <button mat-button class="cardButton" (click)="removerUsuario(i.id)">
-          Excluir usuário
-        </button>
-      </div>
-    </mat-card>
-  </section>
+        <div class="cardDiv2">
+          <span>{{i.email}}</span>
+          <button mat-button class="cardButton" (click)="removerUsuario(i.id)">
+            Excluir usuário
+          </button>
+        </div>
+      </mat-card>
+    </section>
   </ng-container>
 </main>
 

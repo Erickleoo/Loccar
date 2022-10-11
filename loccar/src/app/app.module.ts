@@ -23,7 +23,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ModalCarrosComponent } from './components/view/modal-carros/modal-carros.component';
 import { DialogExcluirComponent } from './components/view/dialog-excluir/dialog-excluir.component';
@@ -43,7 +42,6 @@ import { MatIconModule } from '@angular/material/icon';
     CarrosComponent,
     ReservasComponent,
     LocadoraComponent,
-    PerfilUsuarioComponent,
     ModalCarrosComponent,
     DialogEditarCarroComponent,
     DialogExcluirComponent,
