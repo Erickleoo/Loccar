@@ -34,7 +34,7 @@
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Nº de Pessoas:</mat-label>
-            <input type="number" matInput type="number" formControlName="numeroPessoas" required  />
+            <input type="number" matInput type="number" formControlName="numeroPessoas" required />
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
         </div>
@@ -59,19 +59,21 @@
 
     <section class="container padding container-horizontal">
       <ng-container *ngFor="let carro of carros,let i = index">
+        <div *ngIf="carro.tipoCarroId == tipo.id">
 
+          <mat-card class="section-card flex-carousel">
+            <img src="../../assets/img-teste/car1.png">
 
-        <mat-card class="section-card" *ngIf="carro.tipoCarroId
-  == tipo.id">
-          <img src="../../assets/img-teste/car1.png">
-          <div class="container-text">
-            <mat-card-title>{{carro.nome}}</mat-card-title>
-            <mat-card-subtitle class="paragrafo-card">Faça a sua reserva e garanta a locação do automóvel.
-            </mat-card-subtitle>
-          </div>
-          <mat-card-actions class="container-button">
+            <div class="container-text">
+              <mat-card-title>{{carro.nome}}</mat-card-title>
+              <mat-card-subtitle class="paragrafo-card">
+                Faça a sua reserva e garanta a locação do automóvel.
+              </mat-card-subtitle>
+            </div>
+
+            <mat-card-actions class="container-button">
               <ng-container *ngIf="nomeUsuario===false">
-                <button mat-button class="btn-cadastrar"(click)="openDialogDetalhes(carro)">Detalhes</button>
+                <button mat-button class="btn-cadastrar" (click)="openDialogDetalhes(carro)">Detalhes</button>
               </ng-container>
               <ng-container *ngIf="nomeUsuario===true">
                 <button mat-button class="btn-cadastrar" (click)="openDialog(carro.id, '0ms', '0ms')">Editar</button>
@@ -79,7 +81,8 @@
               </ng-container>
             </mat-card-actions>
 
-        </mat-card>
+          </mat-card>
+        </div>
       </ng-container>
     </section>
   </div>
