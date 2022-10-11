@@ -5,23 +5,26 @@
     <mat-card-title>
       <h1 class="titulo">Perfil</h1>
     </mat-card-title>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (submit)="AtualizarUsuario()">
       <div class="divInput">
         <mat-form-field appearance="fill" class="input">
           <mat-label>Nome</mat-label>
-          <input matInput formControlName="nome" name="nome">
+          <input matInput formControlName="nome" name="nome" required>
+          <mat-error>{{error}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">
           <mat-label>Telefone</mat-label>
-          <input matInput formControlName="telefone" name="telefone">
+          <input matInput formControlName="telefone" name="telefone" required>
+          <mat-error>{{error}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" name="email">
+          <input matInput formControlName="email" name="email" required>
+          <mat-error>{{error}}</mat-error>
         </mat-form-field>
       </div>
       <div class="divButton">
-        <button mat-raised-button color="warn" class="botaoAtualizar">Atualizar</button>
+        <button mat-raised-button color="warn" type="submit" class="botaoAtualizar" [disabled]="!form.valid">Atualizar</button>
         <ng-container *ngIf="nomeUsuario===false">
           <button mat-raised-button class="button-card-style">Excluir Cadastro</button>
         </ng-container>
@@ -40,7 +43,7 @@
       <mat-card *ngFor="let i of usuarios" class="card">
         <div class="cardDiv1">
           <span class="cardNome">
-            <h2>{{i.nome}}</h2>
+            <h2 (click)="selecionarUsuario(i)">{{i.nome}}</h2>
           </span>
           <div>
             <span>{{i.telefone}}</span>
