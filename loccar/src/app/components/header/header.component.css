@@ -1,0 +1,21 @@
+.header-margin-top {
+  margin-top: 66px;
+}
+
+.header-flex {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  width: 222px;
+  height: 132px;
+}
+
+.header-font-style {
+  font-family: 'Quicksand';
+  font-size: 1.5rem;
+  font-weight: 400;
+}
