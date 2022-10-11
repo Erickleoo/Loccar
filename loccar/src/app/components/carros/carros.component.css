@@ -95,13 +95,15 @@
   width: 583px;
   padding-right: 80px;
 }
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 10px;
   padding: 0.75em 0.75em 0 0.75em;
   height: 70px;
   background-color: #DCE0E2;
 }
-.section-card{
+
+.section-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -109,17 +111,20 @@
   width: 352px;
   height: 600px;
 }
-.padding{
+
+.padding {
   padding-top: 2%;
 }
-.container-button{
+
+.container-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:10px;
-  margin-bottom: 20px!important;
+  gap: 10px;
+  margin-bottom: 20px !important;
 }
-.btn-cadastrar{
+
+.btn-cadastrar {
   width: 250px;
   height: 75px;
   background-color: #DB1812;
@@ -129,7 +134,8 @@
   font-size: 24px;
   line-height: 30px;
 }
-.btn-excluir{
+
+.btn-excluir {
   width: 250px;
   height: 75px;
   background-color: #FFFFFF;
@@ -141,36 +147,40 @@
   line-height: 30px;
 
 }
-.hr{
+
+.hr {
   width: 100px;
   text-align: right;
   margin-left: 150px;
 }
-.container-text{
+
+.container-text {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   margin-top: -35px;
 }
 
-.container-horizontal{
+.container-horizontal {
   display: flex;
   gap: 70px;
 }
 
-.margin-15{
+.margin-15 {
   margin-left: 15%;
 }
-.toUppercase{
+
+.toUppercase {
   text-transform: uppercase;
 }
-.paragrafo-card{
+
+.paragrafo-card {
   margin: 0% 20% 0% 20%;
   font-family: 'Quicksand';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 25px;
-color: #040404;
-padding-top:2% ;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: #040404;
+  padding-top: 2%;
 }

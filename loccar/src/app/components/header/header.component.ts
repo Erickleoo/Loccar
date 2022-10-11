@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   usuarios: Usuarios[];
+  nomeUsuario: boolean
 
   constructor(
     public router: Router,
@@ -22,8 +23,15 @@ export class HeaderComponent implements OnInit {
         this.usuarios = usuarios;
       },
       error: () => {
-        console.error("Erro ao carregar usuários!");
+        console.error("Erro ao carregar usuÃ¡rios!");
       }
     })
+    this.nomeUsuario = this.checkStatus();
+  }
+  checkStatus() {
+    if (this.usuariosService.obterUsuarioLogin().email === 'paulo@email.com') {
+      return true
+    } else return false
   }
 }
+

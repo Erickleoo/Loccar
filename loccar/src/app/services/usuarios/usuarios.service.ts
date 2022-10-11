@@ -27,8 +27,8 @@ export class UsuariosService {
     return this.httpCliente.post<Usuarios>(this.url, usuario)
   }
 
-  updateUsuario(usuario: Usuarios, id: any): Observable<Usuarios> {
-    return this.httpCliente.put<Usuarios>(`${this.url}/${id.id}`, usuario);
+  updateUsuario(usuario: Usuarios) {
+    return this.httpCliente.put<Usuarios>(`${this.url}/${usuario.id}`, usuario);
   }
 
   deletarUsuario(id: any){

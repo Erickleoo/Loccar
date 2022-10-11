@@ -16,16 +16,16 @@ export class DialogEditarCarroComponent implements OnInit {
 
   public form!: FormGroup;
   locadoras: Locadoras[];
-  tiposCarros:TipoCarros[];
-  objTipo:any;
+  tiposCarros: TipoCarros[];
+  objTipo: any;
 
   constructor(
     public formBuilder: FormBuilder,
     private carrosService: CarrosService,
-    private locadorasService:LocadorasService,
+    private locadorasService: LocadorasService,
     public dialogRef: MatDialogRef<DialogEditarCarroComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Carros,
-    ) { }
+  ) { }
 
 
   ngOnInit(): void {
@@ -77,18 +77,18 @@ export class DialogEditarCarroComponent implements OnInit {
     let carro: Carros = {
       id: this.data.id,
       nome: this.form.controls["nomeCarro"].value,
-      tipoCarroId:this.form.controls["listaTipo"].value,
+      tipoCarroId: this.form.controls["listaTipo"].value,
       portas: this.form.controls["portas"].value,
       npessoas: this.form.controls["numeroPessoas"].value,
       locadoraId: this.form.controls["selectLocadora"].value,
     };
 
     this.data.id = this.data.id;
-    this.data.nome=this.form.controls["nomeCarro"].value;
+    this.data.nome = this.form.controls["nomeCarro"].value;
     this.data.tipoCarroId = this.form.controls["listaTipo"].value;
     this.data.portas = this.form.controls["portas"].value;
-    this.data.npessoas =this.form.controls["numeroPessoas"].value,
-    this.data.locadoraId=this.form.controls["selectLocadora"].value
+    this.data.npessoas = this.form.controls["numeroPessoas"].value,
+      this.data.locadoraId = this.form.controls["selectLocadora"].value
     this.dialogRef.close(this.data);
     console.log(this.data);
 

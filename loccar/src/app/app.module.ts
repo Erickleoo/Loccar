@@ -23,11 +23,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
 import { DialogEditarLocadoraComponent } from './components/view/dialog-editar-locadora/dialog-editar-locadora.component';
+import { ModalCarrosComponent } from './components/view/modal-carros/modal-carros.component';
 import { DialogExcluirComponent } from './components/view/dialog-excluir/dialog-excluir.component';
+import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
 import { MatIconModule } from '@angular/material/icon';
 
 
@@ -43,8 +44,7 @@ import { MatIconModule } from '@angular/material/icon';
     CarrosComponent,
     ReservasComponent,
     LocadoraComponent,
-    PerfilUsuarioComponent,
-    DialogEditarCarroComponent,
+    ModalCarrosComponent,
     DialogEditarCarroComponent,
     DialogExcluirComponent,
     DialogEditarLocadoraComponent
@@ -65,7 +65,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

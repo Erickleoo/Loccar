@@ -8,9 +8,9 @@ describe('DialogExcluirComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogExcluirComponent ]
+      declarations: [DialogExcluirComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DialogExcluirComponent);
     component = fixture.componentInstance;

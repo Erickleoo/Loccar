@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0 auto;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: 'Montserrat';
+  color: #000000;
+  font-weight: 200;
+  margin-top: 34px;
+}
+
+.titulo {
+  margin-top: 33px;
+  margin-bottom: 33px;
+}
+
+h3 {
+  font-family: 'Quicksand';
+  font-size: 24px;
+  color: #040404;
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-weight: 400;
+}
+
+.tags {
+  display: flex;
+  background-color: #DCE0E2;
+  padding-left: 60px;
+  padding-top: 18px;
+}
+
+.card1 {
+  display: flex;
+  border: 1px solid #C6C4C4;
+  flex-direction: column;
+  width: 502px;
+  height: 850px;
+}
+
+.botao {
+  align-items: center;
+  width: 250px;
+  height: 70px;
+  font-size: 24px;
+  font-weight: 700px;
+  line-height: 30px;
+  color: white;
+  background: #DB1812;
+  border-radius: 5px;
+  border: 1px solid #DB1812;
+  cursor: pointer;
+}
+
+.button-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 38px;
+}

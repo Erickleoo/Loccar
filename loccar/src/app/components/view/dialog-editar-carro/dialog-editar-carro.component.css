@@ -1,6 +1,7 @@
-.container-margin{
+.container-margin {
   margin: 0% 5% 0% 5%;
 }
+
 .height {
   height: 650px;
 }
@@ -98,13 +99,15 @@
   width: 583px;
   padding-right: 80px;
 }
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 10px;
   padding: 0.75em 0.75em 0 0.75em;
   height: 50px;
   background-color: #DCE0E2;
 }
-.section-card{
+
+.section-card {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -112,16 +115,19 @@
   width: 352px;
   height: 600px;
 }
-.padding{
+
+.padding {
   padding-top: 2%;
 }
-.container-button{
+
+.container-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:10px;
+  gap: 10px;
 }
-.btn-salvar-alteracao{
+
+.btn-salvar-alteracao {
   width: 220px;
   height: 40px;
   background-color: #DB1812;
@@ -131,7 +137,8 @@
   font-size: 24px;
   line-height: 30px;
 }
-.btn-fechar{
+
+.btn-fechar {
   width: 150px;
   height: 40px;
   background-color: #FFFFFF;
@@ -143,14 +150,25 @@
   line-height: 30px;
 
 }
-.hr{
+
+.hr {
   width: 100px;
   text-align: right;
   margin-left: 150px;
 }
-.container-text{
+
+.container-text {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   margin-top: -35px;
+}
+
+.input-width-50 {
+  width: 50%;
+}
+
+.dialog-button-flex {
+  display: flex;
+  justify-content: space-between;
 }
