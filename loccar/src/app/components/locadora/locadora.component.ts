@@ -1,4 +1,3 @@
-import { DialogEditarLocadoraComponent } from './../view/dialog-editar-locadora/dialog-editar-locadora.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +15,7 @@ export class LocadoraComponent implements OnInit {
   formLocadora: FormGroup;
   error = "Este campo é obrigatório";
   id: number = 0;
-  locadoras: Locadoras[];
+  locadoras: Locadoras[]
   adm: boolean = true
 
   constructor(
@@ -36,8 +35,8 @@ export class LocadoraComponent implements OnInit {
         console.log("Erro ao ler a locadora.");
         this.alertaSnackBar("falha");
       }
-    })
-
+    }) 
+    
     this.formLocadora = this.formBuilder.group({
       locadora: new FormControl('', [Validators.required]),
       endereço: new FormControl('', [Validators.required]),
@@ -94,7 +93,7 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
-  cadastrarLocadora(){
+  cadastrarLocadora(){    
     if(this.id > 0){
       this.updateLocadora()
     }
@@ -133,7 +132,7 @@ export class LocadoraComponent implements OnInit {
           });
           break;
         case "excluída":
-          this.snackBar.open("Locadora excluída com sucesso.", undefined,{
+          this.snackBar.open("Locadora deletada com sucesso.", undefined,{
             duration: 2000,
             panelClass: ['snackbar-sucess']
           });
@@ -145,45 +144,5 @@ export class LocadoraComponent implements OnInit {
         });
         break;
     }
-  }
-
-  openDialog (
-    id: number,
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-
-    this.locadorasService.pegarLocadoraPeloID(id).subscribe({
-      next: (locadora: Locadoras) => {
-        const dialogRef = this.dialog.open(DialogEditarLocadoraComponent, {
-          width: '50%',
-          enterAnimationDuration,
-          exitAnimationDuration,
-          data: {
-            id: id,
-            nome: locadora.nome,
-            endereco: locadora.endereco,
-            telefone: locadora.telefone,
-          }
-        });
-
-        dialogRef.afterClosed().subscribe((locadora) => {
-          if (locadora) {
-            this.locadorasService.editarLocadora(locadora).subscribe({
-              next: () => {
-                this.ngOnInit();
-                this.alertaSnackBar('editada');
-              },
-              error: () => {
-                this.alertaSnackBar('erroEditar');
-              },
-            })
-          }
-        })
-      },
-      error: () => {
-        this.alertaSnackBar('erroEditar');
-      }
-    })
   }
 }
