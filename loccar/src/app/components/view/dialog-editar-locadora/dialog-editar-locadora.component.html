@@ -1,0 +1,26 @@
+<form [formGroup]="formLocadora" class="form-style form-flex">
+  <div>
+    <mat-form-field class="input-width-100" appearance="fill">
+      <mat-label>Locadora</mat-label>
+      <input type="text" formControlName="locadora" matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="inputs-flex">
+    <mat-form-field class="input-width-50" appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input type="text" formControlName="end" required matInput />
+    </mat-form-field>
+    <mat-form-field class="input-width-50" appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input type="tel" formControlName="tel" required matInput />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <div class="dialog-button-flex">
+      <button mat-button class="btn-fechar" (click)="onNoClick()">Fechar</button>
+      <button mat-button class="btn-salvar-alteracao" (click)="UpdateLocadora()">Atualizar</button>
+    </div>
+  </div>
+</form>
