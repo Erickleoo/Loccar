@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
+import { DialogEditarLocadoraComponent } from './components/view/dialog-editar-locadora/dialog-editar-locadora.component';
 import { DialogExcluirComponent } from './components/view/dialog-excluir/dialog-excluir.component';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -46,6 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
     DialogEditarCarroComponent,
     DialogEditarCarroComponent,
     DialogExcluirComponent,
+    DialogEditarLocadoraComponent
   ],
   imports: [
     BrowserModule,
