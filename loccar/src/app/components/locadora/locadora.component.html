@@ -5,7 +5,7 @@
             <div>
                 <mat-card-title class="text-style margin-top-title">Locadora</mat-card-title>
             </div>
-    
+
             <form class="form-style form-flex" [formGroup]="formLocadora" (submit)="cadastrarLocadora()">
                 <div>
                     <mat-form-field class="input-width-100" appearance="fill">
@@ -14,7 +14,7 @@
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
                 </div>
-        
+
                 <div class="inputs-flex">
                     <mat-form-field class="input-width-100" appearance="fill">
                         <mat-label>Endereço</mat-label>
@@ -22,7 +22,7 @@
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
                 </div>
-        
+
                 <div class="selected-flex">
                     <mat-form-field appearance="fill" class="input-width-40">
                         <mat-label>Telefone</mat-label>
@@ -30,13 +30,13 @@
                         <input type="tel" matInput placeholder="(xx) xxxx-xxxx" formControlName="telefone" name="telefone" required>
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
-        
+
                     <button mat-button class="button-style" type="submit" [disabled]="!formLocadora.valid">Cadastrar</button>
                 </div>
             </form>
         </mat-card>
     </section>
-    
+
 
     <section class="container card-flex-gap" *ngFor="let element of locadoras">
         <mat-card class="width border-card-style card-flex">
@@ -52,7 +52,7 @@
             </div>
 
             <div class="button-container">
-                <button mat-button class="button-style margin-button" (click)="editarLocadora(element)">Editar</button>
+                <button mat-button class="button-style margin-button" (click)="openDialog(element.id, '0ms', '0ms')">Editar</button>
                 <button mat-button class="button-card-style margin-button" (click)="excluirLocadora(element.id)">Excluir</button>
             </div>
         </mat-card>

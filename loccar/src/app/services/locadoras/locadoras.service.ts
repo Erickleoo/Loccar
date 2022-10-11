@@ -30,6 +30,10 @@ export class LocadorasService {
     return this.httpClient.put<Locadoras>(`${this.url}/${objetoLocadora.id}`, objetoLocadora);
   }
 
+  pegarLocadoraPeloID(id: number): Observable<Locadoras>{
+    return this.httpClient.get<Locadoras>(`${this.url}/${id}`);
+  }
+
   excluirLocadora(id: number): Observable<Locadoras> {
     console.log(`${this.url}/${id}`);
     return this.httpClient.delete<Locadoras>(`${this.url}/${id}`)
