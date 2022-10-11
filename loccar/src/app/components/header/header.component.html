@@ -4,6 +4,23 @@
       <ng-container *ngIf="nomeUsuario===true">
         <ng-container *ngIf=" router.routerState.snapshot.url !=='/home' && router.routerState.snapshot.url
         !=='/cadastro' && router.routerState.snapshot.url !=='/login' ">
+        <div>
+          <ul class=" stroke">
+            <li><a mat-button routerLink="../home">Home</a></li>
+            <li><a mat-button routerLink="../carros">Carros</a></li>
+            <li><a mat-button routerLink="../reservas">Reservas</a></li>
+            <li><img src="../../../assets/img-teste/Group_1.png" /></li>
+            <li><a mat-button routerLink="../locadora">Locadoras</a></li>
+            <li><a mat-button routerLink="../perfil">Perfil</a></li>
+            <li><a mat-button routerLink="../sair">Sair</a></li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="
+        router.routerState.snapshot.url == '/cadastro' ||
+        router.routerState.snapshot.url == '/login'
+      ">
+        <img src="../../../assets/img-teste/Group_1.png" />
           <div>
             <ul class=" stroke">
               <li><a mat-button routerLink="../home">Home</a></li>
