@@ -34,7 +34,7 @@
           </mat-form-field>
           <mat-form-field class="input-width-30" appearance="fill">
             <mat-label>Nº de Pessoas:</mat-label>
-            <input type="number" type="number" formControlName="numeroPessoas" required matInput />
+            <input type="number" matInput type="number" formControlName="numeroPessoas" required  />
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
         </div>
@@ -48,8 +48,7 @@
               <mat-error>{{error}}</mat-error>
             </mat-select>
           </mat-form-field>
-          <button mat-button class="button-style margin-15" disabled="!form">Cadastrar</button>
-
+          <button mat-button class="button-style margin-15" [disabled]="!form.valid">Cadastrar</button>
         </div>
       </form>
     </mat-card>
@@ -71,11 +70,19 @@
             </mat-card-subtitle>
           </div>
           <mat-card-actions class="container-button">
-            <button mat-button class="btn-cadastrar" (click)="openDialog(carro.id, '0ms', '0ms')">Editar</button>
-            <button mat-button class="btn-excluir" (click)="deletarCarro(carro.id)">Excluir</button>
-          </mat-card-actions>
+              <ng-container *ngIf="nomeUsuario===false">
+                <button mat-button class="btn-cadastrar"(click)="openDialogDetalhes(carro)">Detalhes</button>
+              </ng-container>
+              <ng-container *ngIf="nomeUsuario===true">
+                <button mat-button class="btn-cadastrar" (click)="openDialog(carro.id, '0ms', '0ms')">Editar</button>
+                <button mat-button class="btn-excluir" (click)="deletarCarro(carro.id)">Excluir</button>
+              </ng-container>
+            </mat-card-actions>
+
         </mat-card>
       </ng-container>
     </section>
   </div>
 </main>
+
+<app-footer></app-footer>

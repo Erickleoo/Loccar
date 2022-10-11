@@ -3,7 +3,7 @@
   padding: 0 auto;
 }
 
-h2{
+h2 {
   font-size: 24px;
   font-family: 'Montserrat';
   color: #000000;
@@ -11,25 +11,25 @@ h2{
   margin-top: 34px;
 }
 
-.titulo{
+.titulo {
   margin-top: 33px;
   margin-bottom: 33px;
 }
 
-h3{
-  font-family:'Quicksand';
+h3 {
+  font-family: 'Quicksand';
   font-size: 24px;
-  color:  #040404;
+  color: #040404;
 }
 
-.tag{
+.tag {
   display: flex;
   flex-direction: column;
   gap: 14px;
   font-weight: 400;
 }
 
-.tags{
+.tags {
   display: flex;
   background-color: #DCE0E2;
   padding-left: 60px;
@@ -64,5 +64,3 @@ h3{
   align-items: center;
   margin-top: 38px;
 }
-
-

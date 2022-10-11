@@ -1,3 +1,4 @@
+import { UsuariosService } from './../../services/usuarios/usuarios.service';
 import { Carros } from './../../models/carros/carros.model';
 import { LocadorasService } from './../../services/locadoras/locadoras.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { TipoCarros } from 'src/app/models/tipoCarros/tipo-carros.model';
 import { DialogEditarCarroComponent } from '../view/dialog-editar-carro/dialog-editar-carro.component';
 import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
 import { LoadingService } from 'src/app/services/loading/loading.service';
+import { ModalCarrosComponent } from '../view/modal-carros/modal-carros.component';
 
 @Component({
   selector: 'app-carros',
@@ -24,12 +26,15 @@ export class CarrosComponent implements OnInit {
   locadoras: Locadoras[];
   tiposCarros: TipoCarros[];
   id: number = 0;
+  nomeUsuario:Boolean
+
 
   constructor(
     private formBuilder: FormBuilder,
     private carrosService: CarrosService,
     private locadorasService: LocadorasService,
     private loadingService: LoadingService,
+    private usuario:UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog) { }
 
@@ -83,14 +88,20 @@ export class CarrosComponent implements OnInit {
         console.error("Erro ao ler as carros!");
         this.alertaSnackBar("falha");
       }
+
     });
 
+    this.nomeUsuario=this.checkStatus();
 
+  }
+  checkStatus(){
+    if(this.usuario.obterUsuarioLogin().email==='paulo@email.com'){
+      return true
+    }else return false
   }
 
   cadastrarCarros() {
     const id = (this.carros[(this.carros.length) - 1].id) + 1;
-
     const nomeCarro = this.form.controls["nomeCarro"].value;
     const listaTipo = this.form.controls["listaTipo"].value.id;
     const portas = this.form.controls["portas"].value;
@@ -109,20 +120,6 @@ export class CarrosComponent implements OnInit {
       }
     });
   }
-
-  // deletarCarros(carro_id: number) {
-  //   this.carrosService.deletarCarros(carro_id).subscribe({
-  //     next: () => {
-  //       this.ngOnInit();
-  //       this.alertaSnackBar("deletado");
-  //     },
-  //     error: () => {
-  //       console.error("Erro ao deletar o carro");
-  //       this.alertaSnackBar("falha");
-  //     }
-  //   });
-  // }
-
 
   deletarCarro(id: number): void {
     let text;
@@ -148,6 +145,18 @@ export class CarrosComponent implements OnInit {
     })
   }
 
+openDialogDetalhes(element:Carros): void {
+  let enterAnimationDuration='500ms';
+  let exitAnimationDuration='500ms';
+
+  const dialogRef = this.dialog.open(ModalCarrosComponent, {
+    width: '30%',
+    enterAnimationDuration,
+    exitAnimationDuration,
+    data:element
+})
+  dialogRef.afterClosed()
+}
 
   //função para enviar os dados para o dialog que abre no botão editar
   openDialog(

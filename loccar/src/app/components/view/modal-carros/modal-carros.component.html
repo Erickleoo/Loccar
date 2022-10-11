@@ -1,28 +1,29 @@
+<form [formGroup]="form" class="form-style form-flex">
 <mat-card class="card1">
   <img mat-card-image src="../../assets/img-teste/car1.png" alt="car1">
-  <mat-card-content>
-    <div class="titulo">
-      <h2 mat-dialog-title><b>Onix 2.0</b></h2>
+  <mat-card-content >
+    <div class="titulo" >
+      <h2 mat-dialog-title formControlName="nomeCarro" ><b>{{carros}}</b></h2>
     </div>
-  <mat-dialog-content class="mat-typography">
-    <div class="tag">
-    <div class="tags">
-      <h3>2 portas</h3>
+    <div class="mat-typography">
+      <div class="tag">
+        <div class="tags" >
+          <h3 formControlName="portas">{{carros}}</h3>
+        </div>
+        <div class="tags">
+          <h3>Airbag</h3>
+        </div>
+        <div class="tags">
+          <h3 formControlName="numeroPessoas">{{carros}}</h3>
+        </div>
+        <div class="tags">
+          <h3 formControlName="selectLocadora">{{carros}}</h3>
+        </div>
+      </div>
     </div>
-    <div class="tags">
-      <h3>Airbag</h3>
+    <div class="button-position">
+      <button class="botao" mat-button>Reservar</button>
     </div>
-    <div class="tags"><h3>5 pessoas</h3>
-    </div>
-    <div class="tags">
-      <h3>Locadora Matriz</h3>
-    </div>
-  </div>
-  </mat-dialog-content>
-  <div class="button-position">
-    <button class="botao" mat-button>Reservar</button>
-  </div>
-</mat-card-content>
+  </mat-card-content>
 </mat-card>
-
-
+</form>
