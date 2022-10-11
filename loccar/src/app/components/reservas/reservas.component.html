@@ -68,9 +68,11 @@
             </div>
             <div class="title-subtitle-flex margin-top margin-bottom">
               <div class="title-card">
-                <mat-card-title class="card-title-style">{{reserva.carroId}}</mat-card-title>
+                <ng-container *ngFor="let carro of carros">
+                 <mat-card-title class="card-title-style" *ngIf="carro.id
+                 == reserva.carroId">{{carro.nome}}</mat-card-title>
+                </ng-container>
               </div>
-
               <div>
                 <mat-card-subtitle class="card-subtitle-style">Data retirada: {{reserva.data}}</mat-card-subtitle>
                 <mat-card-subtitle class="card-subtitle-style">Horário retirada: {{reserva.horario}}</mat-card-subtitle>
