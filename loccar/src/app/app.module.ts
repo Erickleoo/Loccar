@@ -28,7 +28,6 @@ import { DialogEditarCarroComponent } from './components/view/dialog-editar-carr
 import { DialogEditarLocadoraComponent } from './components/view/dialog-editar-locadora/dialog-editar-locadora.component';
 import { ModalCarrosComponent } from './components/view/modal-carros/modal-carros.component';
 import { DialogExcluirComponent } from './components/view/dialog-excluir/dialog-excluir.component';
-import { DialogEditarCarroComponent } from './components/view/dialog-editar-carro/dialog-editar-carro.component';
 import { MatIconModule } from '@angular/material/icon';
 
 
