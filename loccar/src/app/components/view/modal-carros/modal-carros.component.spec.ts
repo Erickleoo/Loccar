@@ -10,7 +10,7 @@ describe('ModalCarrosComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ModalCarrosComponent]
     })
-      .compileComponents();
+    .compileComponents();
 
     fixture = TestBed.createComponent(ModalCarrosComponent);
     component = fixture.componentInstance;
