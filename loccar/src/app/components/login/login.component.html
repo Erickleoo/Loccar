@@ -17,7 +17,16 @@
       </mat-form-field>
       <div class="divButton">
         <button mat-raised-button color="warn" class="botaoLogin" type="submit" [disabled]="!form.valid">Login</button>
-        <button mat-raised-button color="warn" class="botaoLogin">Login</button>
+        <!-- <button mat-raised-button color="warn" class="botaoLogin">Login</button> -->
+        <div class="row mt-2">
+          <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
+              <div class="card shadow text-center">
+                  <div class="card-body">
+                      <img src="../../../assets/img-teste/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
+                  </div>
+              </div>
+          </a>
+      </div>
       </div>
     </form>
     <div class="links">

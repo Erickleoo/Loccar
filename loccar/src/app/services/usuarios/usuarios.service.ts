@@ -43,4 +43,18 @@ export class UsuariosService {
   obterUsuarioLogin(): Usuarios {
     return this.usuarios;
   }
+
+  salvarLocalStorage(data:Usuarios){
+    localStorage.setItem(data.id.toString(), JSON.stringify(data))
+  }
+
+// ajustar a função do get localStorage
+  // consultarLocalStorage(): Array<Usuarios> {
+  //   let usuarios :Usuarios[]=[]
+  //   for (let i=0;i<localStorage.length;i++){
+  //   usuarios.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+  //   }return usuarios
+  // }
+
+
 }

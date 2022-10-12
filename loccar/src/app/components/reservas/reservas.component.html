@@ -46,8 +46,13 @@
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
-
+        <ng-container *ngIf="nomeUsuario===false">
+          <button mat-button type="submit" [disabled]="!form.valid" (click)="cadastrarReservas()"class="button-style">Reservar</button>
+        </ng-container>
+        <ng-container *ngIf="nomeUsuario===true">
           <button mat-button type="submit" [disabled]="!form.valid" class="button-style">Atualizar</button>
+        </ng-container>
+
         </div>
       </form>
     </mat-card>

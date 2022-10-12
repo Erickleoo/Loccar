@@ -5,6 +5,8 @@ import { Usuarios } from './../../models/usuarios/usuarios.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+import { AuthService } from 'src/app/services/auth/auth.service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
     private usuariosService: UsuariosService,
     private snackBar: MatSnackBar,
     private loadingService: LoadingService,
-    private route: Router
+    private route: Router,
+    private auth : AuthService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +56,7 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.validarSenha(usuario);
+
     }
   }
 
@@ -68,7 +72,8 @@ export class LoginComponent implements OnInit {
     if (usuario.senha === this.form.controls["senha"].value) {
       this.alertaSnackBar("loginSucesso");
       this.route.navigateByUrl("/perfil");
-      this.usuariosService.salvarUsuarioLogin(usuario);
+      this.usuariosService.salvarUsuarioLogin(usuario)
+      this.usuariosService.salvarLocalStorage(usuario);
     }
     else {
       this.alertaSnackBar("usuarioInexistente")
@@ -96,6 +101,9 @@ export class LoginComponent implements OnInit {
         })
         break;
     }
+  }
+  signInWithGoogle(){
+    this.auth.googleSignIn();
   }
 
 }
