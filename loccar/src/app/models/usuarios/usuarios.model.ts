@@ -4,5 +4,4 @@ export interface Usuarios {
   senha: string;
   email: string;
   telefone: string;
-  foto: string;
 }

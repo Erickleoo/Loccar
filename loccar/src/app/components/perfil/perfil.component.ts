@@ -1,6 +1,6 @@
+import { Usuarios } from './../../models/usuarios/usuarios.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Usuarios } from 'src/app/models/usuarios/usuarios.model';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,15 +15,17 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
   usuarios: Usuarios[];
-  id: number = 0;
+  id: number ;
   senha: any = ''
   foto: any = ''
   error = "Este campo é obrigatório";
   nomeUsuario: Boolean
+  idUsuario:number
+
 
   constructor(
     private formBuilder: FormBuilder,
-    private Usuarios: UsuariosService,
+    private usuariosService: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
   ) { }
@@ -35,7 +37,7 @@ export class PerfilComponent implements OnInit {
       telefone: new FormControl('', [Validators.required])
     })
 
-    this.Usuarios.lerUsuarios().subscribe({
+    this.usuariosService.lerUsuarios().subscribe({
       next: (usuario: Usuarios[]) => {
         this.usuarios = usuario
 
@@ -46,15 +48,24 @@ export class PerfilComponent implements OnInit {
       }
     })
     this.nomeUsuario = this.checkStatus();
+
+
+  if(this.checkStatus()===false){
+    this.dadosUsuarioNaoAdimn()
+  }
+  this.idUsuario=this.usuariosService.obterUsuarioLogin().id
+  console.log(this.idUsuario);
+
+
   }
 
   selecionarUsuario(usuario: Usuarios) {
     this.id = usuario.id;
     this.senha = usuario.senha
-    this.foto = usuario.foto
-    const selectLocadora = this.form.controls['nome'].setValue(usuario.nome);
-    const selectEndereço = this.form.controls['email'].setValue(usuario.email);
-    const selectTelefone = this.form.controls['telefone'].setValue(usuario.telefone);
+
+    this.form.controls['nome'].setValue(usuario.nome);
+    this.form.controls['email'].setValue(usuario.email);
+    this.form.controls['telefone'].setValue(usuario.telefone);
     window.scroll(0, 0)
   }
 
@@ -64,9 +75,8 @@ export class PerfilComponent implements OnInit {
     const email = this.form.controls['email'].value;
     const telefone = this.form.controls['telefone'].value;
     const senha = this.senha;
-    const foto = this.foto;
-    const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone, foto: foto };
-    this.Usuarios.updateUsuario(usuario).subscribe({
+    const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone };
+    this.usuariosService.updateUsuario(usuario).subscribe({
       next: () => {
         this.id = 0;
         this.ngOnInit();
@@ -79,7 +89,7 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  removerUsuario(id: any): void {
+  removerUsuario(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
       width: '550px',
@@ -88,7 +98,7 @@ export class PerfilComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(boolean => {
       if (boolean) {
-        this.Usuarios.deletarUsuario(id).subscribe({
+        this.usuariosService.deletarUsuario(id).subscribe({
           next: () => {
             this.ngOnInit();
             this.alertaSnackBar("deletado");
@@ -117,8 +127,44 @@ export class PerfilComponent implements OnInit {
   }
 
   checkStatus() {
-    if (this.Usuarios.obterUsuarioLogin().email === 'paulo@email.com') {
+    if (this.usuariosService.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
     } else return false
   }
+  pegarDados(){
+    this.usuariosService.obterUsuarioLogin()
+
+}
+dadosUsuarioNaoAdimn(){
+    let nome =this.usuariosService.obterUsuarioLogin().nome
+    let email=this.usuariosService.obterUsuarioLogin().email
+    let telefone=this.usuariosService.obterUsuarioLogin().telefone
+    let id =this.usuariosService.obterUsuarioLogin().id
+    let senha = this.usuariosService.obterUsuarioLogin().senha
+
+    this.form.controls['nome'].setValue(nome);
+    this.form.controls['email'].setValue(email);
+    this.form.controls['telefone'].setValue(telefone);
+  }
+atualizarDados(){
+
+  let id =this.usuariosService.obterUsuarioLogin().id
+  let senha = this.usuariosService.obterUsuarioLogin().senha
+  const nome = this.form.controls['nome'].value;
+  const email = this.form.controls['email'].value;
+  const telefone = this.form.controls['telefone'].value;
+  const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone };
+  this.usuariosService.updateUsuario(usuario).subscribe({
+    next: () => {
+      this.ngOnInit();
+      this.alertaSnackBar("atualizado");
+    },
+    error: () => {
+      console.error("Você não conseguiu fazer a alteração.");
+      this.alertaSnackBar("falha");
+    }
+  })
+
+}
+
 }

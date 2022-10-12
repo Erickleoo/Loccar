@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
 import { CarrosService } from 'src/app/services/carros/carros.service';
 import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-reservas',
@@ -23,13 +24,16 @@ export class ReservasComponent implements OnInit {
   locadoras: Locadoras[];
   carros: Carros[];
   id: number = 0;
-  adm: boolean = true
+  adm: boolean = true;
+  nomeUsuario:Boolean;
+  idUsuario:number
 
   constructor(
     private formBuilder: FormBuilder,
     private reservasService: ReservasService,
     private locadorasService: LocadorasService,
     private carrosService: CarrosService,
+    private usuario:UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private loadingService: LoadingService
@@ -77,8 +81,15 @@ export class ReservasComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     });
-  }
+    this.nomeUsuario=this.checkStatus();
+    this.idUsuario=this.usuario.obterUsuarioLogin().id
 
+  }
+  checkStatus(){
+    if(this.usuario.obterUsuarioLogin().email==='paulo@email.com'){
+      return true
+    }else return false
+  }
   cadastrarReservas() {
     const id = (this.reservas[(this.reservas.length) - 1].id) + 1;
     const data = this.form.controls["data"].value;

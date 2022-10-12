@@ -52,9 +52,8 @@ export class CadastroComponent implements OnInit {
     const email = this.form.controls["email"].value;
     const telefone = this.form.controls["tel"].value;
     const senha = this.form.controls["senha"].value;
-    const foto = "foto"
 
-    const usuario: Usuarios = { id: id, nome: nome, telefone: telefone, email: email, foto: foto, senha: senha };
+    const usuario: Usuarios = { id: id, nome: nome, telefone: telefone, email: email, senha: senha };
 
     this.usuarioService.salvarUsuario(usuario).subscribe({
       next: () => {
