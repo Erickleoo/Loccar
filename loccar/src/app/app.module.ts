@@ -1,6 +1,8 @@
+import { environment } from './../environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import{AngularFireModule} from '@angular/fire/compat'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,7 +48,7 @@ import { MatIconModule } from '@angular/material/icon';
     ModalCarrosComponent,
     DialogEditarCarroComponent,
     DialogExcluirComponent,
-    DialogEditarLocadoraComponent
+    DialogEditarLocadoraComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent],

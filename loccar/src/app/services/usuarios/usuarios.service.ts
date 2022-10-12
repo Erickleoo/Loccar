@@ -27,12 +27,13 @@ export class UsuariosService {
     return this.httpCliente.post<Usuarios>(this.url, usuario)
   }
 
-  updateUsuario(usuario: Usuarios) {
-    return this.httpCliente.put<Usuarios>(`${this.url}/${usuario.id}`, usuario);
+  updateUsuario(usuario: Usuarios):Observable<Usuarios> {
+    let endpoint = usuario.id;
+    return this.httpCliente.put<Usuarios>(`${this.url}/${endpoint}`, usuario);
   }
 
-  deletarUsuario(id: any) {
-    return this.httpCliente.delete(`${this.url}/${id}`)
+  deletarUsuario(id: any) :Observable<Usuarios>{
+    return this.httpCliente.delete<Usuarios>(`${this.url}/${id}`)
   }
 
   salvarUsuarioLogin(usuario: Usuarios) {
@@ -42,4 +43,18 @@ export class UsuariosService {
   obterUsuarioLogin(): Usuarios {
     return this.usuarios;
   }
+
+  salvarLocalStorage(data:Usuarios){
+    localStorage.setItem(data.id.toString(), JSON.stringify(data))
+  }
+
+// ajustar a função do get localStorage
+  // consultarLocalStorage(): Array<Usuarios> {
+  //   let usuarios :Usuarios[]=[]
+  //   for (let i=0;i<localStorage.length;i++){
+  //   usuarios.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+  //   }return usuarios
+  // }
+
+
 }

@@ -46,8 +46,13 @@
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
-
+        <ng-container *ngIf="nomeUsuario===false">
+          <button mat-button type="submit" [disabled]="!form.valid" (click)="cadastrarReservas()"class="button-style">Reservar</button>
+        </ng-container>
+        <ng-container *ngIf="nomeUsuario===true">
           <button mat-button type="submit" [disabled]="!form.valid" class="button-style">Atualizar</button>
+        </ng-container>
+
         </div>
       </form>
     </mat-card>
@@ -59,16 +64,17 @@
       <div class="line"></div>
     </div>
 
-    <div class="cards-margin-top card-flex-gap">
-      <mat-card *ngFor="let reserva of reservas" class="width border-card-style card-flex">
+    <div class="cards-margin-top card-flex-gap" *ngFor="let reserva of reservas">
+    <ng-container *ngIf="nomeUsuario === true || reserva.usuarioId === idUsuario">
+      <mat-card  class="width border-card-style card-flex">
         <mat-card-title-group>
           <div class="cards-info-flex">
             <div class="img-container">
               <img class="img-card" mat-card-sm-image src="assets/img-teste/car1.png" height="198.22px" width="350px">
             </div>
-            <div class="title-subtitle-flex margin-top margin-bottom">
-              <div class="title-card">
-                <ng-container *ngFor="let carro of carros">
+            <div class="title-subtitle-flex margin-top margin-bottom" >
+              <div class="title-card" >
+                <ng-container *ngFor="let carro of carros" >
                  <mat-card-title class="card-title-style" *ngIf="carro.id
                  == reserva.carroId">{{carro.nome}}</mat-card-title>
                 </ng-container>
@@ -87,6 +93,7 @@
             Reservas</button>
         </div>
       </mat-card>
+    </ng-container>
     </div>
   </section>
 </main>
