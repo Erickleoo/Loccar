@@ -1,145 +1,82 @@
-form {
-  height: 720px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+.container-button {
+  margin-top: 207px;
+  margin-bottom: 70px;
 }
 
-.titulo {
-  margin-top: 40px;
-  font-family: 'Quicksand';
-  font-weight: 700;
-  font-size: 40px;
+.second-section-margin {
+  margin-top: 115px;
 }
 
-.perfilCard {
-  margin-top: 100px;
-  width: 100%;
-  height: 810px;
-  border: 1px solid #9F9999;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.divInput {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px
-}
-
-.divButton {
-  width: 960px;
-  margin: 0px 0px 60px 0px;
-}
-
-.botaoAtualizar {
-  background-color: #DB1812;
-  width: 250px;
-  height: 70px;
-  font-family: 'Quicksand';
-  font-weight: 700;
-  font-size: 24px;
-}
-
-.input {
-  width: 960px;
-}
-
-.tituloCard {
-  margin-top: 12%;
-  margin-bottom: 3%;
-  width: 1180px;
-}
-
-.tituloCard h2 {
+.title-reservas-style {
   font-family: 'Montserrat';
-  font-weight: 400;
-  font-size: 40px;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #040404;
 }
 
-.tituloCard hr {
-  border: 1px solid black;
-  width: 55%;
-  margin-left: 0px;
+.line {
+  width: 60%;
+  height: 0px;
+  border: 1px solid #000000;
 }
 
-.sectionCard {
-  min-height: 40em;
+.card-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-flex-gap {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-
-.card {
-  width: 1140px;
-  height: 90px;
-  border: 1px solid #C6C4C4;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-family: 'Quicksand';
-  font-weight: 400;
-  font-size: 20px;
+  gap: 20px;
 }
 
-.cardDiv1 {
-  width: 520px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cardDiv1 div {
-  width: 180px;
-}
-
-.cardNome h2 {
-  margin: 0px;
+.card-title-style {
   font-family: 'Montserrat';
-  font-weight: 600;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.cardDiv2 {
-  width: 520px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cardButton {
-  font-family: 'Quicksand';
   font-weight: bold;
   font-size: 1.5rem;
-  color: #DB1812;
-  width: 250px;
-  height: 70px;
-  border: 3px solid #DB1812;
-  border-radius: 5px;
+  color: #000000;
+  margin: 23px 50px 58px 23px;
 }
 
-.divButton {
-  display: flex;
-  gap: 21px;
+.card-margin-top {
+  margin-top: 60px;
+}
+
+.card-border-style {
+  border: 1px solid #C6C4C4;
+  border-radius: 10px;
+}
+
+.card-subtitle-style {
+  font-family: 'Quicksand';
+  font-weight: 400;
+  font-size: 1.25rem;
+  width: 261px;
 }
 
 .button-card-style {
   font-family: 'Quicksand';
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #DB1812;
   width: 250px;
   height: 70px;
   border: 2px solid #DB1812;
   border-radius: 5px;
+}
+
+.card-dados-style {
+  font-size: 1.25rem;
+  color: #040404;
+  font-weight: 400;
+}
+
+.buttons-flex {
+  display: flex;
+  gap: 21px;
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {

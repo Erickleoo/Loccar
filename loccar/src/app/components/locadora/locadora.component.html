@@ -10,7 +10,8 @@
                 <div>
                     <mat-form-field class="input-width-100" appearance="fill">
                         <mat-label>Locadora</mat-label>
-                        <input type="text" matInput placeholder="Ex: Locadora Matriz" formControlName="locadora" name="locadora" required>
+                        <input type="text" matInput placeholder="Ex: Locadora Matriz" formControlName="locadora"
+                            name="locadora" required>
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
                 </div>
@@ -18,7 +19,8 @@
                 <div class="inputs-flex">
                     <mat-form-field class="input-width-100" appearance="fill">
                         <mat-label>Endereço</mat-label>
-                        <input type="text" matInput placeholder="Ex: Rua/Travessa/Avenida" formControlName="endereço" name="endereço" required>
+                        <input type="text" matInput placeholder="Ex: Rua/Travessa/Avenida" formControlName="endereço"
+                            name="endereço" required>
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
                 </div>
@@ -27,11 +29,13 @@
                     <mat-form-field appearance="fill" class="input-width-40">
                         <mat-label>Telefone</mat-label>
                         <span matPrefix>&nbsp;</span>
-                        <input type="tel" matInput placeholder="(xx) xxxx-xxxx" formControlName="telefone" name="telefone" required>
+                        <input type="tel" matInput placeholder="(xx) xxxx-xxxx" formControlName="telefone"
+                            name="telefone" required>
                         <mat-error>{{error}}</mat-error>
                     </mat-form-field>
 
-                    <button mat-button class="button-style" type="submit" [disabled]="!formLocadora.valid">Cadastrar</button>
+                    <button mat-button class="button-style" type="submit"
+                        [disabled]="!formLocadora.valid">Cadastrar</button>
                 </div>
             </form>
         </mat-card>
@@ -52,8 +56,10 @@
             </div>
 
             <div class="button-container">
-                <button mat-button class="button-style margin-button" (click)="openDialog(element.id, '0ms', '0ms')">Editar</button>
-                <button mat-button class="button-card-style margin-button" (click)="excluirLocadora(element.id)">Excluir</button>
+                <button mat-button class="button-style margin-button"
+                    (click)="openDialog(element.id, '0ms', '0ms')">Editar</button>
+                <button mat-button class="button-card-style margin-button"
+                    (click)="excluirLocadora(element.id)">Excluir</button>
             </div>
         </mat-card>
         <!-- <mat-card class="width border-card-style card-flex">

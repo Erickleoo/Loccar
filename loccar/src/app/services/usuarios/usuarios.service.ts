@@ -31,7 +31,7 @@ export class UsuariosService {
     return this.httpCliente.put<Usuarios>(`${this.url}/${usuario.id}`, usuario);
   }
 
-  deletarUsuario(id: any){
+  deletarUsuario(id: any) {
     return this.httpCliente.delete(`${this.url}/${id}`)
   }
 

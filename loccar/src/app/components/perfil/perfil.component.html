@@ -1,63 +1,81 @@
 <app-header></app-header>
 
-<main class="container">
-  <mat-card class="perfilCard">
-    <mat-card-title>
-      <h1 class="titulo">Perfil</h1>
-    </mat-card-title>
-    <form [formGroup]="form" (submit)="AtualizarUsuario()">
-      <div class="divInput">
-        <mat-form-field appearance="fill" class="input">
-          <mat-label>Nome</mat-label>
-          <input matInput formControlName="nome" name="nome" required>
-          <mat-error>{{error}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="input">
-          <mat-label>Telefone</mat-label>
-          <input matInput formControlName="telefone" name="telefone" required>
-          <mat-error>{{error}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="input">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" name="email" required>
-          <mat-error>{{error}}</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="divButton">
-        <button mat-raised-button color="warn" type="submit" class="botaoAtualizar" [disabled]="!form.valid">Atualizar</button>
-        <ng-container *ngIf="nomeUsuario===false">
-          <button mat-raised-button class="button-card-style">Excluir Cadastro</button>
-        </ng-container>
-      </div>
-    </form>
-  </mat-card>
-  <ng-container *ngIf="nomeUsuario===true">
+<main>
 
-    <div class="tituloCard">
-      <h2>
-        USUÁRIOS CADASTRADOS
-      </h2>
-      <hr>
-    </div>
-    <section class="sectionCard">
-      <mat-card *ngFor="let i of usuarios" class="card">
-        <div class="cardDiv1">
-          <span class="cardNome">
-            <h2 (click)="selecionarUsuario(i)">{{i.nome}}</h2>
-          </span>
-          <div>
-            <span>{{i.telefone}}</span>
+  <section class="container">
+    <mat-card class="background-color-gray width height border-style margin-top-card">
+      <div>
+        <mat-card-title class="text-style margin-top-title">Perfil</mat-card-title>
+      </div>
+
+      <form class="form-style form-flex" [formGroup]="form" (submit)="atualizarUsuario()">
+        <div>
+          <mat-form-field class="input-width-100" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput placeholder="Ex: João Cleber" formControlName="nome" name="nome" required>
+            <mat-error>{{error}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputs-flex">
+          <mat-form-field class="input-width-100" appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input type="text" matInput placeholder="Ex: (11) 9999-9999" formControlName="telefone" name="telefone"
+              required>
+            <mat-error>{{error}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="selected-flex">
+          <mat-form-field appearance="fill" class="input-width-100">
+            <mat-label>Email</mat-label>
+            <span matPrefix>&nbsp;</span>
+            <input type="email" matInput placeholder="Ex: email@email.com" formControlName="email" name="email"
+              required>
+            <mat-error>{{error}}</mat-error>
+          </mat-form-field>
+
+          <div class="container-button buttons-flex">
+            <button mat-button class="button-style" type="submit" [disabled]="!form.valid">Atualizar</button>
+            <ng-container *ngIf="nomeUsuario===false">
+              <button mat-raised-button class="button-card-style">Excluir Cadastro</button>
+            </ng-container>
           </div>
+
         </div>
-        <div class="cardDiv2">
-          <span>{{i.email}}</span>
-          <button mat-button class="cardButton" (click)="removerUsuario(i.id)">
-            Excluir usuário
-          </button>
-        </div>
-      </mat-card>
+      </form>
+    </mat-card>
+  </section>
+
+  <ng-container *ngIf="nomeUsuario===true">
+    <section class="container">
+      <div class="title second-section-margin">
+        <h1 class="title-reservas-style">USUÁRIOS CADASTRADOS</h1>
+        <div class="line"></div>
+      </div>
+
+
+      <div class="card-flex-gap card-margin-top" *ngFor="let usuario of usuarios">
+        <mat-card class="width card-flex card-border-style">
+          <div class="title-card">
+            <mat-card-title class="card-title-style" (click)="selecionarUsuario(usuario)">{{usuario.nome}}
+            </mat-card-title>
+          </div>
+
+          <div class="title-subtitle-flex">
+            <mat-card-subtitle class="card-subtitle-style card-dados-style">{{usuario.telefone}}</mat-card-subtitle>
+          </div>
+          <div>
+            <mat-card-subtitle class="card-subtitle-style card-dados-style">{{usuario.email}}</mat-card-subtitle>
+          </div>
+
+          <div class="button-container">
+            <button mat-button class="button-card-style margin-button" (click)="removerUsuario(usuario.id)">Excluir
+              usuario</button>
+          </div>
+        </mat-card>
+      </div>
     </section>
   </ng-container>
 </main>
-
 <app-footer></app-footer>
