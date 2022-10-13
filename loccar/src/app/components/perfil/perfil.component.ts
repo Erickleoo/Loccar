@@ -83,7 +83,6 @@ export class PerfilComponent implements OnInit {
           next: () => {
             this.ngOnInit();
             this.alertaSnackBar("deletado");
-            this.route.navigateByUrl("/home")
           },
           error: () => {
             console.error("Erro ao excluir reserva!");
