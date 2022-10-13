@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
       this.route.navigateByUrl("/perfil");
       this.usuariosService.salvarUsuarioLogin(usuario)
       this.usuariosService.salvarLocalStorage(usuario);
+      this.usuariosService.consultarLocalStorage('key');
     }
     else {
       this.alertaSnackBar("usuarioInexistente")

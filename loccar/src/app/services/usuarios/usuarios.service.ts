@@ -9,10 +9,13 @@ import { Injectable } from '@angular/core';
 export class UsuariosService {
   private listaUsuarios: any[];
   private usuarios: Usuarios
+  private storage: Storage;
+
   private url = 'https://servidor-carros.herokuapp.com/usuarios'
 
   constructor(private httpCliente: HttpClient) {
     this.listaUsuarios = [];
+
   }
 
   get usuariosCadastrados() {
@@ -60,5 +63,10 @@ export class UsuariosService {
   //   }return usuarios
   // }
 
-
+  consultarLocalStorage(key: string): any {
+    if (this.storage) {
+      return JSON.parse(this.storage.getItem(key)||'{}');
+    }
+    return null;
+  }
 }
