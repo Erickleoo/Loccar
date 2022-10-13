@@ -8,12 +8,6 @@ h2 {
   font-family: 'Montserrat';
   color: #000000;
   font-weight: 200;
-  margin-top: 34px;
-}
-
-.titulo {
-  margin-top: 33px;
-  margin-bottom: 33px;
 }
 
 h3 {
@@ -32,7 +26,6 @@ h3 {
 .tags {
   display: flex;
   background-color: #DCE0E2;
-  padding-left: 60px;
   padding-top: 18px;
 }
 
@@ -40,8 +33,6 @@ h3 {
   display: flex;
   border: 1px solid #C6C4C4;
   flex-direction: column;
-  width: 502px;
-  height: 850px;
 }
 
 .botao {
@@ -49,8 +40,7 @@ h3 {
   width: 250px;
   height: 70px;
   font-size: 24px;
-  font-weight: 700px;
-  line-height: 30px;
+  font-weight: 700;
   color: white;
   background: #DB1812;
   border-radius: 5px;
@@ -65,12 +55,17 @@ h3 {
   margin-top: 38px;
 }
 
-.mat-card-image {
+.input-width-100 {
   width: 100%;
 }
 
-.input-width-100 {
-  width: 100%;
+.mat-typography {
+  padding: 0px 24px 54px 24px;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+  border-radius: 10px;
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {

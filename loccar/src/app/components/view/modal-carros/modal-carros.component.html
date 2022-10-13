@@ -1,11 +1,10 @@
 <form [formGroup]="form" class="form-style form-flex">
-<mat-card class="card1">
-  <img mat-card-image src="../../assets/img-teste/car1.png" alt="car1">
-  <mat-card-content >
-    <div class="titulo" >
+  <img src="../../assets/img-teste/car1.png" alt="car1">
+  <div class="mat-typography">
+    <div>
       <h2 mat-dialog-title formControlName="nomeCarro" appearance="fill"><b>{{this.data.nome}}</b></h2>
     </div>
-    <div class="mat-typography">
+    <div>
       <div class="tag">
         <div class="tags">
           <h3 formControlName="portas" required appearance="fill">{{this.data.portas}} Portas</h3>
@@ -22,7 +21,7 @@
             <mat-select formControlName="selectLocadora" required>
               <mat-option *ngFor="let locadora of locadoras" [value]="locadora.id">{{locadora.nome}}</mat-option>
             </mat-select>
-          <!-- <h3 formControlName="selectLocadora" *ngFor="let locadora of locadoras" required>{{locadora.nome}}</h3> -->
+            <!-- <h3 formControlName="selectLocadora" *ngFor="let locadora of locadoras" required>{{locadora.nome}}</h3> -->
           </mat-form-field>
         </div>
       </div>
@@ -30,8 +29,7 @@
     <div class="button-position">
       <button class="botao" mat-button>Reservar</button>
     </div>
-  </mat-card-content>
-</mat-card>
+  </div>
 </form>
 
 <!-- <form [formGroup]="form" class="form-style form-flex">

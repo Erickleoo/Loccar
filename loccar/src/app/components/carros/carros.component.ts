@@ -26,7 +26,7 @@ export class CarrosComponent implements OnInit {
   locadoras: Locadoras[];
   tiposCarros: TipoCarros[];
   id: number = 0;
-  nomeUsuario:Boolean
+  nomeUsuario: Boolean
 
 
   constructor(
@@ -34,7 +34,7 @@ export class CarrosComponent implements OnInit {
     private carrosService: CarrosService,
     private locadorasService: LocadorasService,
     private loadingService: LoadingService,
-    private usuario:UsuariosService,
+    private usuario: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog) { }
 
@@ -91,13 +91,13 @@ export class CarrosComponent implements OnInit {
 
     });
 
-    this.nomeUsuario=this.checkStatus();
+    this.nomeUsuario = this.checkStatus();
 
   }
-  checkStatus(){
-    if(this.usuario.obterUsuarioLogin().email==='paulo@email.com'){
+  checkStatus() {
+    if (this.usuario.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
-    }else return false
+    } else return false
   }
 
   cadastrarCarros() {
@@ -145,18 +145,17 @@ export class CarrosComponent implements OnInit {
     })
   }
 
-openDialogDetalhes(element:Carros): void {
-  let enterAnimationDuration='500ms';
-  let exitAnimationDuration='500ms';
+  openDialogDetalhes(element: Carros): void {
+    let enterAnimationDuration = '500ms';
+    let exitAnimationDuration = '500ms';
 
-  const dialogRef = this.dialog.open(ModalCarrosComponent, {
-    width: '40%',
-    enterAnimationDuration,
-    exitAnimationDuration,
-    data:element
-})
-  dialogRef.afterClosed()
-}
+    const dialogRef = this.dialog.open(ModalCarrosComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: element
+    })
+    dialogRef.afterClosed()
+  }
 
   //função para enviar os dados para o dialog que abre no botão editar
   openDialog(
@@ -168,7 +167,8 @@ openDialogDetalhes(element:Carros): void {
     this.carrosService.pegarCarrosPeloID(id).subscribe({
       next: (carros: Carros) => {
         const dialogRef = this.dialog.open(DialogEditarCarroComponent, {
-          width: '50%',
+          width: '250px',
+          height: '80px',
           enterAnimationDuration,
           exitAnimationDuration,
           data: {
