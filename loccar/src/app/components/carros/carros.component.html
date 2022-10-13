@@ -1,57 +1,59 @@
 <app-header></app-header>
 
 <main>
-  <div>
-    <mat-card-title class="text-style margin-top-title">Carros</mat-card-title>
-  </div>
+
   <ng-container *ngIf="nomeUsuario===true">
     <section class="container">
+
       <mat-card class="width height border-style margin-top-card">
 
-          <form [formGroup]="form" (ngSubmit)="cadastrarCarros()" class="form-style form-flex">
-            <div>
-              <mat-form-field class="input-width-100" appearance="fill">
-                <mat-label>Nome do Carro</mat-label>
-                <mat-error>{{error}}</mat-error>
-                <input type="text" formControlName="nomeCarro" matInput />
-              </mat-form-field>
-            </div>
+        <div>
+          <mat-card-title class="text-style margin-top-title">Carros</mat-card-title>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="cadastrarCarros()" class="form-style form-flex">
+          <div>
+            <mat-form-field class="input-width-100" appearance="fill">
+              <mat-label>Nome do Carro</mat-label>
+              <mat-error>{{error}}</mat-error>
+              <input type="text" formControlName="nomeCarro" matInput />
+            </mat-form-field>
+          </div>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Tipo</mat-label>
-              <mat-select formControlName="listaTipo" required>
-                <mat-option *ngFor="let tipo of tiposCarros" [value]="tipo">{{
-                  tipo.nome
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="listaTipo" required>
+              <mat-option *ngFor="let tipo of tiposCarros" [value]="tipo">{{
+                tipo.nome
+                }}</mat-option>
+              <mat-error>{{error}}</mat-error>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="inputs-flex">
+            <mat-form-field class="input-width-30" appearance="fill">
+              <mat-label>Portas:</mat-label>
+              <input type="number" formControlName="portas" required matInput />
+              <mat-error>{{error}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-width-30" appearance="fill">
+              <mat-label>Nº de Pessoas:</mat-label>
+              <input type="number" matInput type="number" formControlName="numeroPessoas" required />
+              <mat-error>{{error}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-width-100">
+            <mat-form-field appearance="fill" class="input-width-60">
+              <mat-label>Locadora</mat-label>
+              <mat-select formControlName="selectLocadora" required>
+                <mat-option *ngFor="let locadora of locadoras" [value]="locadora">{{
+                  locadora.nome
                   }}</mat-option>
                 <mat-error>{{error}}</mat-error>
               </mat-select>
             </mat-form-field>
-
-            <div class="inputs-flex">
-              <mat-form-field class="input-width-30" appearance="fill">
-                <mat-label>Portas:</mat-label>
-                <input type="number" formControlName="portas" required matInput />
-                <mat-error>{{error}}</mat-error>
-              </mat-form-field>
-              <mat-form-field class="input-width-30" appearance="fill">
-                <mat-label>Nº de Pessoas:</mat-label>
-                <input type="number" matInput type="number" formControlName="numeroPessoas" required />
-                <mat-error>{{error}}</mat-error>
-              </mat-form-field>
-            </div>
-            <div class="input-width-100">
-              <mat-form-field appearance="fill" class="input-width-60">
-                <mat-label>Locadora</mat-label>
-                <mat-select formControlName="selectLocadora" required>
-                  <mat-option *ngFor="let locadora of locadoras" [value]="locadora">{{
-                    locadora.nome
-                    }}</mat-option>
-                  <mat-error>{{error}}</mat-error>
-                </mat-select>
-              </mat-form-field>
-              <button mat-button class="button-style margin-15" [disabled]="!form.valid">Cadastrar</button>
-            </div>
-          </form>
+            <button mat-button class="button-style margin-15" [disabled]="!form.valid">Cadastrar</button>
+          </div>
+        </form>
       </mat-card>
     </section>
   </ng-container>

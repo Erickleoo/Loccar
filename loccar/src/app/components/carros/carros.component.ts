@@ -150,6 +150,7 @@ export class CarrosComponent implements OnInit {
     let exitAnimationDuration = '500ms';
 
     const dialogRef = this.dialog.open(ModalCarrosComponent, {
+      height: '100%',
       enterAnimationDuration,
       exitAnimationDuration,
       data: element
@@ -167,8 +168,8 @@ export class CarrosComponent implements OnInit {
     this.carrosService.pegarCarrosPeloID(id).subscribe({
       next: (carros: Carros) => {
         const dialogRef = this.dialog.open(DialogEditarCarroComponent, {
-          width: '250px',
-          height: '80px',
+          width: '80%',
+          height: '50%',
           enterAnimationDuration,
           exitAnimationDuration,
           data: {
