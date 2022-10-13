@@ -25,3 +25,12 @@
   justify-content: center;
   margin-bottom: 81px;
 }
+
+.locadora-display-visible {
+  visibility: visible;
+}
+
+.locadora-display-hidden {
+  visibility: hidden;
+  display: block;
+}

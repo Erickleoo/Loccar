@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     public router: Router,
     private usuariosService: UsuariosService,
-    private auth:AuthService,
+    private auth: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     } else return false
   }
 
-  sair(){
+  sair() {
     this.auth.logout();
   }
 }
