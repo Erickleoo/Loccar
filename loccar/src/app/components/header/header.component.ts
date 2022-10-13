@@ -11,13 +11,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   usuarios: Usuarios[];
-  nomeUsuario: boolean
+  nomeUsuario: boolean;
+  storage: Storage;
 
   constructor(
     public router: Router,
     private usuariosService: UsuariosService,
     private auth: AuthService,
-  ) { }
+
+  ) {
+    this.storage = window.localStorage;
+  }
 
   ngOnInit(): void {
     // this.usuariosService.lerUsuarios().subscribe({
@@ -31,9 +35,11 @@ export class HeaderComponent implements OnInit {
     this.nomeUsuario = this.checkStatus();
   }
   checkStatus() {
-    if (this.usuariosService.obterUsuarioLogin().email === 'paulo@email.com') {
+    if (JSON.parse(this.storage.getItem('key') || '{}') === 'paulo@email.com') {
       return true
-    } else return false
+    } else {
+      return false
+    }
   }
 
   sair() {

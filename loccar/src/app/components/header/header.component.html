@@ -9,7 +9,7 @@
           <li><a class="header-font-style" mat-button routerLink="../home">Home</a></li>
           <li><a class="header-font-style" mat-button routerLink="../carros">Carros</a></li>
           <li><a class="header-font-style" mat-button routerLink="../reservas">Reservas</a></li>
-          <li><img class="header-logo" src="../../../assets/img-teste/Group_1.png" /></li>
+          <li><img routerLink="../home" class="header-logo" src="../../../assets/img-teste/Group_1.png" /></li>
           <ng-container *ngIf="nomeUsuario===true">
             <li><a class="header-font-style locadora-display-visible" mat-button routerLink="../locadora">Locadoras</a>
             </li>
@@ -27,7 +27,7 @@
     </ng-container>
     <ng-container *ngIf="router.routerState.snapshot.url == '/cadastro' || router.routerState.snapshot.url == '/login'">
       <div class="display-flex-center">
-        <img src="../../../assets/img-teste/logo.png" />
+        <img routerLink="../home" class="header-logo" src="../../../assets/img-teste/logo.png" />
       </div>
     </ng-container>
 

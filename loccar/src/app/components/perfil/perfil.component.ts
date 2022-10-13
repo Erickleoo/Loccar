@@ -5,6 +5,7 @@ import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -28,6 +29,7 @@ export class PerfilComponent implements OnInit {
     private usuariosService: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
+    private route: Router,
   ) { }
 
   ngOnInit(): void {
@@ -81,6 +83,7 @@ export class PerfilComponent implements OnInit {
           next: () => {
             this.ngOnInit();
             this.alertaSnackBar("deletado");
+            this.route.navigateByUrl("/home")
           },
           error: () => {
             console.error("Erro ao excluir reserva!");

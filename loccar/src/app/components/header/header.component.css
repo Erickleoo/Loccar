@@ -12,6 +12,7 @@
 .header-logo {
   width: 222px;
   height: 132px;
+  cursor: pointer;
 }
 
 .header-font-style {

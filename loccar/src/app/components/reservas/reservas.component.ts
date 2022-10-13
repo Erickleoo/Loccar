@@ -2,15 +2,16 @@ import { LoadingService } from './../../services/loading/loading.service';
 import { Carros } from './../../models/carros/carros.model';
 import { Locadoras } from './../../models/locadoras/locadoras.model';
 import { Reservas } from './../../models/reservas/reservas.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservasService } from 'src/app/services/reservas/reservas.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
 import { CarrosService } from 'src/app/services/carros/carros.service';
 import { DialogExcluirComponent } from '../view/dialog-excluir/dialog-excluir.component';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+import { DialogEditarCarroComponent } from '../view/dialog-editar-carro/dialog-editar-carro.component';
 
 @Component({
   selector: 'app-reservas',
@@ -36,7 +37,7 @@ export class ReservasComponent implements OnInit {
     private usuario: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
   ) { }
 
   ngOnInit(): void {
@@ -83,7 +84,6 @@ export class ReservasComponent implements OnInit {
     });
     this.nomeUsuario = this.checkStatus();
     this.idUsuario = this.usuario.obterUsuarioLogin().id;
-
   }
 
   checkStatus() {

@@ -27,6 +27,7 @@ export class CarrosComponent implements OnInit {
   tiposCarros: TipoCarros[];
   id: number = 0;
   nomeUsuario: Boolean
+  storage: Storage
 
 
   constructor(
@@ -36,7 +37,10 @@ export class CarrosComponent implements OnInit {
     private loadingService: LoadingService,
     private usuario: UsuariosService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog) {
+    this.storage = window.localStorage;
+  }
+
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -94,8 +98,9 @@ export class CarrosComponent implements OnInit {
     this.nomeUsuario = this.checkStatus();
 
   }
+
   checkStatus() {
-    if (this.usuario.obterUsuarioLogin().email === 'paulo@email.com') {
+    if (JSON.parse(this.storage.getItem('key') || '{}') === 'paulo@email.com') {
       return true
     } else return false
   }

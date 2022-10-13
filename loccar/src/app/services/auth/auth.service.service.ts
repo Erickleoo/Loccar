@@ -15,7 +15,7 @@ export class AuthService {
   logout() {
     this.fireauth.signOut().then(() => {
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     }, err => {
       alert(err.menssage);
     })
@@ -26,7 +26,7 @@ export class AuthService {
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
 
-      this.router.navigate(['/perfil']);
+      this.router.navigate(['/cadastro']);
       localStorage.setItem('token', JSON.stringify(res.user?.uid));
 
     }, err => {

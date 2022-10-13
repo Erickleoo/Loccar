@@ -8,6 +8,7 @@ import { CarrosService } from 'src/app/services/carros/carros.service';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
 import { DialogEditarCarroComponent } from '../dialog-editar-carro/dialog-editar-carro.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-carros',
@@ -19,11 +20,12 @@ export class ModalCarrosComponent implements OnInit {
   form!: FormGroup;
   locadoras: Locadoras[];
   tiposCarros: TipoCarros[];
-  carros:Carros[];
+  carros: Carros[];
 
   constructor(
     public formBuilder: FormBuilder,
     private carrosService: CarrosService,
+    private route: Router,
     private locadorasService: LocadorasService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogEditarCarroComponent>,
@@ -66,7 +68,6 @@ export class ModalCarrosComponent implements OnInit {
     this.carrosService.lerCarros().subscribe({
       next: (carros: Carros[]) => {
         this.carros = carros
-        console.log(this.carros);
       },
       error: () => {
         console.error("Erro ao ler as carros!");
@@ -81,5 +82,14 @@ export class ModalCarrosComponent implements OnInit {
     this.form.controls["portas"].setValue(this.data.portas);
     this.form.controls["numeroPessoas"].setValue(this.data.npessoas);
     this.form.controls["selectLocadora"].setValue(this.data.locadoraId)
+  }
+
+  reservar() {
+    this.dialogRef.close(true);
+    this.route.navigateByUrl("/reservas");
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

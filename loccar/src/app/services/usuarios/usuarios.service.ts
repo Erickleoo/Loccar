@@ -47,12 +47,13 @@ export class UsuariosService {
     return this.usuarios;
   }
 
+
   pegarUsuarioPeloId(id: number): Observable<Usuarios> {
     return this.httpCliente.get<Usuarios>(`${this.url}/${id}`);
   }
 
   salvarLocalStorage(data: Usuarios) {
-    localStorage.setItem(data.id.toString(), JSON.stringify(data.id))
+    localStorage.setItem('key', JSON.stringify(data.email))
   }
 
   // ajustar a função do get localStorage
