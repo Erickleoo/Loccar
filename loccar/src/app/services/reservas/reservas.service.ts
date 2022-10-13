@@ -31,7 +31,7 @@ export class ReservasService {
     return this.httpClient.delete<Reservas>(`${this.url}/${id}`);
   }
 
-  pegarReservasPeloID(id: number):Observable<Reservas> {
+  pegarReservasPeloID(id: number): Observable<Reservas> {
     return this.httpClient.get<Reservas>(`${this.url}/${id}`);
   }
 

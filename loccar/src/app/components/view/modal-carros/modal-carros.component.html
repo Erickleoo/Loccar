@@ -3,21 +3,27 @@
   <img mat-card-image src="../../assets/img-teste/car1.png" alt="car1">
   <mat-card-content >
     <div class="titulo" >
-      <h2 mat-dialog-title formControlName="nomeCarro" ><b>{{carros}}</b></h2>
+      <h2 mat-dialog-title formControlName="nomeCarro" appearance="fill"><b>{{this.data.nome}}</b></h2>
     </div>
     <div class="mat-typography">
       <div class="tag">
-        <div class="tags" >
-          <h3 formControlName="portas">{{carros}}</h3>
+        <div class="tags">
+          <h3 formControlName="portas" required appearance="fill">{{this.data.portas}} Portas</h3>
         </div>
         <div class="tags">
-          <h3>Airbag</h3>
+          <h3 formControlName="airbag" required appearance="fill">Airbag</h3>
         </div>
         <div class="tags">
-          <h3 formControlName="numeroPessoas">{{carros}}</h3>
+          <h3 formControlName="numeroPessoas" required appearance="fill">{{this.data.npessoas}} pessoas</h3>
         </div>
         <div class="tags">
-          <h3 formControlName="selectLocadora">{{carros}}</h3>
+          <mat-form-field appearance="fill" class="input-width-100">
+            <mat-label>Locadora</mat-label>
+            <mat-select formControlName="selectLocadora" required>
+              <mat-option *ngFor="let locadora of locadoras" [value]="locadora.id">{{locadora.nome}}</mat-option>
+            </mat-select>
+          <!-- <h3 formControlName="selectLocadora" *ngFor="let locadora of locadoras" required>{{locadora.nome}}</h3> -->
+          </mat-form-field>
         </div>
       </div>
     </div>
@@ -27,3 +33,46 @@
   </mat-card-content>
 </mat-card>
 </form>
+
+<!-- <form [formGroup]="form" class="form-style form-flex">
+  <div>
+    <mat-form-field class="titulo" appearance="fill">
+      <mat-label>Nome do Carro</mat-label>
+      <input type="text" formControlName="nomeCarro" matInput />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="mat-typography" appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="listaTipo" required>
+      <mat-option *ngFor="let tipo of tiposCarros" [value]="tipo.id">{{
+        tipo.nome
+        }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="inputs-flex">
+    <mat-form-field class="input-width-50" appearance="fill">
+      <mat-label>Portas:</mat-label>
+      <input type="number" formControlName="portas" required matInput />
+    </mat-form-field>
+    <mat-form-field class="input-width-50" appearance="fill">
+      <mat-label>Nº de Pessoas:</mat-label>
+      <input type="number" type="number" formControlName="numeroPessoas" required matInput />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" class="input-width-100">
+      <mat-label>Locadora</mat-label>
+      <mat-select formControlName="selectLocadora" required>
+        <mat-option *ngFor="let locadora of locadoras" [value]="locadora.id">{{
+          locadora.nome
+          }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="dialog-button-flex">
+      <button mat-button class="btn-salvar-alteracao">Reservar</button>
+    </div>
+
+  </div>
+</form> -->

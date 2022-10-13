@@ -15,12 +15,12 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
   usuarios: Usuarios[];
-  id: number ;
+  id: number;
   senha: any = ''
   foto: any = ''
   error = "Este campo é obrigatório";
   nomeUsuario: Boolean
-  idUsuario:number
+  idUsuario: number
 
 
   constructor(
@@ -50,11 +50,10 @@ export class PerfilComponent implements OnInit {
     this.nomeUsuario = this.checkStatus();
 
 
-  if(this.checkStatus()===false){
-    this.dadosUsuarioNaoAdimn()
-  }
-  this.idUsuario=this.usuariosService.obterUsuarioLogin().id
-  console.log(this.idUsuario);
+    if (this.checkStatus() === false) {
+      this.dadosUsuarioNaoAdimn()
+    }
+    this.idUsuario = this.usuariosService.obterUsuarioLogin().id
 
 
   }
@@ -67,26 +66,6 @@ export class PerfilComponent implements OnInit {
     this.form.controls['email'].setValue(usuario.email);
     this.form.controls['telefone'].setValue(usuario.telefone);
     window.scroll(0, 0)
-  }
-
-  atualizarUsuario() {
-    const id = this.id;
-    const nome = this.form.controls['nome'].value;
-    const email = this.form.controls['email'].value;
-    const telefone = this.form.controls['telefone'].value;
-    const senha = this.senha;
-    const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone };
-    this.usuariosService.updateUsuario(usuario).subscribe({
-      next: () => {
-        this.id = 0;
-        this.ngOnInit();
-        this.alertaSnackBar("atualizado");
-      },
-      error: () => {
-        console.error("Você não conseguiu fazer a alteração.");
-        this.alertaSnackBar("falha");
-      }
-    })
   }
 
   removerUsuario(id: number): void {
@@ -131,40 +110,45 @@ export class PerfilComponent implements OnInit {
       return true
     } else return false
   }
-  pegarDados(){
+
+  pegarDados() {
     this.usuariosService.obterUsuarioLogin()
 
-}
-dadosUsuarioNaoAdimn(){
-    let nome =this.usuariosService.obterUsuarioLogin().nome
-    let email=this.usuariosService.obterUsuarioLogin().email
-    let telefone=this.usuariosService.obterUsuarioLogin().telefone
-    let id =this.usuariosService.obterUsuarioLogin().id
-    let senha = this.usuariosService.obterUsuarioLogin().senha
-
-    this.form.controls['nome'].setValue(nome);
-    this.form.controls['email'].setValue(email);
-    this.form.controls['telefone'].setValue(telefone);
   }
-atualizarDados(){
 
-  let id =this.usuariosService.obterUsuarioLogin().id
-  let senha = this.usuariosService.obterUsuarioLogin().senha
-  const nome = this.form.controls['nome'].value;
-  const email = this.form.controls['email'].value;
-  const telefone = this.form.controls['telefone'].value;
-  const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone };
-  this.usuariosService.updateUsuario(usuario).subscribe({
-    next: () => {
-      this.ngOnInit();
-      this.alertaSnackBar("atualizado");
-    },
-    error: () => {
-      console.error("Você não conseguiu fazer a alteração.");
-      this.alertaSnackBar("falha");
-    }
-  })
+  dadosUsuarioNaoAdimn() {
+    let id = this.usuariosService.obterUsuarioLogin().id
 
-}
+    this.usuariosService.pegarUsuarioPeloId(id).subscribe({
+      next: (usuario) => {
+        this.form.controls['nome'].setValue(usuario.nome);
+        this.form.controls['email'].setValue(usuario.email);
+        this.form.controls['telefone'].setValue(usuario.telefone);
+      },
+      error: () => {
+        console.error("Erro ao pegar usuário!");
+      }
+    })
+  }
+
+  atualizarDados() {
+    let id = this.usuariosService.obterUsuarioLogin().id
+    let senha = this.usuariosService.obterUsuarioLogin().senha
+    const nome = this.form.controls['nome'].value;
+    const email = this.form.controls['email'].value;
+    const telefone = this.form.controls['telefone'].value;
+    const usuario: Usuarios = { id: id, nome: nome, senha: senha, email: email, telefone: telefone };
+    this.usuariosService.updateUsuario(usuario).subscribe({
+      next: () => {
+        this.ngOnInit();
+        this.alertaSnackBar("atualizado");
+      },
+      error: () => {
+        console.error("Você não conseguiu fazer a alteração.");
+        this.alertaSnackBar("falha");
+      }
+    })
+
+  }
 
 }

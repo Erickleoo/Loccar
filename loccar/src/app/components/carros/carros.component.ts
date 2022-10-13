@@ -150,7 +150,7 @@ openDialogDetalhes(element:Carros): void {
   let exitAnimationDuration='500ms';
 
   const dialogRef = this.dialog.open(ModalCarrosComponent, {
-    width: '30%',
+    width: '40%',
     enterAnimationDuration,
     exitAnimationDuration,
     data:element

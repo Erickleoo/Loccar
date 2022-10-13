@@ -38,6 +38,18 @@ form {
   font-size: 24px;
 }
 
+.button-style-google {
+  width: 250px;
+  height: 70px;
+  background: #FFF;
+  color: #DB1812;
+  border: 2px solid #DB1812;
+  border-radius: 5px;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
 .input {
   width: 670px;
   height: 70px;

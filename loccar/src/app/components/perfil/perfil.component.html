@@ -8,7 +8,7 @@
         <mat-card-title class="text-style margin-top-title">Perfil</mat-card-title>
       </div>
 
-      <form class="form-style form-flex" [formGroup]="form" (submit)="atualizarUsuario()">
+      <form class="form-style form-flex" [formGroup]="form">
         <div>
           <mat-form-field class="input-width-100" appearance="fill">
             <mat-label>Nome</mat-label>
@@ -36,9 +36,11 @@
           </mat-form-field>
 
           <div class="container-button buttons-flex">
-            <button mat-button class="button-style" type="submit" [disabled]="!form.valid" (click)="atualizarDados()">Atualizar</button>
+            <button mat-button class="button-style" type="submit" [disabled]="!form.valid"
+              (click)="atualizarDados()">Atualizar</button>
             <ng-container *ngIf="nomeUsuario===false">
-              <button mat-raised-button class="button-card-style" (click)="removerUsuario(idUsuario)">Excluir Cadastro</button>
+              <button mat-raised-button class="button-card-style" (click)="removerUsuario(idUsuario)">Excluir
+                Cadastro</button>
             </ng-container>
           </div>
 

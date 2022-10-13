@@ -7,6 +7,7 @@ import { TipoCarros } from 'src/app/models/tipoCarros/tipo-carros.model';
 import { CarrosService } from 'src/app/services/carros/carros.service';
 import { LocadorasService } from 'src/app/services/locadoras/locadoras.service';
 import { DialogEditarCarroComponent } from '../dialog-editar-carro/dialog-editar-carro.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-carros',
@@ -14,30 +15,34 @@ import { DialogEditarCarroComponent } from '../dialog-editar-carro/dialog-editar
   styleUrls: ['./modal-carros.component.css']
 })
 export class ModalCarrosComponent implements OnInit {
-  form: FormGroup;
+
+  form!: FormGroup;
   locadoras: Locadoras[];
   tiposCarros: TipoCarros[];
   carros:Carros[];
+
   constructor(
     public formBuilder: FormBuilder,
     private carrosService: CarrosService,
     private locadorasService: LocadorasService,
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogEditarCarroComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Carros,
   ) { }
 
   ngOnInit(): void {
 
+    //Valida se os campos estão selecionados ok
     this.form = this.formBuilder.group({
-
       carroID: new FormControl(''),
       nomeCarro: new FormControl('', [Validators.required]),
       listaTipo: new FormControl('', [Validators.required]),
       portas: new FormControl('', [Validators.required]),
       numeroPessoas: new FormControl('', [Validators.required]),
       selectLocadora: new FormControl('', [Validators.required]),
-
     });
+
+    //ok
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadoras: Locadoras[]) => {
         this.locadoras = locadoras;
@@ -47,6 +52,7 @@ export class ModalCarrosComponent implements OnInit {
       }
     });
 
+    //ok
     this.carrosService.lerTipos().subscribe({
       next: (tiposCarros: TipoCarros[]) => {
         this.tiposCarros = tiposCarros;
@@ -56,11 +62,11 @@ export class ModalCarrosComponent implements OnInit {
       }
     });
 
+    //ok
     this.carrosService.lerCarros().subscribe({
       next: (carros: Carros[]) => {
-        this.carros=carros
+        this.carros = carros
         console.log(this.carros);
-
       },
       error: () => {
         console.error("Erro ao ler as carros!");
@@ -76,5 +82,4 @@ export class ModalCarrosComponent implements OnInit {
     this.form.controls["numeroPessoas"].setValue(this.data.npessoas);
     this.form.controls["selectLocadora"].setValue(this.data.locadoraId)
   }
-
 }
