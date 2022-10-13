@@ -34,6 +34,7 @@ export class CadastroComponent implements OnInit {
       confirmacaoSenha: new FormControl('', [Validators.required])
     });
 
+    // Ler os usuários no DB e salvar na array "Usuarios"
     this.usuarioService.lerUsuarios().subscribe({
       next: (usuarios: Usuarios[]) => {
         this.usuarios = usuarios;
@@ -45,9 +46,16 @@ export class CadastroComponent implements OnInit {
     })
   }
 
+  // função de cadastro
   cadastrarUsuario() {
+
+    // Spinner durante o carregamento
     this.loadingService.showLoading();
+
+    // gera um id novo baseado no id mais alto do DB
     const id = (this.usuarios[(this.usuarios.length) - 1].id) + 1;
+
+    // cria um novo usuario com os valores dos inputs
     const nome = this.form.controls["nome"].value;
     const email = this.form.controls["email"].value;
     const telefone = this.form.controls["tel"].value;
@@ -68,6 +76,7 @@ export class CadastroComponent implements OnInit {
     })
   }
 
+  // função de alerta
   alertaDados(tipoExecucao: string) {
     switch (tipoExecucao) {
       case "sucesso":

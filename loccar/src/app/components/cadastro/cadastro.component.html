@@ -4,6 +4,7 @@
     <mat-card-title>
       <h1 class="titulo">Cadastrar</h1>
     </mat-card-title>
+    <!-- Início do formulário -->
     <form [formGroup]="form" (ngSubmit)="cadastrarUsuario()">
 
       <mat-form-field appearance="fill" class="input">
@@ -21,6 +22,7 @@
       <mat-form-field appearance="fill" class="input">
         <mat-label>E-mail</mat-label>
         <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email" required>
+        <!-- Validação do email -->
         <mat-error *ngIf="form.get('email')?.hasError('required') || form.get('email')?.hasError('email')">
           {{validaEmail()}}
         </mat-error>
@@ -36,10 +38,11 @@
         <mat-label>Confirmar Senha</mat-label>
         <input type="password" formControlName="confirmacaoSenha" name="confirmacaoSenha" matInput
           (keyup)="validaSenhas()" required>
+          <!-- Validação da senha -->
         <mat-error *ngIf="form.get('confirmacaoSenha')?.hasError('camposDivergentes')">{{validaSenhas()}}>{{error}}
         </mat-error>
       </mat-form-field>
-
+      <!-- Botão desabilitado enquanto não validar os campos -->
       <button type="submit" mat-raised-button color="warn" class="botaoCadastrar"
         [disabled]="!form.valid">Cadastrar</button>
     </form>
@@ -49,6 +52,7 @@
   </mat-card>
 </main>
 
+<!-- Spinner durante o carregamento -->
 <div class="spinner" *ngIf="loading | async">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>

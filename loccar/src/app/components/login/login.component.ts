@@ -32,12 +32,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Spinner durante o carregamento
     this.loadingService.showLoading();
     this.form = this.formBuilder.group({
       email: new FormControl('', [Validators.required]),
       senha: new FormControl('', [Validators.required])
     });
 
+    // Ler os usuários no DB e salvar na array "Usuarios"
     this.usuariosService.lerUsuarios().subscribe({
       next: (usuarios: Usuarios[]) => {
         this.usuarios = usuarios;
@@ -50,7 +52,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Realiza o login caso passe por todas as validações
   realizarLogin() {
+
     let usuario = this.validarUsuario();
 
     if (!usuario) {
@@ -58,11 +62,10 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.validarSenha(usuario);
-
     }
   }
 
-
+  // Procura se o email digitado está nos usuarios
   validarUsuario(): any {
     for (let usuario of this.usuarios) {
       if (usuario.email === this.form.controls["email"].value) return usuario
@@ -70,10 +73,17 @@ export class LoginComponent implements OnInit {
     return null
   }
 
+  // Validação de senha
   validarSenha(usuario: Usuarios) {
     if (usuario.senha === this.form.controls["senha"].value) {
+
+      // alerta de sucesso
       this.alertaSnackBar("loginSucesso");
+
+      // direciona para pagina "perfil"
       this.route.navigateByUrl("/perfil");
+
+      // registra o usuário que efetuou o login e diferencia o ADM
       this.usuariosService.salvarUsuarioLogin(usuario)
       this.usuariosService.salvarLocalStorage(usuario);
       this.usuariosService.consultarLocalStorage('key');
@@ -85,6 +95,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // função de alerta
   alertaSnackBar(tipoAlerta: string) {
     switch (tipoAlerta) {
       case "sistemaindisponivel":
@@ -107,6 +118,8 @@ export class LoginComponent implements OnInit {
         break;
     }
   }
+
+  // logar com a conta google
   signInWithGoogle() {
     this.auth.googleSignIn();
   }

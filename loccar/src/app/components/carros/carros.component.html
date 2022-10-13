@@ -2,6 +2,7 @@
 
 <main>
 
+  <!-- formulário só aparece para o ADM -->
   <ng-container *ngIf="nomeUsuario===true">
     <section class="container">
 
@@ -10,6 +11,7 @@
         <div>
           <mat-card-title class="text-style margin-top-title">Carros</mat-card-title>
         </div>
+        <!-- Início do formulário -->
         <form [formGroup]="form" (ngSubmit)="cadastrarCarros()" class="form-style form-flex">
           <div>
             <mat-form-field class="input-width-100" appearance="fill">
@@ -22,6 +24,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Tipo</mat-label>
             <mat-select formControlName="listaTipo" required>
+              <!-- Gera as opções no select baseado nos tipos de carros no DB -->
               <mat-option *ngFor="let tipo of tiposCarros" [value]="tipo">{{
                 tipo.nome
                 }}</mat-option>
@@ -45,6 +48,7 @@
             <mat-form-field appearance="fill" class="input-width-60">
               <mat-label>Locadora</mat-label>
               <mat-select formControlName="selectLocadora" required>
+                <!-- Gera as opções no select baseado nas locadoras no DB -->
                 <mat-option *ngFor="let locadora of locadoras" [value]="locadora">{{
                   locadora.nome
                   }}</mat-option>
@@ -58,12 +62,14 @@
     </section>
   </ng-container>
 
+  <!-- Gera uma sessão para cada tipo de carro no DB -->
   <div *ngFor="let tipo of  tiposCarros">
     <mat-card-title class="container padding toUppercase">{{tipo.nome}}</mat-card-title>
     <hr class="container hr">
 
     <section class="container padding container-horizontal">
 
+      <!-- Preenche as sessões com cards de seus respectivos carros -->
       <ng-container *ngFor="let carro of carros,let i = index">
         <div *ngIf="carro.tipoCarroId == tipo.id">
 
@@ -78,9 +84,11 @@
             </div>
 
             <mat-card-actions class="container-button">
+              <!-- Caso não seja ADM, terá a opção de ver detalhes -->
               <ng-container *ngIf="nomeUsuario===false">
                 <button mat-button class="btn-cadastrar" (click)="openDialogDetalhes(carro)">Detalhes</button>
               </ng-container>
+              <!-- Caso seja ADM, poderá editar ou excluir os carros -->
               <ng-container *ngIf="nomeUsuario===true">
                 <button mat-button class="btn-cadastrar" (click)="openDialog(carro.id, '0ms', '0ms')">Editar</button>
                 <button mat-button class="btn-excluir" (click)="deletarCarro(carro.id)">Excluir</button>

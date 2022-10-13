@@ -1,7 +1,7 @@
 <header class="container header-margin-top">
 
   <div>
-
+    <!-- Funcionamento do header para todas as paginas menos "home", "cadastro" e "login" -->
     <ng-container *ngIf=" router.routerState.snapshot.url !=='/home' && router.routerState.snapshot.url
       !=='/cadastro' && router.routerState.snapshot.url !=='/login' ">
       <div>
@@ -10,6 +10,7 @@
           <li><a class="header-font-style" mat-button routerLink="../carros">Carros</a></li>
           <li><a class="header-font-style" mat-button routerLink="../reservas">Reservas</a></li>
           <li><img routerLink="../home" class="header-logo" src="../../../assets/img-teste/Group_1.png" /></li>
+          <!-- O link "locadora" aparecerá apenas para o ADM -->
           <ng-container *ngIf="nomeUsuario===true">
             <li><a class="header-font-style locadora-display-visible" mat-button routerLink="../locadora">Locadoras</a>
             </li>
@@ -25,6 +26,7 @@
 
 
     </ng-container>
+    <!-- Header terá apenas a imagem nas paginas "login" e "cadastro" -->
     <ng-container *ngIf="router.routerState.snapshot.url == '/cadastro' || router.routerState.snapshot.url == '/login'">
       <div class="display-flex-center">
         <img routerLink="../home" class="header-logo" src="../../../assets/img-teste/logo.png" />

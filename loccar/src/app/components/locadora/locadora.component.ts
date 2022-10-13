@@ -27,6 +27,8 @@ export class LocadoraComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    // Ler as locadoras no DB e salvar na array "Locadoras"
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadora: Locadoras[]) => {
         this.locadoras = locadora;
@@ -45,14 +47,15 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
-  editarLocadora(locadora: Locadoras){
-    this.id = locadora.id;
-    const EditLocadora = this.formLocadora.controls['locadora'].setValue(locadora.nome);
-    const EditEndereço = this.formLocadora.controls['endereço'].setValue(locadora.endereco);
-    const EditTel = this.formLocadora.controls['telefone'].setValue(locadora.telefone);
-    window.scroll(0,0)
-  }
+  // editarLocadora(locadora: Locadoras){
+  //   this.id = locadora.id;
+  //   const EditLocadora = this.formLocadora.controls['locadora'].setValue(locadora.nome);
+  //   const EditEndereço = this.formLocadora.controls['endereço'].setValue(locadora.endereco);
+  //   const EditTel = this.formLocadora.controls['telefone'].setValue(locadora.telefone);
+  //   window.scroll(0,0)
+  // }
 
+  // abre o dialog de confirmação para excluir
   excluirLocadora(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
@@ -60,6 +63,7 @@ export class LocadoraComponent implements OnInit {
       data: text
     });
 
+    // depois da confirmação, exclui a locadora pelo id
     dialogRef.afterClosed().subscribe(boolean =>{
       if (boolean) {
         this.locadorasService.excluirLocadora(id).subscribe({
@@ -76,6 +80,7 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
+  // atualiza os dados do usuario no DB com os valores colocados nos inputs
   updateLocadora(){
     const id = this.id;
     const locadora = this.formLocadora.controls['locadora'].value;
@@ -94,12 +99,18 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
+  // função de cadastro
   cadastrarLocadora(){
+
+    // caso o id seja maior que 0, utiliza a função "update" no lugar de "cadastro"
     if(this.id > 0){
       this.updateLocadora()
     }
     else{
+      // gera um id novo baseado no id mais alto do DB
       const id = (this.locadoras[(this.locadoras.length) - 1].id) + 1;
+
+      // cria um novo carro com os valores dos inputs
       const locadora = this.formLocadora.controls['locadora'].value;
       const endereço = this.formLocadora.controls['endereço'].value;
       const tel = this.formLocadora.controls['telefone'].value;
@@ -118,6 +129,7 @@ export class LocadoraComponent implements OnInit {
     }
   }
 
+  // função de alerta
   alertaSnackBar(tipoAlerta: string){
     switch (tipoAlerta){
       case "cadastrada":
@@ -147,6 +159,7 @@ export class LocadoraComponent implements OnInit {
     }
   }
 
+  // abre o dialog do botão "editar"
   openDialog (
     id: number,
     enterAnimationDuration: string,
@@ -167,6 +180,7 @@ export class LocadoraComponent implements OnInit {
           }
         });
 
+        // depois de confirmar, realiza as alterações
         dialogRef.afterClosed().subscribe((locadora) => {
           if (locadora) {
             this.locadorasService.editarLocadora(locadora).subscribe({

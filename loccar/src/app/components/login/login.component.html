@@ -4,20 +4,23 @@
     <mat-card-title>
       <h1 class="titulo">Login</h1>
     </mat-card-title>
+    <!-- Início do formulário -->
     <form [formGroup]="form" (ngSubmit)="realizarLogin()">
       <mat-form-field appearance="fill" class="input">
         <mat-label>Email</mat-label>
         <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email" required>
+        <!-- Validação do email -->
         <mat-error *ngIf="form.get('email')?.hasError('required')">{{ error }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill" class="input">
         <mat-label>Senha</mat-label>
         <input matInput type="password" formControlName="senha" name="senha" required>
+        <!-- Validação da senha -->
         <mat-error *ngIf="form.get('senha')?.hasError('required')">{{ error }}</mat-error>
       </mat-form-field>
       <div class="divButton">
+        <!-- Botão desabilitado enquanto não validar os campos -->
         <button mat-raised-button color="warn" class="botaoLogin" type="submit" [disabled]="!form.valid">Login</button>
-        <!-- <button mat-raised-button color="warn" class="botaoLogin">Login</button> -->
         <div class="row mt-2">
           <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
             <div class="card shadow text-center">
@@ -33,12 +36,13 @@
       </div>
     </form>
     <div class="links">
-      <a mat-button routerLink=",,/home">Esqueci a Senha</a>
+      <a mat-button routerLink="../home">Esqueci a Senha</a>
       <a mat-button routerLink="../cadastro">Não tenho Conta</a>
     </div>
   </mat-card>
 </main>
 
+<!-- Spinner durante o carregamento -->
 <div class="spinner" *ngIf="loading | async">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>

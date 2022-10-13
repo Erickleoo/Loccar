@@ -54,15 +54,7 @@ export class CarrosComponent implements OnInit {
 
     });
 
-    this.carrosService.lerCarros().subscribe({
-      next: (carros: Carros[]) => {
-        this.carros = carros;
-      },
-      error: () => {
-        console.error("Erro ao ler as carros!");
-        this.alertaSnackBar("falha");
-      }
-    });
+    // Lê os carros, tipos de carros e as locadoras no DB e salvar nas arryas respectivas
 
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadoras: Locadoras[]) => {
@@ -92,21 +84,27 @@ export class CarrosComponent implements OnInit {
         console.error("Erro ao ler as carros!");
         this.alertaSnackBar("falha");
       }
-
     });
 
+    // Verificar se o usuario é o ADM
     this.nomeUsuario = this.checkStatus();
 
   }
 
+  // função para saber se é o ADM
   checkStatus() {
     if (JSON.parse(this.storage.getItem('key') || '{}') === 'paulo@email.com') {
       return true
     } else return false
   }
 
+  // função de cadastro
   cadastrarCarros() {
+    
+    // gera um id novo baseado no id mais alto do DB
     const id = (this.carros[(this.carros.length) - 1].id) + 1;
+
+    // cria um novo carro com os valores dos inputs
     const nomeCarro = this.form.controls["nomeCarro"].value;
     const listaTipo = this.form.controls["listaTipo"].value.id;
     const portas = this.form.controls["portas"].value;
@@ -126,6 +124,7 @@ export class CarrosComponent implements OnInit {
     });
   }
 
+  // abre o dialog de confirmação para excluir
   deletarCarro(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
@@ -133,6 +132,7 @@ export class CarrosComponent implements OnInit {
       data: text
     });
 
+    // depois da confirmação, exclui o carro pelo id
     dialogRef.afterClosed().subscribe(boolean => {
       if (boolean) {
         this.loadingService.showLoading();
@@ -150,6 +150,7 @@ export class CarrosComponent implements OnInit {
     })
   }
 
+  // abre o dialog do botão "detalhes"
   openDialogDetalhes(element: Carros): void {
     let enterAnimationDuration = '500ms';
     let exitAnimationDuration = '500ms';
@@ -163,7 +164,7 @@ export class CarrosComponent implements OnInit {
     dialogRef.afterClosed()
   }
 
-  //função para enviar os dados para o dialog que abre no botão editar
+  // abre o dialog do botão "editar"
   openDialog(
     id: number,
     enterAnimationDuration: string,
@@ -189,6 +190,7 @@ export class CarrosComponent implements OnInit {
 
         });
 
+        // depois de confirmar, realiza as alterações
         dialogRef.afterClosed().subscribe((carros) => {
           if (carros) {
             this.carrosService.atualizarCarros(carros).subscribe({
@@ -209,6 +211,7 @@ export class CarrosComponent implements OnInit {
     });
   }
 
+  // função de alerta
   alertaSnackBar(tipoAlerta: string) {
     switch (tipoAlerta) {
       case "cadastrado":

@@ -50,6 +50,7 @@ export class ReservasComponent implements OnInit {
       filial: new FormControl('', [Validators.required]),
     });
 
+    // Lê os carros, as locadoras e reservas no DB e salvar nas arryas respectivas
     this.reservasService.lerReservas().subscribe({
       next: (reservas: Reservas[]) => {
         this.reservas = reservas;
@@ -82,16 +83,22 @@ export class ReservasComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     });
+
+    // Verificar se o usuario é o ADM
     this.nomeUsuario = this.checkStatus();
+
+    // função para registar qual usuario realizou o login
     this.idUsuario = this.usuario.obterUsuarioLogin().id;
   }
 
+  // função para saber se é o ADM
   checkStatus() {
     if (this.usuario.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
     } else return false
   }
 
+  // atualiza os dados de reservas no DB com os valores colocados nos inputs
   atualizarReserva() {
     const id = this.reservas[this.id].id;
     console.log(id)
@@ -116,8 +123,13 @@ export class ReservasComponent implements OnInit {
     })
   }
 
+  // função de cadastro
   cadastrarReservas() {
+
+    // gera um id novo baseado no id mais alto do DB
     const id = (this.reservas[(this.reservas.length) - 1].id) + 1;
+
+    // cria um novo carro com os valores dos inputs
     const data = this.form.controls["data"].value;
     const horario = this.form.controls["horario"].value;
     const dataEntrega = this.form.controls["dataEntrega"].value;
@@ -137,6 +149,7 @@ export class ReservasComponent implements OnInit {
     });
   }
 
+  // Pega os valores de carros no DB
   listarLocadoraCarro(carroId: any) {
     this.carrosService.pegarCarrosPeloID(carroId).subscribe({
       next: (carros) => {
@@ -149,8 +162,7 @@ export class ReservasComponent implements OnInit {
     })
   }
 
-
-
+  // Pega os valores da reserva e coloca nos inputs
   selecionarReserva(carros: Reservas) {
     this.form.controls["carroId"].setValue(carros.carroId)
     this.form.controls["data"].setValue(carros.data);
@@ -162,6 +174,7 @@ export class ReservasComponent implements OnInit {
     console.log(carros)
   }
 
+  // Abre o dialog de confirmação para excluir
   deletarReserva(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
@@ -169,6 +182,7 @@ export class ReservasComponent implements OnInit {
       data: text
     });
 
+    // Depois de confirmar, exclui a reserva pelo id
     dialogRef.afterClosed().subscribe(boolean => {
       if (boolean) {
         this.loadingService.showLoading();
@@ -186,6 +200,7 @@ export class ReservasComponent implements OnInit {
     })
   }
 
+  // função de alerta
   alertaSnackBar(tipoAlerta: string) {
     switch (tipoAlerta) {
       case "cadastrado":

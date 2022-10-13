@@ -7,12 +7,14 @@
         <mat-card-title class="text-style margin-top-title">Reservas</mat-card-title>
       </div>
 
+      <!-- Início do formulário -->
       <form [formGroup]="form" class="form-style form-flex">
         <div>
           <mat-form-field appearance="fill" class="input-width-100">
             <mat-label>Carro</mat-label>
             <mat-select formControlName="carroId">
               <mat-option>None</mat-option>
+              <!-- Preenche o select com os carros salvos no DB -->
               <mat-option *ngFor="let carro of carros" [value]="carro.id">{{carro.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
@@ -42,14 +44,17 @@
             <mat-label>Locadora</mat-label>
             <mat-select formControlName="filial">
               <mat-option>None</mat-option>
+              <!-- Preenche o select com as locadoras salvas no DB -->
               <mat-option *ngFor="let locadora of locadoras" [value]="locadora.id">{{locadora.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
+          <!-- Caso não seja ADM, habilita o botão para fazer uma reserva -->
           <ng-container *ngIf="nomeUsuario===false">
             <button mat-button type="submit" [disabled]="!form.valid" (click)="cadastrarReservas()"
               class="button-style">Reservar</button>
           </ng-container>
+          <!-- Caso seja ADM, habilita o botão para editar as reservas -->
           <ng-container *ngIf="nomeUsuario===true">
             <button mat-button type="submit" [disabled]="!form.valid" (click)="atualizarReserva()"
               class="button-style">Atualizar</button>
@@ -66,6 +71,7 @@
       <div class="line"></div>
     </div>
 
+    <!-- Para o ADM aparecem todas as reservas, para o usuário apenas as que ele fez -->
     <div class="cards-margin-top card-flex-gap" *ngFor="let reserva of reservas">
       <ng-container *ngIf="nomeUsuario === true || reserva.usuarioId === idUsuario">
         <mat-card class="width border-card-style card-flex">
@@ -77,6 +83,7 @@
               </div>
               <div class="title-subtitle-flex margin-top margin-bottom">
                 <div class="title-card">
+                  <!-- Cria cards para cada reserva cadastrada -->
                   <ng-container *ngFor="let carro of carros">
                     <mat-card-title class="card-title-style" *ngIf="carro.id
                  == reserva.carroId">{{carro.nome}}</mat-card-title>

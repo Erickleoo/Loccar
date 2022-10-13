@@ -16,13 +16,9 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
   usuarios: Usuarios[];
-  id: number;
-  senha: any = ''
-  foto: any = ''
   error = "Este campo é obrigatório";
   nomeUsuario: Boolean
   idUsuario: number
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +35,7 @@ export class PerfilComponent implements OnInit {
       telefone: new FormControl('', [Validators.required])
     })
 
+    // Ler os usuários no DB e salvar na array "Usuarios"
     this.usuariosService.lerUsuarios().subscribe({
       next: (usuario: Usuarios[]) => {
         this.usuarios = usuario
@@ -49,6 +46,8 @@ export class PerfilComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     })
+
+    // Verificar se o usuario é o ADM
     this.nomeUsuario = this.checkStatus();
 
 
@@ -60,9 +59,8 @@ export class PerfilComponent implements OnInit {
 
   }
 
+  // Pega os valores do card e coloca nos inputs
   selecionarUsuario(usuario: Usuarios) {
-    this.id = usuario.id;
-    this.senha = usuario.senha
 
     this.form.controls['nome'].setValue(usuario.nome);
     this.form.controls['email'].setValue(usuario.email);
@@ -70,6 +68,7 @@ export class PerfilComponent implements OnInit {
     window.scroll(0, 0)
   }
 
+  // Abre o dialog de confirmação para excluir
   removerUsuario(id: number): void {
     let text;
     const dialogRef = this.dialog.open(DialogExcluirComponent, {
@@ -77,6 +76,7 @@ export class PerfilComponent implements OnInit {
       data: text
     });
 
+    // Depois de confirmar, exclui o usuário pelo id
     dialogRef.afterClosed().subscribe(boolean => {
       if (boolean) {
         this.usuariosService.deletarUsuario(id).subscribe({
@@ -93,6 +93,7 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  // função de alerta
   alertaSnackBar(tipoAlerta: string) {
     switch (tipoAlerta) {
       case "deletado":
@@ -107,17 +108,20 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  // função para saber se é o ADM
   checkStatus() {
     if (this.usuariosService.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
     } else return false
   }
 
+  // função para registar qual usuario realizou o login
   pegarDados() {
     this.usuariosService.obterUsuarioLogin()
 
   }
 
+  // Pega os valores dos dados do usuário caso não seja ADM
   dadosUsuarioNaoAdimn() {
     let id = this.usuariosService.obterUsuarioLogin().id
 
@@ -133,6 +137,7 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  // atualiza os dados do usuario no DB com os valores colocados nos inputs
   atualizarDados() {
     let id = this.usuariosService.obterUsuarioLogin().id
     let senha = this.usuariosService.obterUsuarioLogin().senha

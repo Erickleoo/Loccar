@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
     // })
     this.nomeUsuario = this.checkStatus();
   }
+
+  // Validação para saber se é o ADM logado
   checkStatus() {
     if (JSON.parse(this.storage.getItem('key') || '{}') === 'paulo@email.com') {
       return true
@@ -42,6 +44,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Função para deslogar
   sair() {
     this.auth.logout();
   }

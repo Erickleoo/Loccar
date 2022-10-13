@@ -7,7 +7,7 @@
       <div>
         <mat-card-title class="text-style margin-top-title">Perfil</mat-card-title>
       </div>
-
+      <!-- Início do formulário -->
       <form class="form-style form-flex" [formGroup]="form">
         <div>
           <mat-form-field class="input-width-100" appearance="fill">
@@ -36,8 +36,10 @@
           </mat-form-field>
 
           <div class="container-button buttons-flex">
+            <!-- Botão desabilitado enquanto não validar os campos -->
             <button mat-button class="button-style" type="submit" [disabled]="!form.valid"
               (click)="atualizarDados()">Atualizar</button>
+            <!-- Caso não seja ADM, terá um botão extra para excluir o usuário -->
             <ng-container *ngIf="nomeUsuario===false">
               <button mat-raised-button class="button-card-style" (click)="removerUsuario(idUsuario)">Excluir
                 Cadastro</button>
@@ -49,6 +51,7 @@
     </mat-card>
   </section>
 
+  <!-- Cards vistos somente pelo ADM -->
   <ng-container *ngIf="nomeUsuario===true">
     <section class="container">
       <div class="title second-section-margin">
@@ -56,7 +59,7 @@
         <div class="line"></div>
       </div>
 
-
+      <!-- Cria um card para cada usuário pegando seus dados no DB -->
       <div class="card-flex-gap card-margin-top" *ngFor="let usuario of usuarios">
         <mat-card class="width card-flex card-border-style">
           <div class="title-card">
