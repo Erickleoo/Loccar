@@ -19,3 +19,9 @@
   font-size: 1.5rem;
   font-weight: 400;
 }
+
+.display-flex-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 81px;
+}
