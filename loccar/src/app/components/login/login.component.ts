@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   error = 'Este campo é obrigatório';
   usuarios: Usuarios[];
   loading = this.loadingService.loading;
-
+  private storage: Storage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,8 +26,10 @@ export class LoginComponent implements OnInit {
     private snackBar: MatSnackBar,
     private loadingService: LoadingService,
     private route: Router,
-    private auth : AuthService
-  ) { }
+    private auth: AuthService,
+  ) {
+    this.storage = window.localStorage;
+  }
 
   ngOnInit(): void {
     this.loadingService.showLoading();
@@ -75,7 +77,8 @@ export class LoginComponent implements OnInit {
       this.usuariosService.salvarUsuarioLogin(usuario)
       this.usuariosService.salvarLocalStorage(usuario);
       this.usuariosService.consultarLocalStorage('2');
-
+      JSON.parse(this.storage.getItem('2') || '{}');
+      console.log(JSON.parse(this.storage.getItem('2') || '{}'))
     }
     else {
       this.alertaSnackBar("usuarioInexistente")
@@ -104,7 +107,7 @@ export class LoginComponent implements OnInit {
         break;
     }
   }
-  signInWithGoogle(){
+  signInWithGoogle() {
     this.auth.googleSignIn();
   }
 

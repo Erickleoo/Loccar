@@ -52,7 +52,7 @@ export class UsuariosService {
   }
 
   salvarLocalStorage(data: Usuarios) {
-    localStorage.setItem(data.id.toString(), JSON.stringify(data))
+    localStorage.setItem(data.id.toString(), JSON.stringify(data.id))
   }
 
   // ajustar a função do get localStorage
@@ -65,7 +65,8 @@ export class UsuariosService {
 
   consultarLocalStorage(key: string): any {
     if (this.storage) {
-      return JSON.parse(this.storage.getItem(key)||'{}');
+      console.log(key)
+      return JSON.parse(this.storage.getItem(key) || '{}');
     }
     return null;
   }
