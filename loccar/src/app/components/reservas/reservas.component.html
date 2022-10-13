@@ -13,7 +13,7 @@
             <mat-label>Carro</mat-label>
             <mat-select formControlName="carroId">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let carro of carros" [value]="carro">{{carro.nome}}</mat-option>
+              <mat-option *ngFor="let carro of carros" [value]="carro.id">{{carro.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>
@@ -42,7 +42,7 @@
             <mat-label>Locadora</mat-label>
             <mat-select formControlName="filial">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let locadora of locadoras" value="{{locadora.id}}">{{locadora.nome}}</mat-option>
+              <mat-option *ngFor="let locadora of locadoras" [value]="locadora.id">{{locadora.nome}}</mat-option>
             </mat-select>
             <mat-error>{{error}}</mat-error>
           </mat-form-field>

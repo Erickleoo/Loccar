@@ -101,8 +101,6 @@ export class ReservasComponent implements OnInit {
     const usuarioId = this.idUsuario;
     const carroId = this.form.controls["carroId"].value;
 
-
-
     const reserva: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
     console.log(reserva)
 
@@ -123,11 +121,9 @@ export class ReservasComponent implements OnInit {
     const data = this.form.controls["data"].value;
     const horario = this.form.controls["horario"].value;
     const dataEntrega = this.form.controls["dataEntrega"].value;
-    const usuarioId = 2;
-    // this.form.controls["usuarioId"].value;
-    const carroId = this.form.controls["carroId"].value.id;
+    const usuarioId = this.idUsuario;
+    const carroId = this.form.controls["carroId"].value;
     const reservas: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
-    // console.log(reservas);
 
     this.reservasService.salvarReservas(reservas).subscribe({
       next: () => {
@@ -156,6 +152,7 @@ export class ReservasComponent implements OnInit {
 
 
   selecionarReserva(carros: Reservas) {
+    this.form.controls["carroId"].setValue(carros.carroId)
     this.form.controls["data"].setValue(carros.data);
     this.form.controls["horario"].setValue(carros.horario);
     this.form.controls["dataEntrega"].setValue(carros.dataentrega);
