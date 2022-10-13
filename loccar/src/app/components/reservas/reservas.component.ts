@@ -25,15 +25,15 @@ export class ReservasComponent implements OnInit {
   carros: Carros[];
   id: number = 0;
   adm: boolean = true;
-  nomeUsuario:Boolean;
-  idUsuario:number
+  nomeUsuario: Boolean;
+  idUsuario: number
 
   constructor(
     private formBuilder: FormBuilder,
     private reservasService: ReservasService,
     private locadorasService: LocadorasService,
     private carrosService: CarrosService,
-    private usuario:UsuariosService,
+    private usuario: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private loadingService: LoadingService
@@ -81,25 +81,52 @@ export class ReservasComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     });
-    this.nomeUsuario=this.checkStatus();
-    this.idUsuario=this.usuario.obterUsuarioLogin().id
+    this.nomeUsuario = this.checkStatus();
+    this.idUsuario = this.usuario.obterUsuarioLogin().id;
 
   }
-  checkStatus(){
-    if(this.usuario.obterUsuarioLogin().email==='paulo@email.com'){
+
+  checkStatus() {
+    if (this.usuario.obterUsuarioLogin().email === 'paulo@email.com') {
       return true
-    }else return false
+    } else return false
   }
+
+  atualizarReserva() {
+    const id = this.idUsuario;
+    console.log(id)
+    const data = this.form.controls["data"].value;
+    const horario = this.form.controls["horario"].value;
+    const dataEntrega = this.form.controls["dataEntrega"].value
+    const usuarioId = this.idUsuario;
+    const carroId = this.form.controls["carroId"].value;
+
+
+    const reserva: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
+    console.log(reserva)
+
+    this.reservasService.atualizarReservas(reserva).subscribe({
+      next: () => {
+        this.ngOnInit();
+        this.alertaSnackBar("atualizado");
+      },
+      error: () => {
+        console.error("Erro ao atualizar reserva!");
+        this.alertaSnackBar("falha");
+      }
+    })
+  }
+
   cadastrarReservas() {
     const id = (this.reservas[(this.reservas.length) - 1].id) + 1;
     const data = this.form.controls["data"].value;
     const horario = this.form.controls["horario"].value;
     const dataEntrega = this.form.controls["dataEntrega"].value;
-    const usuarioId = 1;
+    const usuarioId = 2;
     // this.form.controls["usuarioId"].value;
     const carroId = this.form.controls["carroId"].value.id;
     const reservas: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
-// console.log(reservas);
+    // console.log(reservas);
 
     this.reservasService.salvarReservas(reservas).subscribe({
       next: () => {
@@ -111,6 +138,30 @@ export class ReservasComponent implements OnInit {
         this.alertaSnackBar("falha");
       }
     });
+  }
+
+  listarLocadoraCarro(carroId: any) {
+    this.carrosService.pegarCarrosPeloID(carroId).subscribe({
+      next: (carros) => {
+        this.form.controls["filial"].setValue(carros.nome)
+      },
+      error: () => {
+        console.error("Erro ao listar Locadoras!");
+        this.alertaSnackBar("falha");
+      }
+    })
+  }
+
+
+
+  selecionarReserva(carros: Reservas) {
+    this.form.controls["data"].setValue(carros.data);
+    this.form.controls["horario"].setValue(carros.horario);
+    this.form.controls["dataEntrega"].setValue(carros.dataentrega);
+    this.listarLocadoraCarro(carros.carroId);
+    window.scroll(0, 0)
+
+    console.log(carros)
   }
 
   deletarReserva(id: number): void {
@@ -141,6 +192,12 @@ export class ReservasComponent implements OnInit {
     switch (tipoAlerta) {
       case "cadastrado":
         this.snackBar.open("Reserva cadastrada com sucesso.", undefined, {
+          duration: 2000,
+          panelClass: ['snackbar-sucess']
+        });
+        break;
+      case "atualizado":
+        this.snackBar.open("Reserva atualizada com sucesso.", undefined, {
           duration: 2000,
           panelClass: ['snackbar-sucess']
         });
