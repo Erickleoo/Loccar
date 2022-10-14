@@ -33,7 +33,6 @@ export class CarrosService {
   }
 
   deletarCarros(id: number): Observable<Carros> {
-    console.log(`${this.url}/${id}`)
     return this.httpClient.delete<Carros>(`${this.url}/${id}`);
   }
 

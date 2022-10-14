@@ -104,7 +104,6 @@ export class ReservasComponent implements OnInit {
 
   atualizarReserva() {
     const id = this.reservas[this.id].id;
-    console.log(id)
     const data = this.form.controls["data"].value;
     const horario = this.form.controls["horario"].value;
     const dataEntrega = this.form.controls["dataEntrega"].value
@@ -112,7 +111,6 @@ export class ReservasComponent implements OnInit {
     const carroId = this.form.controls["carroId"].value;
 
     const reserva: Reservas = { id: id, data: data, horario: horario, dataentrega: dataEntrega, usuarioId: usuarioId, carroId: carroId };
-    console.log(reserva)
 
     this.reservasService.atualizarReservas(reserva).subscribe({
       next: () => {

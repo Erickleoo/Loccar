@@ -90,7 +90,6 @@ export class DialogEditarCarroComponent implements OnInit {
     this.data.npessoas = this.form.controls["numeroPessoas"].value,
       this.data.locadoraId = this.form.controls["selectLocadora"].value
     this.dialogRef.close(this.data);
-    console.log(this.data);
 
     this.form.reset();
   }

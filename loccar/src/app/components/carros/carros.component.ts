@@ -164,7 +164,6 @@ export class CarrosComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(ifTrue => {
       if (ifTrue) {
-        console.log(element.id)
         this.carrosService.salvarCarroSelecionadoId(element.id)
         this.router.navigate(["/reservas"])
       }
