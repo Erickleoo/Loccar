@@ -86,7 +86,6 @@ export class ModalCarrosComponent implements OnInit {
 
   reservar() {
     this.dialogRef.close(true);
-    this.route.navigateByUrl("/reservas");
   }
 
   onNoClick(): void {

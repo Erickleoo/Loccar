@@ -84,6 +84,19 @@ export class ReservasComponent implements OnInit {
     });
     this.nomeUsuario = this.checkStatus();
     this.idUsuario = this.usuario.obterUsuarioLogin().id;
+
+    this.carrosService.getCarroSelecionadoId().subscribe(id => {
+      if (id == 0) {
+      }
+      else {
+        this.carrosService.pegarCarrosPeloID(id).subscribe(carro => {
+          this.form.controls['carroId'].setValue(carro.id);
+          this.form.controls['filial'].setValue(carro.locadoraId);
+
+          this.carrosService.salvarCarroSelecionadoId(0);
+        })
+      }
+    })
   }
 
   checkStatus() {

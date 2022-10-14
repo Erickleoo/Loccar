@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UsuariosService } from './../../services/usuarios/usuarios.service';
 import { Carros } from './../../models/carros/carros.model';
 import { LocadorasService } from './../../services/locadoras/locadoras.service';
@@ -37,7 +38,9 @@ export class CarrosComponent implements OnInit {
     private loadingService: LoadingService,
     private usuario: UsuariosService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private router: Router
+  ) {
     this.storage = window.localStorage;
   }
 
@@ -160,7 +163,13 @@ export class CarrosComponent implements OnInit {
       exitAnimationDuration,
       data: element
     })
-    dialogRef.afterClosed()
+    dialogRef.afterClosed().subscribe(ifTrue => {
+      if (ifTrue) {
+        console.log(element.id)
+        this.carrosService.salvarCarroSelecionadoId(element.id)
+        this.router.navigate(["/reservas"])
+      }
+    })
   }
 
   //função para enviar os dados para o dialog que abre no botão editar
