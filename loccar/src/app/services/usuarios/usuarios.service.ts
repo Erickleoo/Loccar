@@ -56,17 +56,8 @@ export class UsuariosService {
     localStorage.setItem('key', JSON.stringify(data.email))
   }
 
-  // ajustar a função do get localStorage
-  // consultarLocalStorage(): Array<Usuarios> {
-  //   let usuarios :Usuarios[]=[]
-  //   for (let i=0;i<localStorage.length;i++){
-  //   usuarios.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-  //   }return usuarios
-  // }
-
   consultarLocalStorage(key: string): any {
     if (this.storage) {
-      console.log(key)
       return JSON.parse(this.storage.getItem(key) || '{}');
     }
     return null;

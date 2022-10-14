@@ -53,7 +53,6 @@ export class ReservasComponent implements OnInit {
     this.reservasService.lerReservas().subscribe({
       next: (reservas: Reservas[]) => {
         this.reservas = reservas;
-        // console.log(reservas)
       },
       error: () => {
         console.error("Erro ao ler as reservas!");
@@ -64,7 +63,6 @@ export class ReservasComponent implements OnInit {
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadoras: Locadoras[]) => {
         this.locadoras = locadoras;
-        // console.log(locadoras);
       },
       error: () => {
         console.error("Erro ao ler as locadoras!");
@@ -75,7 +73,6 @@ export class ReservasComponent implements OnInit {
     this.carrosService.lerCarros().subscribe({
       next: (carros: Carros[]) => {
         this.carros = carros;
-        // console.log(carros);
       },
       error: () => {
         console.error("Erro ao ler os carros!");
@@ -171,8 +168,6 @@ export class ReservasComponent implements OnInit {
     this.form.controls["dataEntrega"].setValue(carros.dataentrega);
     this.listarLocadoraCarro(carros.carroId);
     window.scroll(0, 0)
-
-    console.log(carros)
   }
 
   deletarReserva(id: number): void {

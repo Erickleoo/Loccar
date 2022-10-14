@@ -30,10 +30,9 @@ export class LocadoraComponent implements OnInit {
     this.locadorasService.lerLocadoras().subscribe({
       next: (locadora: Locadoras[]) => {
         this.locadoras = locadora;
-        console.log(locadora);
       },
       error: () => {
-        console.log("Erro ao ler a locadora.");
+        console.error("Erro ao ler a locadora.");
         this.alertaSnackBar("falha");
       }
     })
@@ -45,12 +44,12 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
-  editarLocadora(locadora: Locadoras){
+  editarLocadora(locadora: Locadoras) {
     this.id = locadora.id;
     const EditLocadora = this.formLocadora.controls['locadora'].setValue(locadora.nome);
     const EditEndereço = this.formLocadora.controls['endereço'].setValue(locadora.endereco);
     const EditTel = this.formLocadora.controls['telefone'].setValue(locadora.telefone);
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
   excluirLocadora(id: number): void {
@@ -60,7 +59,7 @@ export class LocadoraComponent implements OnInit {
       data: text
     });
 
-    dialogRef.afterClosed().subscribe(boolean =>{
+    dialogRef.afterClosed().subscribe(boolean => {
       if (boolean) {
         this.locadorasService.excluirLocadora(id).subscribe({
           next: () => {
@@ -76,12 +75,12 @@ export class LocadoraComponent implements OnInit {
     })
   }
 
-  updateLocadora(){
+  updateLocadora() {
     const id = this.id;
     const locadora = this.formLocadora.controls['locadora'].value;
     const endereço = this.formLocadora.controls['endereço'].value;
     const tel = this.formLocadora.controls['telefone'].value;
-    const objetoLocadora: Locadoras = {id: id, nome: locadora, endereco: endereço, telefone: tel};
+    const objetoLocadora: Locadoras = { id: id, nome: locadora, endereco: endereço, telefone: tel };
     this.locadorasService.editarLocadora(objetoLocadora).subscribe({
       next: () => {
         this.id = 0;
@@ -89,21 +88,21 @@ export class LocadoraComponent implements OnInit {
         this.alertaSnackBar("editada");
       },
       error: () => {
-        console.log("Você não conseguiu fazer a alteração.");
+        console.error("Você não conseguiu fazer a alteração.");
       }
     })
   }
 
-  cadastrarLocadora(){
-    if(this.id > 0){
+  cadastrarLocadora() {
+    if (this.id > 0) {
       this.updateLocadora()
     }
-    else{
+    else {
       const id = (this.locadoras[(this.locadoras.length) - 1].id) + 1;
       const locadora = this.formLocadora.controls['locadora'].value;
       const endereço = this.formLocadora.controls['endereço'].value;
       const tel = this.formLocadora.controls['telefone'].value;
-      const objetoLocadora: Locadoras = {id: id, nome: locadora, endereco: endereço, telefone: tel};
+      const objetoLocadora: Locadoras = { id: id, nome: locadora, endereco: endereço, telefone: tel };
 
       this.locadorasService.cadastrarLocadora(objetoLocadora).subscribe({
         next: () => {
@@ -111,34 +110,34 @@ export class LocadoraComponent implements OnInit {
           this.alertaSnackBar("cadastrada");
         },
         error: () => {
-          console.log("Erro ao importar a locadora.");
+          console.error("Erro ao importar a locadora.");
           this.alertaSnackBar("falha");
         }
       })
     }
   }
 
-  alertaSnackBar(tipoAlerta: string){
-    switch (tipoAlerta){
+  alertaSnackBar(tipoAlerta: string) {
+    switch (tipoAlerta) {
       case "cadastrada":
         this.snackBar.open("Locadora cadastrada com sucesso.", undefined, {
           duration: 2000,
           panelClass: ['snackbar-sucess']
         });
         break;
-        case "editada":
-          this.snackBar.open("Locadora editada com sucesso.", undefined,{
-            duration: 2000,
-            panelClass: ['snackbar-sucess']
-          });
-          break;
-        case "excluída":
-          this.snackBar.open("Locadora excluída com sucesso.", undefined,{
-            duration: 2000,
-            panelClass: ['snackbar-sucess']
-          });
-          break;
-        case "falha":
+      case "editada":
+        this.snackBar.open("Locadora editada com sucesso.", undefined, {
+          duration: 2000,
+          panelClass: ['snackbar-sucess']
+        });
+        break;
+      case "excluída":
+        this.snackBar.open("Locadora excluída com sucesso.", undefined, {
+          duration: 2000,
+          panelClass: ['snackbar-sucess']
+        });
+        break;
+      case "falha":
         this.snackBar.open("Serviço indisponível no momento, tente novamente mais tarde.", undefined, {
           duration: 2000,
           panelClass: ['snackbar-falha']
@@ -147,7 +146,7 @@ export class LocadoraComponent implements OnInit {
     }
   }
 
-  openDialog (
+  openDialog(
     id: number,
     enterAnimationDuration: string,
     exitAnimationDuration: string

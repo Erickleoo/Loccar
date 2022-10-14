@@ -58,7 +58,6 @@ export class DialogEditarLocadoraComponent implements OnInit {
     this.data.endereco = this.formLocadora.controls['end'].value;
     this.data.telefone = this.formLocadora.controls['tel'].value;
     this.dialogRef.close(this.data);
-    console.log(this.data);
 
     this.formLocadora.reset();
   }

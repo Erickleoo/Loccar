@@ -37,7 +37,6 @@ export class CadastroComponent implements OnInit {
     this.usuarioService.lerUsuarios().subscribe({
       next: (usuarios: Usuarios[]) => {
         this.usuarios = usuarios;
-        console.log(usuarios)
       },
       error: () => {
         this.alertaDados("falha")

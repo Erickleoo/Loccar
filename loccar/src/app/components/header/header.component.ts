@@ -24,14 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.usuariosService.lerUsuarios().subscribe({
-    //   next: (usuarios: Usuarios[]) => {
-    //     this.usuarios = usuarios;
-    //   },
-    //   error: () => {
-    //     console.error("Erro ao carregar usuarios!");
-    //   }
-    // })
     this.nomeUsuario = this.checkStatus();
   }
   checkStatus() {

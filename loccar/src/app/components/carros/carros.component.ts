@@ -36,7 +36,6 @@ export class CarrosComponent implements OnInit {
     private carrosService: CarrosService,
     private locadorasService: LocadorasService,
     private loadingService: LoadingService,
-    private usuario: UsuariosService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private router: Router
