@@ -78,7 +78,6 @@ export class LoginComponent implements OnInit {
       this.usuariosService.salvarLocalStorage(usuario);
       this.usuariosService.consultarLocalStorage('key');
       JSON.parse(this.storage.getItem('key') || '{}');
-      console.log(JSON.parse(this.storage.getItem('key') || '{}'))
     }
     else {
       this.alertaSnackBar("usuarioInexistente")
